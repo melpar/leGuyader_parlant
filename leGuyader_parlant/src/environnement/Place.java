@@ -46,6 +46,7 @@ public class Place {
 
   public void ajouterPheromone() {
     this.listePheromone.add(Pheromone.PHEROMONE_CHASSE);
+    // test
   }
 
 }
