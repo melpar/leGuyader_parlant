@@ -44,10 +44,8 @@ public class Place {
     this.positionY = y;
   }
 
-  public void ajouterPheromone() {
-    this.listePheromone.add(Pheromone.PHEROMONE_CHASSE);
-    // test
-    // test2
+  public void ajouterPheromone(Pheromone pheromone) {
+    this.listePheromone.add(pheromone);
   }
 
 }
