@@ -86,4 +86,37 @@ public class Terrain {
     return this.largeurTerrain * this.longueurTerrain;
   }
 
+  /**
+   * Methode pour recuperer une Place.
+   * 
+   * @param positionX
+   *          Position sur l'axe X.
+   * @param positionY
+   *          Position sur l'axe Y.
+   * @return La Place recherchee.
+   */
+  public Place getPlace(int positionX, int positionY) {
+    int posX = positionX;
+    int posY = positionY;
+
+    if (posX >= this.longueurTerrain) {
+      posX = this.longueurTerrain - 1;
+    }
+    if (posX < 0) {
+      posX = 0;
+    }
+    if (posY >= this.largeurTerrain) {
+      posY = this.largeurTerrain;
+    }
+
+    if (posY < 0) {
+      posY = 0;
+    }
+    return this.placeTerrain[posX * posY];
+  }
+
+  public int getNombreProie() {
+    return this.listeProie.size();
+  }
+
 }

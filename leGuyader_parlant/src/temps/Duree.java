@@ -61,4 +61,31 @@ public class Duree {
   public void addJour(int jour) {
     this.jour += jour;
   }
+
+  /**
+   * Methode pour comparer deux Duree.
+   * 
+   * @param duree
+   *          Duree de comparaison.
+   * @return True si superieur a la duree passer en parametre, False sinon.
+   */
+  public boolean estSuperieur(Duree duree) {
+    if (duree.getAnnee() < this.annee) {
+      return true;
+    }
+
+    if (duree.getMois() < this.mois) {
+      return true;
+    }
+
+    if (duree.getJour() < this.jour) {
+      return true;
+    }
+
+    if (duree.getMinute() < this.minute) {
+      return true;
+    }
+    return false;
+  }
+
 }

@@ -24,4 +24,12 @@ public enum Pheromone {
     }
   }
 
+  public Duree getDuree() {
+    return duree;
+  }
+
+  public void setDuree(Duree duree) {
+    this.duree = duree;
+  }
+
 }

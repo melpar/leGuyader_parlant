@@ -24,6 +24,14 @@ public class Depot {
     this.listeCadavreProie = new ArrayList<Proie>();
   }
 
+  public void ajouterCadavreProie(Proie nouvelleProie) {
+    this.listeCadavreProie.add(nouvelleProie);
+  }
+
+  public void ajouterCadavreFourmi(Fourmi nouvelleFourmi) {
+    this.listeCadavreFourmi.add(nouvelleFourmi);
+  }
+
   public int getNombreCadavreFourmi() {
     return this.listeCadavreFourmi.size();
   }
