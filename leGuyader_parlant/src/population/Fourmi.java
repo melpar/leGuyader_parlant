@@ -2,7 +2,7 @@ package population;
 
 import population.etat.EtatAbstract;
 
-public class Fourmie {
+public class Fourmi {
   private EtatAbstract etat;
 
   public EtatAbstract getEtat() {
