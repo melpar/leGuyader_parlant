@@ -11,10 +11,18 @@ import environnement.fourmiliere.Nid;
 public class Fourmiliere {
   private Nid nidFourmiliere;
   private Depot depotFourmiliere;
+  private Place placeFourmiliere;
 
-  public Fourmiliere() {
+  /**
+   * Constructeur d'une Fourmiliere.
+   * 
+   * @param place
+   *          Place de la Fourmiliere.
+   */
+  public Fourmiliere(Place place) {
     this.nidFourmiliere = new Nid();
     this.depotFourmiliere = new Depot();
+    this.placeFourmiliere = place;
   }
 
   public Nid getNidFourmiliere() {
@@ -31,6 +39,14 @@ public class Fourmiliere {
 
   public void setDepotFourmiliere(Depot depotFourmiliere) {
     this.depotFourmiliere = depotFourmiliere;
+  }
+
+  public Place getPlaceFourmiliere() {
+    return placeFourmiliere;
+  }
+
+  public void setPlaceFourmiliere(Place placeFourmiliere) {
+    this.placeFourmiliere = placeFourmiliere;
   }
 
 }

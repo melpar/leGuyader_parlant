@@ -35,7 +35,7 @@ public class Terrain {
           position % this.longueurTerrain);
 
     }
-    this.fourmiliere = new Fourmiliere();
+    this.fourmiliere = new Fourmiliere(this.getPlace(0, 0));
     this.listeProie = new ArrayList<Proie>();
 
   }
