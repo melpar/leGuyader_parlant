@@ -18,4 +18,9 @@ public class ProieCapturee extends EtatProieAbstract {
   public void setResteAVivre(Duree resteAVivre) {
     this.resteAVivre = resteAVivre;
   }
+
+  @Override
+  public void changeTemps() {
+    // TODO Auto-generated method stub
+  }
 }

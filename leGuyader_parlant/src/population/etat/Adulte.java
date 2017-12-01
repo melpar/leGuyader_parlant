@@ -10,7 +10,7 @@ import population.role.RoleAbstract;
  */
 public class Adulte extends EtatAbstract {
   /**
-   * Role de la fourmie
+   * Role de la fourmie.
    */
   private RoleAbstract role;
 

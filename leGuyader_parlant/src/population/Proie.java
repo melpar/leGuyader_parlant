@@ -7,7 +7,7 @@ import population.etat.EtatProieAbstract;
  * @author parlanme
  *
  */
-public class Proie {
+public class Proie implements TempsObserver {
   private EtatProieAbstract etat;
   private double poids;
 
@@ -17,5 +17,11 @@ public class Proie {
 
   public void setEtat(EtatProieAbstract etat) {
     this.etat = etat;
+  }
+
+  @Override
+  public void agitSur() {
+    this.etat.changeTemps();
+
   }
 }

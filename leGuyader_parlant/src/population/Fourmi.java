@@ -8,7 +8,7 @@ import population.etat.Larve;
 import population.etat.Nymphe;
 import temps.Duree;
 
-public class Fourmi {
+public class Fourmi implements TempsObserver {
   private Duree age;
   private boolean isMale;
   private double poids;
@@ -122,6 +122,12 @@ public class Fourmi {
         this.etat = new Cadavre();
         break;
     }
+
+  }
+
+  @Override
+  public void agitSur() {
+    // TODO Auto-generated method stub
 
   }
 }
