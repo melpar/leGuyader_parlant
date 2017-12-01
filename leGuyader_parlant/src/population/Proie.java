@@ -9,6 +9,7 @@ import population.etat.EtatProieAbstract;
  */
 public class Proie {
   private EtatProieAbstract etat;
+  private double poids;
 
   public EtatProieAbstract getEtat() {
     return etat;

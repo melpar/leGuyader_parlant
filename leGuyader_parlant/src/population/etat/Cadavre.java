@@ -7,5 +7,8 @@ package population.etat;
  *
  */
 public class Cadavre extends EtatAbstract {
-
+  @Override
+  protected void changeEtat() {
+    this.maFourmi.changeEtat(Etats.CADAVRE);
+  }
 }

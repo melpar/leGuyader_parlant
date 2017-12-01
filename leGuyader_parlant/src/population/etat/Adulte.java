@@ -21,4 +21,9 @@ public class Adulte extends EtatAbstract {
   public void setRole(RoleAbstract role) {
     this.role = role;
   }
+
+  @Override
+  protected void changeEtat() {
+    this.maFourmi.changeEtat(Etats.ADULTE);
+  }
 }

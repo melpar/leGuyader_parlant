@@ -1,5 +1,9 @@
 package population.etat;
 
-public abstract class EtatAbstract {
+import population.Fourmi;
 
+public abstract class EtatAbstract {
+  protected Fourmi maFourmi;
+
+  protected abstract void changeEtat();
 }
