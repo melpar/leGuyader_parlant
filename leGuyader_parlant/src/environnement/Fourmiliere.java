@@ -1,16 +1,36 @@
 package environnement;
 
-import java.util.ArrayList;
-import java.util.List;
+import environnement.fourmiliere.Depot;
+import environnement.fourmiliere.Nid;
 
+/**
+ * Representation de la fourmiliere. Cette classe possede un Nid et un Depot.
+ * 
+ * @author LeGuyader
+ */
 public class Fourmiliere {
- /* List<Fourmie> listeFourmie;
-  List<Proie> listeProie;
-  
+  private Nid nidFourmiliere;
+  private Depot depotFourmiliere;
+
   public Fourmiliere() {
-    this.listeFourmie=new ArrayList<Fourmie>();
-    this.listeProie=new ArrayList<Proie>();
-    
-  }*/
+    this.nidFourmiliere = new Nid();
+    this.depotFourmiliere = new Depot();
+  }
+
+  public Nid getNidFourmiliere() {
+    return nidFourmiliere;
+  }
+
+  public void setNidFourmiliere(Nid nidFourmiliere) {
+    this.nidFourmiliere = nidFourmiliere;
+  }
+
+  public Depot getDepotFourmiliere() {
+    return depotFourmiliere;
+  }
+
+  public void setDepotFourmiliere(Depot depotFourmiliere) {
+    this.depotFourmiliere = depotFourmiliere;
+  }
 
 }
