@@ -2,7 +2,16 @@ package population.etat;
 
 import population.role.RoleAbstract;
 
+/**
+ * Etat d'une fourmie adulte. Contient son role
+ * 
+ * @author parlanme
+ *
+ */
 public class Adulte extends EtatAbstract {
+  /**
+   * Role de la fourmie
+   */
   private RoleAbstract role;
 
   public RoleAbstract getRole() {
