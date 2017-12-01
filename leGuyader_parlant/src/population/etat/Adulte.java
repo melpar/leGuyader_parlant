@@ -1,5 +1,15 @@
 package population.etat;
 
-public class Adulte extends EtatAbstract {
+import population.role.RoleAbstract;
 
+public class Adulte extends EtatAbstract {
+  private RoleAbstract role;
+
+  public RoleAbstract getRole() {
+    return role;
+  }
+
+  public void setRole(RoleAbstract role) {
+    this.role = role;
+  }
 }
