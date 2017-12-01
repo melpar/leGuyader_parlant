@@ -15,7 +15,7 @@ public class Terrain {
   private int largeurTerrain;
   private int longueurTerrain;
   private Fourmiliere fourmiliere;
-  private Place[][] placeTerrain;
+  private Place[] placeTerrain;
   private List<Proie> listeProie;
 
   /**
@@ -29,14 +29,15 @@ public class Terrain {
   public Terrain(int largeurTerrain, int longueurTerrain) {
     this.largeurTerrain = largeurTerrain;
     this.longueurTerrain = longueurTerrain;
-    this.placeTerrain = new Place[this.longueurTerrain][this.largeurTerrain];
-    for (int axeX = 0; axeX < this.longueurTerrain; axeX++) {
-      for (int axeY = 0; axeY < this.largeurTerrain; axeY++) {
-        this.placeTerrain[axeX][axeY] = new Place(axeX, axeY);
-      }
+    this.placeTerrain = new Place[this.longueurTerrain * this.largeurTerrain];
+    for (int position = 0; position < this.longueurTerrain * this.largeurTerrain; position++) {
+      this.placeTerrain[position] = new Place(position % this.largeurTerrain,
+          position % this.longueurTerrain);
+
     }
     this.fourmiliere = new Fourmiliere();
     this.listeProie = new ArrayList<Proie>();
+
   }
 
   public int getLargeurTerrain() {

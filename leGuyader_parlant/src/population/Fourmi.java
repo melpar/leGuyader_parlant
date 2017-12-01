@@ -1,5 +1,6 @@
 package population;
 
+import environnement.Place;
 import population.etat.Adulte;
 import population.etat.Cadavre;
 import population.etat.EtatAbstract;
@@ -13,8 +14,7 @@ public class Fourmi implements TempsObserver {
   private boolean isMale;
   private double poids;
   private double aMange;
-  private int positionX;
-  private int positionY;
+  private Place place;
 
   private EtatAbstract etat;
 
@@ -28,13 +28,12 @@ public class Fourmi implements TempsObserver {
    * @param positionY
    *          position y à la création
    */
-  public Fourmi(boolean isMale, int positionX, int positionY) {
+  public Fourmi(boolean isMale, int positionX, int positionY, Place place) {
     this.age = new Duree();
     this.isMale = isMale;
     this.poids = 0;
     this.setaMange(0);
-    this.setPositionX(positionX);
-    this.setPositionY(positionY);
+    this.place = place;
   }
 
   public double mange(double aManger) {
@@ -85,20 +84,12 @@ public class Fourmi implements TempsObserver {
     this.aMange = aMange;
   }
 
-  public int getPositionX() {
-    return positionX;
+  public Place getPlace() {
+    return this.place;
   }
 
-  public void setPositionX(int positionX) {
-    this.positionX = positionX;
-  }
-
-  public int getPositionY() {
-    return positionY;
-  }
-
-  public void setPositionY(int positionY) {
-    this.positionY = positionY;
+  public void setPlace(Place place) {
+    this.place = place;
   }
 
   /**
