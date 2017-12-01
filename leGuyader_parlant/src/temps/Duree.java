@@ -7,6 +7,9 @@ public class Duree {
   private int heure;
   private int minute;
 
+  /**
+   * Permet d'initialiser un durée à 0.
+   */
   public Duree() {
     this.annee = 0;
     this.mois = 0;
@@ -57,6 +60,5 @@ public class Duree {
 
   public void addJour(int jour) {
     this.jour += jour;
-
   }
 }

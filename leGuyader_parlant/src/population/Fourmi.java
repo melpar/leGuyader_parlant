@@ -18,6 +18,16 @@ public class Fourmi {
 
   private EtatAbstract etat;
 
+  /**
+   * Permet de créer une fourmi.
+   * 
+   * @param isMale
+   *          vrai s'il s'agit d'un male, faux sinon
+   * @param positionX
+   *          position x à la création
+   * @param positionY
+   *          position y à la création
+   */
   public Fourmi(boolean isMale, int positionX, int positionY) {
     this.age = new Duree();
     this.isMale = isMale;
@@ -91,6 +101,12 @@ public class Fourmi {
     this.positionY = positionY;
   }
 
+  /**
+   * Permet de changer l'état d'une fourmi.
+   * 
+   * @param etat
+   *          ancien état de la fourmi
+   */
   public void changeEtat(Etats etat) {
     switch (etat) {
       case OEUF:
