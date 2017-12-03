@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import population.Fourmi;
 import population.Proie;
+import temps.Temps;
 
 public class EnvironnementTest {
 
@@ -98,8 +99,9 @@ public class EnvironnementTest {
     Nid nidFourmiliere = fourmiliereTest.getNidFourmiliere();
     ArrayList<Fourmi> listeFourmi = new ArrayList<Fourmi>();
 
+    Temps tempsCourant = new Temps();
     for (int i = 0; i < 30; i++) {
-      listeFourmi.add(new Fourmi(true, i, i, this.terrainTest.getPlace(i, i)));
+      listeFourmi.add(new Fourmi(true, this.terrainTest.getPlace(i, i), tempsCourant));
     }
     for (int i = 0; i < 30; i++) {
       nidFourmiliere.ajouterFourmi(listeFourmi.get(i));
@@ -113,8 +115,9 @@ public class EnvironnementTest {
     Nid nidFourmiliere = fourmiliereTest.getNidFourmiliere();
     ArrayList<Fourmi> listeFourmi = new ArrayList<Fourmi>();
 
+    Temps tempsCourant = new Temps();
     for (int i = 0; i < 30; i++) {
-      listeFourmi.add(new Fourmi(true, i, i, this.terrainTest.getPlace(i, i)));
+      listeFourmi.add(new Fourmi(true, this.terrainTest.getPlace(i, i), tempsCourant));
     }
     for (int i = 0; i < 30; i++) {
       nidFourmiliere.ajouterFourmi(listeFourmi.get(i));
@@ -186,9 +189,9 @@ public class EnvironnementTest {
     assertTrue(depotFourmiliere.getNombreCadavreProie() == 15);
 
     ArrayList<Fourmi> listeFourmi = new ArrayList<Fourmi>();
-
+    Temps tempsCourant = new Temps();
     for (int i = 0; i < 30; i++) {
-      listeFourmi.add(new Fourmi(true, i, i, this.terrainTest.getPlace(i, i)));
+      listeFourmi.add(new Fourmi(true, this.terrainTest.getPlace(i, i), tempsCourant));
     }
     for (int i = 0; i < 27; i++) {
       depotFourmiliere.ajouterCadavreFourmi(listeFourmi.get(i));

@@ -7,7 +7,9 @@ import population.etat.EtatAbstract;
 import population.etat.Etats;
 import population.etat.Larve;
 import population.etat.Nymphe;
+import population.etat.Oeuf;
 import temps.Duree;
+import temps.Temps;
 
 public class Fourmi implements TempsObserver {
   private Duree age;
@@ -15,6 +17,7 @@ public class Fourmi implements TempsObserver {
   private double poids;
   private double aMange;
   private Place place;
+  private Temps tempsCourant;
 
   private EtatAbstract etat;
 
@@ -23,17 +26,17 @@ public class Fourmi implements TempsObserver {
    * 
    * @param isMale
    *          vrai s'il s'agit d'un male, faux sinon
-   * @param positionX
-   *          position x à la création
-   * @param positionY
-   *          position y à la création
+   * @param place
+   *          position a la creation
    */
-  public Fourmi(boolean isMale, int positionX, int positionY, Place place) {
+  public Fourmi(boolean isMale, Place place, Temps dureeCourante) {
     this.age = new Duree();
     this.isMale = isMale;
     this.poids = 0;
     this.setaMange(0);
     this.place = place;
+    this.etat = new Oeuf(dureeCourante.getTempsCourant(), this);
+    this.tempsCourant = dureeCourante;
   }
 
   public double mange(double aManger) {
@@ -41,7 +44,7 @@ public class Fourmi implements TempsObserver {
   }
 
   public void nettoie() {
-    // La fourmie récupère un cadavre et l'amène au dépot
+    // La fourmie recupere un cadavre et l'amene au depot
   }
 
   public EtatAbstract getEtat() {
@@ -98,19 +101,20 @@ public class Fourmi implements TempsObserver {
    * @param etat
    *          ancien état de la fourmi
    */
-  public void changeEtat(Etats etat) {
+  public void changeEtat(Etats etat, Duree tempsCourant) {
+    this.tempsCourant.removeObserveur(this.etat);
     switch (etat) {
       case OEUF:
-        this.etat = new Larve();
+        this.etat = new Larve(this, tempsCourant);
         break;
       case LARVE:
-        this.etat = new Nymphe();
+        this.etat = new Nymphe(this, tempsCourant);
         break;
       case NYMPHE:
-        this.etat = new Adulte();
+        this.etat = new Adulte(this, tempsCourant);
         break;
       default:
-        this.etat = new Cadavre();
+        this.etat = new Cadavre(this);
         break;
     }
 
@@ -118,7 +122,8 @@ public class Fourmi implements TempsObserver {
 
   @Override
   public void agitSur() {
-    // TODO Auto-generated method stub
-
+    System.out.println("Ancien etat : " + this.etat.getEtat());
+    this.etat.agitSur();
+    System.out.println("Nouvel etat : " + this.etat.getEtat());
   }
 }

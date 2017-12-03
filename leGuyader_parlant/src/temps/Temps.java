@@ -1,8 +1,10 @@
 package temps;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import population.TempsObserver;
+import population.etat.EtatAbstract;
 
 public class Temps implements Runnable {
   private Duree tempsCourant;
@@ -10,14 +12,19 @@ public class Temps implements Runnable {
 
   public Temps() {
     this.tempsCourant = new Duree();
+    this.observeurs = new ArrayList<TempsObserver>();
+  }
+
+  public void addObserveur(TempsObserver observeur) {
+    this.observeurs.add(observeur);
   }
 
   @Override
   public void run() {
-    while (this.tempsCourant.getAnnee() < 3) {
+    while (this.tempsCourant.getMois() < 6) {
       try {
-        Thread.sleep(100);
-        this.tempsCourant.addJour(1);
+        Thread.sleep(10);
+        this.tempsCourant.addMinute(10);
         this.applique();
       } catch (InterruptedException e) {
         // TODO Auto-generated catch block
@@ -27,10 +34,23 @@ public class Temps implements Runnable {
   }
 
   private void applique() {
+    System.out.println("applique " + this.tempsCourant.toString());
     for (TempsObserver observeur : observeurs) {
       observeur.agitSur();
     }
 
+  }
+
+  public Duree getTempsCourant() {
+    return tempsCourant;
+  }
+
+  public void setTempsCourant(Duree tempsCourant) {
+    this.tempsCourant = tempsCourant;
+  }
+
+  public void removeObserveur(EtatAbstract etat) {
+    this.observeurs.remove(etat);
   }
 
 }

@@ -1,6 +1,8 @@
 package population.etat;
 
+import population.Fourmi;
 import population.role.RoleAbstract;
+import temps.Duree;
 
 /**
  * Etat d'une fourmie adulte. Contient son role
@@ -14,6 +16,14 @@ public class Adulte extends EtatAbstract {
    */
   private RoleAbstract role;
 
+  public Adulte(Fourmi fourmi, Duree dureeCourante) {
+    super(fourmi);
+    this.avantEvolution = new Duree();
+    this.debutEtat = new Duree(dureeCourante);
+    this.etat = Etats.ADULTE;
+    this.tempsCourant = dureeCourante;
+  }
+
   public RoleAbstract getRole() {
     return role;
   }
@@ -24,6 +34,12 @@ public class Adulte extends EtatAbstract {
 
   @Override
   protected void changeEtat() {
-    this.maFourmi.changeEtat(Etats.ADULTE);
+    this.maFourmi.changeEtat(Etats.ADULTE, this.tempsCourant);
+  }
+
+  @Override
+  public void agitSur() {
+    // TODO Auto-generated method stub
+
   }
 }
