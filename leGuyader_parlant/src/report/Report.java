@@ -1,6 +1,7 @@
 package report;
 
 import environnement.Fourmiliere;
+import environnement.Place;
 import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
@@ -19,5 +20,7 @@ public abstract class Report {
   public abstract void traceDepot(Depot uneDepot);
 
   public abstract void traceProie(Proie proie);
+
+  public abstract void tracePlace(Place place);
 
 }
