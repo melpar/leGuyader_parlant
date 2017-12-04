@@ -3,6 +3,8 @@ package environnement;
 import java.util.ArrayList;
 import java.util.List;
 
+import environnement.fourmiliere.Depot;
+import population.Fourmi;
 import population.Proie;
 
 /**
@@ -47,10 +49,6 @@ public class Terrain {
           position % this.longueurTerrain);
 
     }
-
-    Place depot = this.genPlaceDepot();
-
-    this.fourmiliere = new Fourmiliere(this.getPlace(0, 0), this.getPlace(0, 0), depot);
     this.listeProie = new ArrayList<Proie>();
 
   }
@@ -60,13 +58,40 @@ public class Terrain {
    * 
    * @return Place du depot.
    */
-
   public Place genPlaceDepot() {
     int axeX = (int) (Math.random() * (this.longueurTerrain - 0));
     int axeY = (int) (Math.random() * (this.largeurTerrain - 0));
     System.out.println("pos :" + axeX + " : " + axeY);
     Place place = this.getPlace(axeX, axeY);
     return place;
+  }
+
+  /**
+   * Methode qui cree la premiere Reine.
+   * 
+   * @param placeReine
+   *          Position de la Reine.
+   * @param fourmiReine
+   *          La premiere Reine.
+   */
+  public void premiereReine(Place placeReine, Fourmi fourmiReine) {
+    // this.setFourmiliere(fourmiReine.creeFourmiliere());
+    this.fourmiliere.setDepotFourmiliere(new Depot(this.genPlaceDepot()));
+    this.fourmiliere.ajouterFourmiNid(fourmiReine);
+  }
+
+  /**
+   * Methode pour supprimer la proie du terrain.
+   * 
+   * @param proie
+   *          Proie a suppprimer.
+   * @return True si la Proie a ete supprimer , False sinon.
+   */
+  public boolean supprimerProie(Proie proie) {
+    if (proie == null) {
+      return false;
+    }
+    return this.listeProie.remove(proie);
   }
 
   public int getLargeurTerrain() {
@@ -95,20 +120,6 @@ public class Terrain {
 
   public void ajouterProie(Proie nouvelleProie) {
     this.listeProie.add(nouvelleProie);
-  }
-
-  /**
-   * Methode pour supprimer la proie du terrain.
-   * 
-   * @param proie
-   *          Proie a suppprimer.
-   * @return True si la Proie a ete supprimer , False sinon.
-   */
-  public boolean supprimerProie(Proie proie) {
-    if (proie == null) {
-      return false;
-    }
-    return this.listeProie.remove(proie);
   }
 
   public int getNombrePlace() {

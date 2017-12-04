@@ -2,6 +2,8 @@ package environnement;
 
 import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
+import population.Fourmi;
+import population.Proie;
 
 /**
  * Representation de la fourmiliere. Cette classe possede un Nid et un Depot.
@@ -17,16 +19,19 @@ public class Fourmiliere {
    * Constructeur d'une Fourmiliere.
    * 
    * @param placeF
-   *          Place de la Fourmiliere.
-   * @param placeN
-   *          Place du Nid.
+   *          Place de la Fourmiliere et du nid
    * @param placeD
    *          Place du Depot.
    */
-  public Fourmiliere(Place placeF, Place placeN, Place placeD) {
-    this.nidFourmiliere = new Nid(placeN);
+  public Fourmiliere(Place placeF, Place placeD) {
+    this.nidFourmiliere = new Nid(placeF);
     this.depotFourmiliere = new Depot(placeD);
     this.placeFourmiliere = placeF;
+  }
+
+  public Fourmiliere(Place place) {
+    this.placeFourmiliere = place;
+    this.nidFourmiliere = new Nid(place);
   }
 
   public Nid getNidFourmiliere() {
@@ -51,6 +56,14 @@ public class Fourmiliere {
 
   public void setPlaceFourmiliere(Place placeFourmiliere) {
     this.placeFourmiliere = placeFourmiliere;
+  }
+
+  public void ajouterFourmiNid(Fourmi nouvelleFourmi) {
+    this.nidFourmiliere.ajouterFourmi(nouvelleFourmi);
+  }
+
+  public void ajouterProieNisd(Proie nouvelleProie) {
+    this.nidFourmiliere.ajouterProie(nouvelleProie);
   }
 
 }
