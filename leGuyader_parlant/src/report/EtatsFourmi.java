@@ -1,6 +1,10 @@
 package report;
 
+import environnement.Fourmiliere;
+import environnement.fourmiliere.Depot;
+import environnement.fourmiliere.Nid;
 import population.Fourmi;
+import population.Proie;
 import population.etat.EtatAbstract;
 import population.etat.Etats;
 import temps.Duree;
@@ -31,5 +35,29 @@ public class EtatsFourmi extends Report {
     ret.append("Etat : ").append(etat).append("\n");
     ret.append("Date de fin de l'état : ").append(dateFin.toString()).append("\n");
     return ret.toString();
+  }
+
+  @Override
+  public void traceFourmiliere(Fourmiliere uneFourmiliere) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void traceNid(Nid unNid) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void traceDepot(Depot uneDepot) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void traceProie(Proie proie) {
+    // TODO Auto-generated method stub
+
   }
 }

@@ -47,4 +47,20 @@ public class Depot {
     return this.getNombreCadavreFourmi() + this.getNombreCadavreProie();
   }
 
+  public List<Fourmi> getListeCadavreFourmi() {
+    return listeCadavreFourmi;
+  }
+
+  public void setListeCadavreFourmi(List<Fourmi> listeCadavreFourmi) {
+    this.listeCadavreFourmi = listeCadavreFourmi;
+  }
+
+  public List<Proie> getListeCadavreProie() {
+    return listeCadavreProie;
+  }
+
+  public void setListeCadavreProie(List<Proie> listeCadavreProie) {
+    this.listeCadavreProie = listeCadavreProie;
+  }
+
 }

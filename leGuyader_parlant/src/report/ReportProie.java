@@ -7,29 +7,12 @@ import population.Fourmi;
 import population.Proie;
 import population.etat.EtatAbstract;
 
-public class ReportFourmi extends Report {
-
-  private int positionX;
-  private int positionY;
-  private String etat;
-
-  /**
-   * Retourne l'ensemble des éléments de l'instance sous la forme d'une chaine de
-   * caractere.
-   */
-  public String toString() {
-    StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append(this.etat);
-    stringBuilder.append(" à la position (").append(positionX).append(",").append(positionY);
-    stringBuilder.append(")\n");
-    return stringBuilder.toString();
-  }
+public class ReportProie extends Report {
 
   @Override
   public void traceFourmi(Fourmi uneFourmi) {
-    this.positionX = uneFourmi.getPlace().getX();
-    this.positionY = uneFourmi.getPlace().getY();
-    this.etat = uneFourmi.getEtat().getEtat().name();
+    // TODO Auto-generated method stub
+
   }
 
   @Override

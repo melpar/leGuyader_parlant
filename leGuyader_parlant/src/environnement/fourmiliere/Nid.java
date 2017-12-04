@@ -88,4 +88,12 @@ public class Nid {
     this.listeFourmi = listeFourmi;
   }
 
+  public List<Proie> getListeProie() {
+    return listeProie;
+  }
+
+  public void setListeProie(List<Proie> listeProie) {
+    this.listeProie = listeProie;
+  }
+
 }
