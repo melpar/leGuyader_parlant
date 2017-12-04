@@ -43,12 +43,13 @@ public class Fourmi implements TempsObserver {
     this.tempsCourant = dureeCourante;
   }
 
-  public Fourmi creerReine(Place place, Temps dureeCourante) {
-    Fourmi reine = new Fourmi(false, place, dureeCourante);
-    Adulte etatReine = new Adulte(reine, dureeCourante.getTempsCourant());
-    etatReine.setRole(new Reine(reine));
-    reine.setEtat(etatReine);
-    return reine;
+  /**
+   * Permet de passer une fourmi à létat de reine.
+   */
+  public void setReine() {
+    Adulte etatReine = new Adulte(this, this.tempsCourant.getTempsCourant());
+    etatReine.setRole(new Reine(this));
+    this.setEtat(etatReine);
   }
 
   public double mange(double amanger) {
