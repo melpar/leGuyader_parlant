@@ -14,9 +14,8 @@ public class Nymphe extends EtatAbstract {
 
   public Nymphe(Fourmi fourmi, Duree dureeCourante) {
     super(fourmi);
-    this.avantEvolution = new Duree(dureeCourante);
-    this.avantEvolution.setJour(JOUR_EVOLUTION);
-    this.debutEtat = new Duree(dureeCourante);
+    this.dateFin = new Duree(dureeCourante);
+    this.dateFin.addJour(JOUR_EVOLUTION);
     this.etat = Etats.NYMPHE;
     this.tempsCourant = dureeCourante;
   }

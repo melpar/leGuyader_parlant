@@ -8,6 +8,7 @@ import population.etat.Etats;
 import population.etat.Larve;
 import population.etat.Nymphe;
 import population.etat.Oeuf;
+import report.Report;
 import temps.Duree;
 import temps.Temps;
 
@@ -15,7 +16,7 @@ public class Fourmi implements TempsObserver {
   private Duree age;
   private boolean isMale;
   private double poids;
-  private double aMange;
+  private double amange;
   private Place place;
   private Temps tempsCourant;
 
@@ -39,12 +40,57 @@ public class Fourmi implements TempsObserver {
     this.tempsCourant = dureeCourante;
   }
 
-  public double mange(double aManger) {
-    return (this.aMange += aManger);
+  public double mange(double amanger) {
+    return (this.amange += amanger);
   }
 
   public void nettoie() {
     // La fourmie recupere un cadavre et l'amene au depot
+  }
+
+  /**
+   * Permet de changer l'état d'une fourmi.
+   * 
+   * @param etat
+   *          ancien état de la fourmi
+   */
+  public void changeEtat(Etats etat, Duree tempsCourant) {
+    this.tempsCourant.removeObserveur(this.etat);
+    switch (etat) {
+      case OEUF:
+        this.etat = new Larve(this, tempsCourant);
+        break;
+      case LARVE:
+        this.etat = new Nymphe(this, tempsCourant);
+        break;
+      case NYMPHE:
+        this.etat = new Adulte(this, tempsCourant);
+        break;
+      default:
+        this.etat = new Cadavre(this);
+        break;
+    }
+
+  }
+
+  @Override
+  public void agitSur() {
+    System.out.println("Ancien etat : " + this.etat.getEtat());
+    this.etat.agitSur();
+    System.out.println("Nouvel etat : " + this.etat.getEtat());
+  }
+
+  void trace(Report report) {
+    report.traceForFourmi(this);
+    this.etat.trace(report);
+  }
+
+  public Temps getTempsCourant() {
+    return tempsCourant;
+  }
+
+  public void setTempsCourant(Temps tempsCourant) {
+    this.tempsCourant = tempsCourant;
   }
 
   public EtatAbstract getEtat() {
@@ -80,11 +126,11 @@ public class Fourmi implements TempsObserver {
   }
 
   public double getaMange() {
-    return aMange;
+    return amange;
   }
 
-  public void setaMange(double aMange) {
-    this.aMange = aMange;
+  public void setaMange(double amange) {
+    this.amange = amange;
   }
 
   public Place getPlace() {
@@ -93,37 +139,5 @@ public class Fourmi implements TempsObserver {
 
   public void setPlace(Place place) {
     this.place = place;
-  }
-
-  /**
-   * Permet de changer l'état d'une fourmi.
-   * 
-   * @param etat
-   *          ancien état de la fourmi
-   */
-  public void changeEtat(Etats etat, Duree tempsCourant) {
-    this.tempsCourant.removeObserveur(this.etat);
-    switch (etat) {
-      case OEUF:
-        this.etat = new Larve(this, tempsCourant);
-        break;
-      case LARVE:
-        this.etat = new Nymphe(this, tempsCourant);
-        break;
-      case NYMPHE:
-        this.etat = new Adulte(this, tempsCourant);
-        break;
-      default:
-        this.etat = new Cadavre(this);
-        break;
-    }
-
-  }
-
-  @Override
-  public void agitSur() {
-    System.out.println("Ancien etat : " + this.etat.getEtat());
-    this.etat.agitSur();
-    System.out.println("Nouvel etat : " + this.etat.getEtat());
   }
 }

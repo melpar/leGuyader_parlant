@@ -19,6 +19,12 @@ public class PopulationTest {
     assert (fourmi.getEtat().getEtat() == Etats.OEUF);
   }
 
+  /**
+   * Permet de lancer un thread temps. Permet de suivre l'évolution d'une fourmi.
+   * 
+   * @param args
+   *          liste des arguments.
+   */
   public static void main(String[] args) {
     Place place = new Place(0, 0);
     Temps tempsCourant = new Temps();

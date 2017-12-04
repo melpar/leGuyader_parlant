@@ -18,8 +18,7 @@ public class Adulte extends EtatAbstract {
 
   public Adulte(Fourmi fourmi, Duree dureeCourante) {
     super(fourmi);
-    this.avantEvolution = new Duree();
-    this.debutEtat = new Duree(dureeCourante);
+    this.dateFin = new Duree(dureeCourante);
     this.etat = Etats.ADULTE;
     this.tempsCourant = dureeCourante;
   }

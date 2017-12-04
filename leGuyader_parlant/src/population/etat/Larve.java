@@ -14,9 +14,8 @@ public class Larve extends EtatAbstract {
 
   public Larve(Fourmi fourmi, Duree dureeCourante) {
     super(fourmi);
-    this.avantEvolution = new Duree(dureeCourante);
-    this.avantEvolution.setJour(JOUR_EVOLUTION);
-    this.debutEtat = new Duree(dureeCourante);
+    this.dateFin = new Duree(dureeCourante);
+    this.dateFin.addJour(JOUR_EVOLUTION);
     this.etat = Etats.LARVE;
     this.tempsCourant = dureeCourante;
   }

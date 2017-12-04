@@ -2,20 +2,35 @@ package population.etat;
 
 import population.Fourmi;
 import population.TempsObserver;
+import report.Report;
 import temps.Duree;
 
 public abstract class EtatAbstract {
   protected Fourmi maFourmi;
   protected Etats etat;
   protected Duree tempsCourant;
-  protected Duree avantEvolution;
-  protected Duree debutEtat;
+  protected Duree dateFin;
 
   public EtatAbstract(Fourmi fourmi) {
     this.maFourmi = fourmi;
   }
 
   protected abstract void changeEtat();
+
+  /**
+   * Permet de créer une trace de l'état.
+   * 
+   * @param report
+   *          ensemble des informations
+   */
+  public void trace(Report report) {
+    report.traceForEtat(this);
+  }
+
+  protected boolean estFini() {
+
+    return this.tempsCourant.equals(dateFin);
+  }
 
   public void setTempsCourant(Duree tps) {
     this.tempsCourant = tps;
@@ -25,14 +40,13 @@ public abstract class EtatAbstract {
     return this.etat;
   }
 
-  protected boolean estFini() {
-    System.out.println("debut : " + debutEtat);
-    System.out.println("avant : " + avantEvolution);
-    Duree fin = Duree.ajouter(this.debutEtat, this.avantEvolution);
-    System.out.println("fin : " + fin);
+  public abstract void agitSur();
 
-    return this.tempsCourant.equals(fin);
+  public Duree getDateFin() {
+    return dateFin;
   }
 
-  public abstract void agitSur();
+  public void setDateFin(Duree dateFin) {
+    this.dateFin = dateFin;
+  }
 }

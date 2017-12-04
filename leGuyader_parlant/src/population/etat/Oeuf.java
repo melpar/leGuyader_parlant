@@ -4,7 +4,7 @@ import population.Fourmi;
 import temps.Duree;
 
 /**
- * Lorsque la fourmi est a l'etat d'oeuf
+ * Lorsque la fourmi est aï¿½l'etat d'oeuf
  * 
  * @author parlanme
  *
@@ -14,9 +14,8 @@ public class Oeuf extends EtatAbstract {
 
   public Oeuf(Duree dureeCourante, Fourmi fourmi) {
     super(fourmi);
-    this.avantEvolution = new Duree();
-    this.avantEvolution.setJour(JOUR_EVOLUTION);
-    this.debutEtat = new Duree(dureeCourante);
+    this.dateFin = new Duree();
+    this.dateFin.addJour(JOUR_EVOLUTION);
     this.etat = Etats.OEUF;
     this.tempsCourant = dureeCourante;
   }
