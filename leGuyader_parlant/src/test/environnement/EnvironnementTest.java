@@ -207,6 +207,28 @@ public class EnvironnementTest {
 
   @Test
   public void testReportTerrain() {
+    Fourmiliere fourmiliereTest = this.terrainTest.getFourmiliere();
+    Nid nidFourmiliere = fourmiliereTest.getNidFourmiliere();
+    ArrayList<Fourmi> listeFourmi = new ArrayList<Fourmi>();
+
+    Temps tempsCourant = new Temps();
+    for (int i = 0; i < 30; i++) {
+      listeFourmi.add(
+          new Fourmi(true, this.terrainTest.getFourmiliere().getPlaceFourmiliere(), tempsCourant));
+    }
+    for (int i = 0; i < 30; i++) {
+      nidFourmiliere.ajouterFourmi(listeFourmi.get(i));
+    }
+
+    ArrayList<Proie> listeProie = new ArrayList<Proie>();
+
+    for (int i = 0; i < 30; i++) {
+      listeProie.add(new Proie());
+    }
+    for (int i = 0; i < 30; i++) {
+      nidFourmiliere.ajouterProie(listeProie.get(i));
+    }
+
     ReportFourmiliere report = new ReportFourmiliere();
     report.traceFourmiliere(this.terrainTest.getFourmiliere());
     System.out.println(report.toString());

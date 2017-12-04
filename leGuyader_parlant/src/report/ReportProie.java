@@ -9,6 +9,22 @@ import population.etat.EtatAbstract;
 
 public class ReportProie extends Report {
 
+  private int positionX;
+  private int positionY;
+  private String etat;
+
+  @Override
+  public void traceProie(Proie uneProie) {
+    // a completer
+
+  }
+
+  public String toString() {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("Proie");
+    return stringBuilder.toString();
+  }
+
   @Override
   public void traceFourmi(Fourmi uneFourmi) {
     // TODO Auto-generated method stub
@@ -35,12 +51,6 @@ public class ReportProie extends Report {
 
   @Override
   public void traceDepot(Depot uneDepot) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void traceProie(Proie proie) {
     // TODO Auto-generated method stub
 
   }
