@@ -1,7 +1,9 @@
 package population.etat;
 
 import population.Fourmi;
+import population.role.Ouvriere;
 import population.role.RoleAbstract;
+import population.role.Roles;
 import temps.Duree;
 
 /**
@@ -29,6 +31,7 @@ public class Adulte extends EtatAbstract {
     this.dateFin = new Duree(dureeCourante);
     this.etat = Etats.ADULTE;
     this.tempsCourant = dureeCourante;
+    this.role = new Ouvriere(maFourmi);
   }
 
   public RoleAbstract getRole() {
@@ -46,7 +49,9 @@ public class Adulte extends EtatAbstract {
 
   @Override
   public void agitSur() {
-    // TODO Auto-generated method stub
+    if (this.getRole().getRole() == Roles.OUVRIERE) {
+      ((Ouvriere) this.getRole()).deplace();
+    }
 
   }
 }

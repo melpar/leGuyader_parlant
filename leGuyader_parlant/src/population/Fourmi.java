@@ -11,6 +11,8 @@ import population.etat.Larve;
 import population.etat.Nymphe;
 import population.etat.Oeuf;
 import population.role.Reine;
+import population.role.RoleAbstract;
+import population.role.Roles;
 import report.Report;
 import temps.Duree;
 import temps.Temps;
@@ -50,6 +52,14 @@ public class Fourmi implements TempsObserver {
     Adulte etatReine = new Adulte(this, this.tempsCourant.getTempsCourant());
     etatReine.setRole(new Reine(this));
     this.setEtat(etatReine);
+  }
+
+  public boolean isReine() {
+    if (this.etat.getEtat() != Etats.ADULTE) {
+      return false;
+    } else {
+      return (((Adulte) this.etat).getRole().getRole() == Roles.REINE);
+    }
   }
 
   public double mange(double amanger) {
@@ -153,8 +163,23 @@ public class Fourmi implements TempsObserver {
     this.place = place;
   }
 
+  /**
+   * Permet de créer une fourmiliere, si la foumil est une reine.
+   * 
+   * @return nouvelle fourmiliere
+   */
   public Fourmiliere creeFourmiliere() {
-    FabriqueFourmiliere fabrique = new FabriqueFourmiliere();
-    return fabrique.creeFourmiliere(this.place);
+    if (this.isReine()) {
+      FabriqueFourmiliere fabrique = new FabriqueFourmiliere();
+      return fabrique.creeFourmiliere(this.place);
+    } else {
+      return null;
+    }
+  }
+
+  public void pond() {
+    if (this.isReine()) {
+      ((Reine) ((Adulte) this.getEtat()).getRole()).pond();
+    }
   }
 }

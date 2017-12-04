@@ -13,8 +13,15 @@ public class Reine extends RoleAbstract {
 
   private Fourmiliere fourmiliere;
 
+  /**
+   * Créé un role reine.
+   * 
+   * @param fourmi
+   *          fourmi associée
+   */
   public Reine(Fourmi fourmi) {
     super(fourmi);
+    this.monRole = Roles.REINE;
     this.fourmiliere = null;
   }
 

@@ -3,8 +3,10 @@ package test.population;
 import org.junit.Test;
 
 import environnement.Place;
+import environnement.Terrain;
 import population.Fourmi;
 import population.etat.Etats;
+import report.CompteurFourmi;
 import temps.Duree;
 import temps.Temps;
 
@@ -47,6 +49,7 @@ public class PopulationTest {
    *          liste des arguments.
    */
   public static void main(String[] args) {
+    Terrain terrain = new Terrain(500, 500);
     Place place = new Place(0, 0);
     Temps tempsCourant = new Temps();
 
@@ -57,5 +60,31 @@ public class PopulationTest {
     Thread th = new Thread(tempsCourant);
     th.start();
 
+  }
+
+  @Test
+  public void testIsReine() {
+    Place place = new Place(0, 0);
+    Temps tempsCourant = new Temps();
+    Fourmi fourmi = new Fourmi(false, place, tempsCourant);
+    fourmi.setReine();
+    assert (fourmi.isReine());
+  }
+
+  @Test
+  public void testReine() {
+    Place place = new Place(0, 0);
+    Temps tempsCourant = new Temps();
+    Fourmi fourmi = new Fourmi(false, place, tempsCourant);
+    fourmi.setReine();
+    Terrain terrainTest = new Terrain(500, 500);
+    terrainTest.premiereReine(fourmi);
+    fourmi.pond();
+    CompteurFourmi cpt = new CompteurFourmi();
+    assert (terrainTest.getFourmiliere().getNidFourmiliere().getNombreFourmi() == 51);
+    for (Fourmi uneFourmi : terrainTest.getFourmiliere().getNidFourmiliere().getListeFourmi()) {
+      cpt.traceFourmi(uneFourmi);
+    }
+    System.out.println(cpt);
   }
 }

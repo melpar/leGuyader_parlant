@@ -11,5 +11,6 @@ import population.Fourmi;
 public class Soldat extends RoleAbstract {
   public Soldat(Fourmi fourmi) {
     super(fourmi);
+    this.monRole = Roles.SOLDAT;
   }
 }

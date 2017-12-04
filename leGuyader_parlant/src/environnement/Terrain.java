@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import environnement.fourmiliere.Depot;
+import mediateur.MediateurDeplacementChasse;
 import population.Fourmi;
 import population.Proie;
 import population.etat.Adulte;
@@ -54,6 +55,8 @@ public class Terrain {
     }
     this.listeProie = new ArrayList<Proie>();
 
+    // initialisation instance Mediateur
+    MediateurDeplacementChasse.getInstance(this);
   }
 
   /**
