@@ -1,6 +1,7 @@
 package report;
 
 import environnement.Fourmiliere;
+import environnement.Place;
 import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
@@ -57,6 +58,12 @@ public class ReportFourmiliere extends Report {
 
   @Override
   public void traceProie(Proie proie) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void tracePlace(Place place) {
     // TODO Auto-generated method stub
 
   }

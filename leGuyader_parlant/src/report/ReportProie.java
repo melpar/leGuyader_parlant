@@ -1,6 +1,7 @@
 package report;
 
 import environnement.Fourmiliere;
+import environnement.Place;
 import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
@@ -11,17 +12,20 @@ public class ReportProie extends Report {
 
   private int positionX;
   private int positionY;
-  private String etat;
+  private double poids;
 
   @Override
   public void traceProie(Proie uneProie) {
-    // a completer
-
+    this.positionX = uneProie.getPlaceProie().getX();
+    this.positionY = uneProie.getPlaceProie().getY();
+    this.poids = uneProie.getPoids();
   }
 
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append("Proie\n");
+    stringBuilder.append("Proie  ");
+    stringBuilder.append(" à la position (").append(positionX).append(",").append(positionY);
+    stringBuilder.append(") Poids (").append(this.poids).append(")\n");
     return stringBuilder.toString();
   }
 
@@ -51,6 +55,12 @@ public class ReportProie extends Report {
 
   @Override
   public void traceDepot(Depot uneDepot) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void tracePlace(Place place) {
     // TODO Auto-generated method stub
 
   }

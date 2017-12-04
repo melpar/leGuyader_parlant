@@ -64,7 +64,7 @@ public class Terrain {
    * 
    * @return Place du depot.
    */
-  public Place genPlaceDepot() {
+  public Place genPlace() {
     int axeX = (int) (Math.random() * (this.longueurTerrain - 0));
     int axeY = (int) (Math.random() * (this.largeurTerrain - 0));
     Place place = this.getPlace(axeX, axeY);
@@ -81,8 +81,16 @@ public class Terrain {
     fourmiReine.setReine();
     this.setFourmiliere(fourmiReine.creeFourmiliere());
     ((Reine) ((Adulte) fourmiReine.getEtat()).getRole()).setFourmiliere(this.fourmiliere);
-    this.fourmiliere.setDepotFourmiliere(new Depot(this.genPlaceDepot()));
+    this.fourmiliere.setDepotFourmiliere(new Depot(this.genPlace()));
     this.fourmiliere.ajouterFourmiNid(fourmiReine);
+  }
+
+  public void genProie(int nombreProie) {
+    for (int indice = 0; indice < nombreProie; indice++) {
+      double poids = Math.random() * (200 - 2);
+      Place placeProie = this.genPlace();
+      this.listeProie.add(new Proie(placeProie, poids));
+    }
   }
 
   /**
@@ -162,6 +170,14 @@ public class Terrain {
 
   public int getNombreProie() {
     return this.listeProie.size();
+  }
+
+  public List<Proie> getListeProie() {
+    return listeProie;
+  }
+
+  public void setListeProie(List<Proie> listeProie) {
+    this.listeProie = listeProie;
   }
 
 }

@@ -1,6 +1,7 @@
 package report;
 
 import environnement.Fourmiliere;
+import environnement.Place;
 import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import java.util.ArrayList;
@@ -24,12 +25,14 @@ public class ReportNid extends Report {
    */
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("Fourmi dans le Nid\n");
     for (int indice = 0; indice < this.listeFourmi.size(); indice++) {
       ReportFourmi reportFourmi = new ReportFourmi();
       reportFourmi.traceFourmi(this.listeFourmi.get(indice));
+
       stringBuilder.append(reportFourmi.toString());
     }
-
+    stringBuilder.append("Proies dans le Nid\n");
     for (int indice = 0; indice < this.listeProie.size(); indice++) {
       ReportProie reportProie = new ReportProie();
       reportProie.traceProie(this.listeProie.get(indice));
@@ -70,6 +73,12 @@ public class ReportNid extends Report {
 
   @Override
   public void traceProie(Proie proie) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void tracePlace(Place place) {
     // TODO Auto-generated method stub
 
   }

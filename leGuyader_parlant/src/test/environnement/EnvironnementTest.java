@@ -42,35 +42,19 @@ public class EnvironnementTest {
   public void testAjoutProieTerrain() {
     assertTrue(this.terrainTest.getNombreProie() == 0);
     ArrayList<Proie> listeProie = new ArrayList<Proie>();
-
-    for (int i = 0; i < 30; i++) {
-      listeProie.add(new Proie());
-    }
-    for (int i = 0; i < 30; i++) {
-      this.terrainTest.ajouterProie(listeProie.get(i));
-    }
+    this.terrainTest.genProie(30);
     assertTrue(this.terrainTest.getNombreProie() == 30);
   }
 
   @Test
   public void testSupprimerProieTerrain() {
-    ArrayList<Proie> listeProie = new ArrayList<Proie>();
-
-    for (int i = 0; i < 30; i++) {
-      listeProie.add(new Proie());
-    }
-    for (int i = 0; i < 30; i++) {
-      this.terrainTest.ajouterProie(listeProie.get(i));
-    }
+    this.terrainTest.genProie(30);
 
     for (int i = 0; i < 10; i++) {
-      assertTrue(this.terrainTest.supprimerProie(listeProie.get(i + 10)));
+      assertTrue(this.terrainTest.supprimerProie(this.terrainTest.getListeProie().get(i)));
     }
 
     assertTrue(this.terrainTest.getNombreProie() == 20);
-    for (int i = 10; i < 20; i++) {
-      assertFalse(this.terrainTest.supprimerProie(listeProie.get(i)));
-    }
 
   }
 
@@ -147,7 +131,7 @@ public class EnvironnementTest {
     ArrayList<Proie> listeProie = new ArrayList<Proie>();
 
     for (int i = 0; i < 30; i++) {
-      listeProie.add(new Proie());
+      listeProie.add(new Proie(this.terrainTest.getPlace(i, i), 2.4));
     }
     for (int i = 0; i < 30; i++) {
       nidFourmiliere.ajouterProie(listeProie.get(i));
@@ -162,7 +146,7 @@ public class EnvironnementTest {
     ArrayList<Proie> listeProie = new ArrayList<Proie>();
 
     for (int i = 0; i < 30; i++) {
-      listeProie.add(new Proie());
+      listeProie.add(new Proie(this.terrainTest.getPlace(i, i), 2.4));
     }
     for (int i = 0; i < 30; i++) {
       nidFourmiliere.ajouterProie(listeProie.get(i));
@@ -186,7 +170,7 @@ public class EnvironnementTest {
     ArrayList<Proie> listeProie = new ArrayList<Proie>();
 
     for (int i = 0; i < 30; i++) {
-      listeProie.add(new Proie());
+      listeProie.add(new Proie(this.terrainTest.getPlace(i, i), 2.4));
     }
     for (int i = 0; i < 15; i++) {
       depotFourmiliere.ajouterCadavreProie(listeProie.get(i));
@@ -223,7 +207,7 @@ public class EnvironnementTest {
     ArrayList<Proie> listeProie = new ArrayList<Proie>();
 
     for (int i = 0; i < 30; i++) {
-      listeProie.add(new Proie());
+      listeProie.add(new Proie(this.terrainTest.genPlace(), 2.4));
     }
     for (int i = 0; i < 30; i++) {
       nidFourmiliere.ajouterProie(listeProie.get(i));

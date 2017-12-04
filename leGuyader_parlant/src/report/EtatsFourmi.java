@@ -1,6 +1,7 @@
 package report;
 
 import environnement.Fourmiliere;
+import environnement.Place;
 import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
@@ -27,8 +28,8 @@ public class EtatsFourmi extends Report {
   }
 
   /**
-   * Retourne l'ensemble des éléments de l'instance sous la forme d'une chaine de
-   * caractere.
+   * Retourne l'ensemble des éléments de l'instance sous la forme d'une chaine
+   * de caractere.
    */
   public String toString() {
     StringBuilder ret = new StringBuilder();
@@ -57,6 +58,12 @@ public class EtatsFourmi extends Report {
 
   @Override
   public void traceProie(Proie proie) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void tracePlace(Place place) {
     // TODO Auto-generated method stub
 
   }
