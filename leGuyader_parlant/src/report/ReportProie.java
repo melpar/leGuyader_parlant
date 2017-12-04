@@ -21,7 +21,7 @@ public class ReportProie extends Report {
 
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append("Proie");
+    stringBuilder.append("Proie\n");
     return stringBuilder.toString();
   }
 

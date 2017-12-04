@@ -1,9 +1,9 @@
 package environnement;
 
+import environnement.fourmiliere.Depot;
 import java.util.ArrayList;
 import java.util.List;
 
-import environnement.fourmiliere.Depot;
 import mediateur.MediateurDeplacementChasse;
 import population.Fourmi;
 import population.Proie;
