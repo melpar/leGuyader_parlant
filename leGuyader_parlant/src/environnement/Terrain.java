@@ -69,13 +69,11 @@ public class Terrain {
   /**
    * Methode qui cree la premiere Reine.
    * 
-   * @param placeReine
-   *          Position de la Reine.
    * @param fourmiReine
    *          La premiere Reine.
    */
-  public void premiereReine(Place placeReine, Fourmi fourmiReine) {
-    // this.setFourmiliere(fourmiReine.creeFourmiliere());
+  public void premiereReine(Fourmi fourmiReine) {
+    this.setFourmiliere(fourmiReine.creeFourmiliere());
     this.fourmiliere.setDepotFourmiliere(new Depot(this.genPlaceDepot()));
     this.fourmiliere.ajouterFourmiNid(fourmiReine);
   }

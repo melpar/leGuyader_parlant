@@ -1,6 +1,8 @@
 package population;
 
+import environnement.Fourmiliere;
 import environnement.Place;
+import environnement.fabrique.FabriqueFourmiliere;
 import population.etat.Adulte;
 import population.etat.Cadavre;
 import population.etat.EtatAbstract;
@@ -139,5 +141,10 @@ public class Fourmi implements TempsObserver {
 
   public void setPlace(Place place) {
     this.place = place;
+  }
+
+  public Fourmiliere creeFourmiliere() {
+    FabriqueFourmiliere fabrique = new FabriqueFourmiliere();
+    return fabrique.creeFourmiliere(this.place);
   }
 }
