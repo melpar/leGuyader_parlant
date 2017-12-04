@@ -13,8 +13,12 @@ public class Reine extends RoleAbstract {
 
   private Fourmiliere fourmiliere;
 
-  public Reine(Fourmi fourmi, Fourmiliere fourmiliere) {
+  public Reine(Fourmi fourmi) {
     super(fourmi);
+    this.fourmiliere = null;
+  }
+
+  public void setFourmiliere(Fourmiliere fourmiliere) {
     this.fourmiliere = fourmiliere;
   }
 
@@ -22,14 +26,16 @@ public class Reine extends RoleAbstract {
    * Permet à la reine de pondre 50 fourmis.
    */
   public void pond() {
-    for (int i = 0; i < 50; i++) {
-      boolean isMale = false;
-      if (i % 2 == 0) {
-        isMale = true;
+    if (this.fourmiliere != null) {
+      for (int i = 0; i < 50; i++) {
+        boolean isMale = false;
+        if (i % 2 == 0) {
+          isMale = true;
+        }
+        Fourmi uneFourmi = new Fourmi(isMale, this.fourmiliere.getPlaceFourmiliere(),
+            this.maFourmi.getTempsCourant());
+        this.fourmiliere.getNidFourmiliere().ajouterFourmi(uneFourmi);
       }
-      Fourmi uneFourmi = new Fourmi(isMale, this.fourmiliere.getPlaceFourmiliere(),
-          this.maFourmi.getTempsCourant());
-      this.fourmiliere.getNidFourmiliere().ajouterFourmi(uneFourmi);
     }
   }
 }

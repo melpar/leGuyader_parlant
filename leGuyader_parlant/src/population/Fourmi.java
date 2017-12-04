@@ -10,6 +10,7 @@ import population.etat.Etats;
 import population.etat.Larve;
 import population.etat.Nymphe;
 import population.etat.Oeuf;
+import population.role.Reine;
 import report.Report;
 import temps.Duree;
 import temps.Temps;
@@ -40,6 +41,14 @@ public class Fourmi implements TempsObserver {
     this.place = place;
     this.etat = new Oeuf(dureeCourante.getTempsCourant(), this);
     this.tempsCourant = dureeCourante;
+  }
+
+  public Fourmi creerReine(Place place, Temps dureeCourante) {
+    Fourmi reine = new Fourmi(false, place, dureeCourante);
+    Adulte etatReine = new Adulte(reine, dureeCourante.getTempsCourant());
+    etatReine.setRole(new Reine(reine));
+    reine.setEtat(etatReine);
+    return reine;
   }
 
   public double mange(double amanger) {
