@@ -6,6 +6,8 @@ import java.util.List;
 import environnement.fourmiliere.Depot;
 import population.Fourmi;
 import population.Proie;
+import population.etat.Adulte;
+import population.role.Reine;
 
 /**
  * Representation du terrain.
@@ -75,6 +77,7 @@ public class Terrain {
   public void premiereReine(Fourmi fourmiReine) {
     fourmiReine.setReine();
     this.setFourmiliere(fourmiReine.creeFourmiliere());
+    ((Reine) ((Adulte) fourmiReine.getEtat()).getRole()).setFourmiliere(this.fourmiliere);
     this.fourmiliere.setDepotFourmiliere(new Depot(this.genPlaceDepot()));
     this.fourmiliere.ajouterFourmiNid(fourmiReine);
   }

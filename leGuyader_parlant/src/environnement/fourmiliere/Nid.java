@@ -80,4 +80,12 @@ public class Nid {
     this.placeNid = placeNid;
   }
 
+  public List<Fourmi> getListeFourmi() {
+    return listeFourmi;
+  }
+
+  public void setListeFourmi(List<Fourmi> listeFourmi) {
+    this.listeFourmi = listeFourmi;
+  }
+
 }
