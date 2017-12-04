@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import population.Fourmi;
 import population.Proie;
+import report.ReportFourmiliere;
 import temps.Temps;
 
 public class EnvironnementTest {
@@ -202,6 +203,13 @@ public class EnvironnementTest {
     }
     assertTrue(depotFourmiliere.getNombreCadavreFourmi() == 27);
     assertTrue(depotFourmiliere.getNombreCadavre() == 42);
+  }
+
+  @Test
+  public void testReportTerrain() {
+    ReportFourmiliere report = new ReportFourmiliere();
+    report.traceFourmiliere(this.terrainTest.getFourmiliere());
+    System.out.println(report.toString());
   }
 
 }

@@ -46,10 +46,11 @@ public class Terrain {
       this.longueurTerrain = LONGUEUR_MIN_TERRAIN;
     }
     this.placeTerrain = new Place[this.longueurTerrain * this.largeurTerrain];
-    for (int position = 0; position < this.longueurTerrain * this.largeurTerrain; position++) {
-      this.placeTerrain[position] = new Place(position % this.largeurTerrain,
-          position % this.longueurTerrain);
-
+    for (int positionX = 0; positionX < this.longueurTerrain; positionX++) {
+      for (int positionY = 0; positionY < this.largeurTerrain; positionY++) {
+        this.placeTerrain[positionX + (positionY * this.largeurTerrain)] = new Place(positionX,
+            positionY);
+      }
     }
     this.listeProie = new ArrayList<Proie>();
 
@@ -63,7 +64,6 @@ public class Terrain {
   public Place genPlaceDepot() {
     int axeX = (int) (Math.random() * (this.longueurTerrain - 0));
     int axeY = (int) (Math.random() * (this.largeurTerrain - 0));
-    System.out.println("pos :" + axeX + " : " + axeY);
     Place place = this.getPlace(axeX, axeY);
     return place;
   }
@@ -154,7 +154,7 @@ public class Terrain {
     if (posY < 0) {
       posY = 0;
     }
-    return this.placeTerrain[posX * posY];
+    return this.placeTerrain[posX + (posY * this.longueurTerrain)];
   }
 
   public int getNombreProie() {
