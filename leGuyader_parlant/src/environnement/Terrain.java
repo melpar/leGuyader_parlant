@@ -73,6 +73,7 @@ public class Terrain {
    *          La premiere Reine.
    */
   public void premiereReine(Fourmi fourmiReine) {
+    fourmiReine.setReine();
     this.setFourmiliere(fourmiReine.creeFourmiliere());
     this.fourmiliere.setDepotFourmiliere(new Depot(this.genPlaceDepot()));
     this.fourmiliere.ajouterFourmiNid(fourmiReine);

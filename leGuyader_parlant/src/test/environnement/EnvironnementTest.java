@@ -18,11 +18,15 @@ import temps.Temps;
 public class EnvironnementTest {
 
   private Terrain terrainTest;
+  private Fourmi fourmiReine;
 
   @Before
   public void initTest() {
     this.terrainTest = new Terrain(500, 500);
-
+    Temps tempsCourant = new Temps();
+    this.fourmiReine = new Fourmi(true, this.terrainTest.getPlace(30, 45), tempsCourant);
+    this.fourmiReine.setReine();
+    this.terrainTest.premiereReine(fourmiReine);
   }
 
   @Test
@@ -80,7 +84,7 @@ public class EnvironnementTest {
     Fourmiliere fourmiliereTest = this.terrainTest.getFourmiliere();
     Nid nidFourmiliere = fourmiliereTest.getNidFourmiliere();
     assertTrue(nidFourmiliere != null);
-    assertTrue(nidFourmiliere.getNombreFourmi() == 0);
+    assertTrue(nidFourmiliere.getNombreFourmi() == 1);
     assertTrue(nidFourmiliere.getNombreProie() == 0);
   }
 
@@ -106,7 +110,7 @@ public class EnvironnementTest {
     for (int i = 0; i < 30; i++) {
       nidFourmiliere.ajouterFourmi(listeFourmi.get(i));
     }
-    assertTrue(nidFourmiliere.getNombreFourmi() == 30);
+    assertTrue(nidFourmiliere.getNombreFourmi() == 31);
   }
 
   @Test
@@ -126,7 +130,7 @@ public class EnvironnementTest {
     for (int i = 0; i < 10; i++) {
       assertTrue(nidFourmiliere.supprimerFourmi(listeFourmi.get(i + 10)));
     }
-    assertTrue(nidFourmiliere.getNombreFourmi() == 20);
+    assertTrue(nidFourmiliere.getNombreFourmi() == 21);
 
     for (int i = 10; i < 20; i++) {
       assertFalse(nidFourmiliere.supprimerFourmi(listeFourmi.get(i)));
