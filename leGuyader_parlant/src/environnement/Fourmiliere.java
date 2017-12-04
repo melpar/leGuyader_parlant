@@ -16,13 +16,17 @@ public class Fourmiliere {
   /**
    * Constructeur d'une Fourmiliere.
    * 
-   * @param place
+   * @param placeF
    *          Place de la Fourmiliere.
+   * @param placeN
+   *          Place du Nid.
+   * @param placeD
+   *          Place du Depot.
    */
-  public Fourmiliere(Place place) {
-    this.nidFourmiliere = new Nid();
-    this.depotFourmiliere = new Depot();
-    this.placeFourmiliere = place;
+  public Fourmiliere(Place placeF, Place placeN, Place placeD) {
+    this.nidFourmiliere = new Nid(placeN);
+    this.depotFourmiliere = new Depot(placeD);
+    this.placeFourmiliere = placeF;
   }
 
   public Nid getNidFourmiliere() {

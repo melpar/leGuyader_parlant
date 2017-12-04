@@ -1,5 +1,6 @@
 package environnement.fourmiliere;
 
+import environnement.Place;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +16,16 @@ import population.Proie;
 public class Nid {
   private List<Fourmi> listeFourmi;
   private List<Proie> listeProie;
+  private Place placeNid;
 
   /**
    * Constructeur de Nid.
    * 
    */
-  public Nid() {
+  public Nid(Place place) {
     this.listeFourmi = new ArrayList<Fourmi>();
     this.listeProie = new ArrayList<Proie>();
+    this.placeNid = place;
   }
 
   public void ajouterProie(Proie nouvelleProie) {
@@ -67,6 +70,14 @@ public class Nid {
 
   public int getNombreProie() {
     return this.listeProie.size();
+  }
+
+  public Place getPlaceNid() {
+    return placeNid;
+  }
+
+  public void setPlaceNid(Place placeNid) {
+    this.placeNid = placeNid;
   }
 
 }

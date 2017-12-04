@@ -1,5 +1,6 @@
 package environnement.fourmiliere;
 
+import environnement.Place;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +16,15 @@ import population.Proie;
 public class Depot {
   List<Fourmi> listeCadavreFourmi;
   List<Proie> listeCadavreProie;
+  Place placeDepot;
 
   /**
    * Constructeur du Depot.
    */
-  public Depot() {
+  public Depot(Place place) {
     this.listeCadavreFourmi = new ArrayList<Fourmi>();
     this.listeCadavreProie = new ArrayList<Proie>();
+    this.placeDepot = place;
   }
 
   public void ajouterCadavreProie(Proie nouvelleProie) {

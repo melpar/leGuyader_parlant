@@ -18,6 +18,9 @@ public class Terrain {
   private Place[] placeTerrain;
   private List<Proie> listeProie;
 
+  private static final int LARGEUR_MIN_TERRAIN = 5;
+  private static final int LONGUEUR_MIN_TERRAIN = 5;
+
   /**
    * Contructeur du terrain.
    * 
@@ -27,17 +30,43 @@ public class Terrain {
    *          Entier qui represente la longueur du terrain.
    */
   public Terrain(int largeurTerrain, int longueurTerrain) {
-    this.largeurTerrain = largeurTerrain;
-    this.longueurTerrain = longueurTerrain;
+    if (largeurTerrain > LARGEUR_MIN_TERRAIN) {
+      this.largeurTerrain = largeurTerrain;
+    } else {
+      this.largeurTerrain = LARGEUR_MIN_TERRAIN;
+    }
+
+    if (longueurTerrain > LONGUEUR_MIN_TERRAIN) {
+      this.longueurTerrain = longueurTerrain;
+    } else {
+      this.longueurTerrain = LONGUEUR_MIN_TERRAIN;
+    }
     this.placeTerrain = new Place[this.longueurTerrain * this.largeurTerrain];
     for (int position = 0; position < this.longueurTerrain * this.largeurTerrain; position++) {
       this.placeTerrain[position] = new Place(position % this.largeurTerrain,
           position % this.longueurTerrain);
 
     }
-    this.fourmiliere = new Fourmiliere(this.getPlace(0, 0));
+
+    Place depot = this.genPlaceDepot();
+
+    this.fourmiliere = new Fourmiliere(this.getPlace(0, 0), this.getPlace(0, 0), depot);
     this.listeProie = new ArrayList<Proie>();
 
+  }
+
+  /**
+   * Methode qui genere un depot aleatoirement.
+   * 
+   * @return Place du depot.
+   */
+
+  public Place genPlaceDepot() {
+    int axeX = (int) (Math.random() * (this.longueurTerrain - 0));
+    int axeY = (int) (Math.random() * (this.largeurTerrain - 0));
+    System.out.println("pos :" + axeX + " : " + axeY);
+    Place place = this.getPlace(axeX, axeY);
+    return place;
   }
 
   public int getLargeurTerrain() {
