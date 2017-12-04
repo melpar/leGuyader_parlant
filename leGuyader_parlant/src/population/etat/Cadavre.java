@@ -1,18 +1,29 @@
 package population.etat;
 
 import population.Fourmi;
+import temps.Duree;
 
 /**
- * Etat lorsqu'une fourmi meurt
+ * Etat lorsqu'une fourmi meurt.
  * 
  * @author parlanme
  *
  */
 public class Cadavre extends EtatAbstract {
 
-  public Cadavre(Fourmi fourmi) {
+  /**
+   * Créé un état cadavre.
+   * 
+   * @param fourmi
+   *          fourmi associée
+   * @param dureeCourante
+   *          duree courante
+   */
+  public Cadavre(Fourmi fourmi, Duree dureeCourante) {
     super(fourmi);
+    this.dateFin = new Duree(dureeCourante);
     this.etat = Etats.CADAVRE;
+    this.tempsCourant = dureeCourante;
   }
 
   @Override

@@ -10,13 +10,13 @@ public class EtatsFourmi extends Report {
   Duree dateFin;
 
   @Override
-  public void traceForFourmi(Fourmi uneFourmi) {
+  public void traceFourmi(Fourmi uneFourmi) {
     // TODO Auto-generated method stub
 
   }
 
   @Override
-  public void traceForEtat(EtatAbstract etatAbstract) {
+  public void traceEtat(EtatAbstract etatAbstract) {
     this.etat = etatAbstract.getEtat();
     this.dateFin = etatAbstract.getDateFin();
 

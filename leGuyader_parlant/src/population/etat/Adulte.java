@@ -16,6 +16,14 @@ public class Adulte extends EtatAbstract {
    */
   private RoleAbstract role;
 
+  /**
+   * Créé un état adulte.
+   * 
+   * @param fourmi
+   *          fourmi associée
+   * @param dureeCourante
+   *          durée courante
+   */
   public Adulte(Fourmi fourmi, Duree dureeCourante) {
     super(fourmi);
     this.dateFin = new Duree(dureeCourante);

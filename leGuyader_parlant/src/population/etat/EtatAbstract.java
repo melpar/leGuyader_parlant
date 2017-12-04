@@ -24,7 +24,7 @@ public abstract class EtatAbstract {
    *          ensemble des informations
    */
   public void trace(Report report) {
-    report.traceForEtat(this);
+    report.traceEtat(this);
   }
 
   protected boolean estFini() {

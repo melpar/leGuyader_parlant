@@ -67,7 +67,7 @@ public class Fourmi implements TempsObserver {
         this.etat = new Adulte(this, tempsCourant);
         break;
       default:
-        this.etat = new Cadavre(this);
+        this.etat = new Cadavre(this, tempsCourant);
         break;
     }
 
@@ -81,7 +81,7 @@ public class Fourmi implements TempsObserver {
   }
 
   void trace(Report report) {
-    report.traceForFourmi(this);
+    report.traceFourmi(this);
     this.etat.trace(report);
   }
 

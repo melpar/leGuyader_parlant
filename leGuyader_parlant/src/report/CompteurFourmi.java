@@ -11,7 +11,11 @@ public class CompteurFourmi extends Report {
   int cptAdulte;
   int cptCadavre;
 
-  public void traceForFourmi(Fourmi uneFourmi) {
+  /**
+   * Permet de faire une trace d'une fourmi.
+   */
+  @Override
+  public void traceFourmi(Fourmi uneFourmi) {
     switch (uneFourmi.getEtat().getEtat()) {
       case OEUF:
         this.cptOeuf++;
@@ -46,7 +50,7 @@ public class CompteurFourmi extends Report {
   }
 
   @Override
-  public void traceForEtat(EtatAbstract etatAbstract) {
+  public void traceEtat(EtatAbstract etatAbstract) {
 
   }
 }
