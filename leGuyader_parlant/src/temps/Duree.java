@@ -18,6 +18,12 @@ public class Duree {
     this.minute = 0;
   }
 
+  /**
+   * Créé une durée à partir d'une autre durée (copie en profondeur).
+   * 
+   * @param duree
+   *          durée de base
+   */
   public Duree(Duree duree) {
     this.annee = new Integer(duree.annee);
     this.mois = new Integer(duree.mois);
@@ -26,6 +32,9 @@ public class Duree {
     this.minute = new Integer(duree.minute);
   }
 
+  /**
+   * Vérifie si les deux durées sont égales.
+   */
   public boolean equals(Object obj) {
     if (obj == this) {
       return true;
@@ -82,6 +91,12 @@ public class Duree {
     this.minute = minute;
   }
 
+  /**
+   * Permet d'augmenter le nombre de minutes.
+   * 
+   * @param minuteAajouter
+   *          nombre des minutes à ajouter
+   */
   public void addMinute(int minuteAajouter) {
     this.minute += minuteAajouter;
 
@@ -91,6 +106,12 @@ public class Duree {
     }
   }
 
+  /**
+   * Permet d'augmenter le nombre d'heures.
+   * 
+   * @param heureAajouter
+   *          nombre d'heures à ajouter
+   */
   public void addHeure(int heureAajouter) {
     this.heure += heureAajouter;
 
@@ -100,6 +121,12 @@ public class Duree {
     }
   }
 
+  /**
+   * Permet d'augmenter le nombre de jours.
+   * 
+   * @param jourAajouter
+   *          nombre de jours à ajouter
+   */
   public void addJour(int jourAajouter) {
     this.jour += jourAajouter;
     if (this.mois == 1 || this.mois == 3 || this.mois == 5 || this.mois == 7 || this.mois == 8
@@ -122,6 +149,12 @@ public class Duree {
     }
   }
 
+  /**
+   * Permet d'augmenter le nombre de mois.
+   * 
+   * @param moisAajouter
+   *          nombre de mois à ajouter
+   */
   public void addMois(int moisAajouter) {
     this.mois += moisAajouter;
 
@@ -163,6 +196,15 @@ public class Duree {
     return false;
   }
 
+  /**
+   * Permet d'additionner deux durées.
+   * 
+   * @param date1
+   *          premiere durée à additionner
+   * @param date2
+   *          deuxième durée à additionner
+   * @return résultat de l'addition
+   */
   public static Duree ajouter(Duree date1, Duree date2) {
     Duree ret = new Duree(date1);
     ret.addMinute(date2.minute);
@@ -173,6 +215,9 @@ public class Duree {
     return ret;
   }
 
+  /**
+   * Permet d'afficher une durée.
+   */
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append("Annee : ").append(this.annee);

@@ -12,6 +12,14 @@ import temps.Duree;
 public class Larve extends EtatAbstract {
   private static final int JOUR_EVOLUTION = 10;
 
+  /**
+   * Créé un état larve.
+   * 
+   * @param fourmi
+   *          fourmi associée à l'état
+   * @param dureeCourante
+   *          durée courante
+   */
   public Larve(Fourmi fourmi, Duree dureeCourante) {
     super(fourmi);
     this.dateFin = new Duree(dureeCourante);
@@ -25,6 +33,9 @@ public class Larve extends EtatAbstract {
     this.maFourmi.changeEtat(Etats.LARVE, this.tempsCourant);
   }
 
+  /**
+   * Action lors de la modification du temps. Change d'état si nécessaire
+   */
   public void agitSur() {
     if (this.estFini()) {
       System.out.println("larve");

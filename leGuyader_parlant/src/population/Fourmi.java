@@ -54,6 +54,11 @@ public class Fourmi implements TempsObserver {
     this.setEtat(etatReine);
   }
 
+  /**
+   * Permet de savoir si la fourmi est une reine.
+   * 
+   * @return vrai si la fourmi est une reine, faux sinon
+   */
   public boolean isReine() {
     if (this.etat.getEtat() != Etats.ADULTE) {
       return false;
@@ -177,6 +182,9 @@ public class Fourmi implements TempsObserver {
     }
   }
 
+  /**
+   * permet, si la fourmi est une reine, de pondre les oeufs.
+   */
   public void pond() {
     if (this.isReine()) {
       ((Reine) ((Adulte) this.getEtat()).getRole()).pond();

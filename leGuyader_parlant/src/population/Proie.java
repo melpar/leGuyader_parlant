@@ -3,6 +3,7 @@ package population;
 import population.etat.EtatProieAbstract;
 
 /**
+ * Permet de gérer les proies.
  * 
  * @author parlanme
  *

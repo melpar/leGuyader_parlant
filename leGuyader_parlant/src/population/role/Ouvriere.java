@@ -19,8 +19,6 @@ public class Ouvriere extends RoleAbstract {
    * 
    * @param fourmi
    *          fourmi associée au role
-   * @param terrain
-   *          terrain utilisable pour le déplacement
    */
   public Ouvriere(Fourmi fourmi) {
     super(fourmi);

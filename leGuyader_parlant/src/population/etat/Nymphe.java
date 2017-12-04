@@ -12,6 +12,14 @@ import temps.Duree;
 public class Nymphe extends EtatAbstract {
   private static final int JOUR_EVOLUTION = 5;
 
+  /**
+   * Permet de créé un état Nymphe.
+   * 
+   * @param fourmi
+   *          fourmi associée
+   * @param dureeCourante
+   *          durée courante
+   */
   public Nymphe(Fourmi fourmi, Duree dureeCourante) {
     super(fourmi);
     this.dateFin = new Duree(dureeCourante);
@@ -25,6 +33,9 @@ public class Nymphe extends EtatAbstract {
     this.maFourmi.changeEtat(Etats.NYMPHE, this.tempsCourant);
   }
 
+  /**
+   * Activer lors de la modification du temps. Change l'état si nécessaire
+   */
   public void agitSur() {
 
     if (this.estFini()) {
