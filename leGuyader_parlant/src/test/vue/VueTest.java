@@ -13,8 +13,8 @@ import report.ReportTerrain;
 import temps.Temps;
 import vue.VuePrincipale;
 
-    Terrain terrainTest = new Terrain(200, 200, tempsCourant);
-public static void main(String[] args) {
+public class VueTest {
+  public static void main(String[] args) {
     Temps tempsCourant = new Temps();
     Terrain terrainTest = new Terrain(200, 200, tempsCourant);
 
@@ -37,3 +37,4 @@ public static void main(String[] args) {
     Thread th = new Thread(tempsCourant);
     th.start();
   }
+}
