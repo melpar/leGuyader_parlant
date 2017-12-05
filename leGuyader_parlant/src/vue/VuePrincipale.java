@@ -12,16 +12,18 @@ public class VuePrincipale {
 
   private Terrain terrain;
   private JCanvas jc;
+  private ListenerNid listenerNid;
 
   public VuePrincipale(Terrain terrain) {
     this.terrain = terrain;
+    listenerNid = new ListenerNid(this.terrain);
   }
 
   public void affichage() {
     jc = new JCanvas();
     jc.setBackground(Color.WHITE);
     jc.setPreferredSize(new Dimension(terrain.getLargeurTerrain(), terrain.getLongueurTerrain()));
-
+    jc.addMouseListener(listenerNid);
     GUIHelper.showOnFrame(jc, "test JCanvas with IDrawables");
   }
 
@@ -30,7 +32,7 @@ public class VuePrincipale {
     List<Place> placesProies = terrain.getPlaceProies();
 
     Place placeNid = terrain.getPlaceNid();
-
+    this.listenerNid.setPlaceNid(placeNid);
     for (Place place : placesAdultes) {
       Dimension dim = new Dimension(place.getX(), place.getY());
       IDrawable rect = new RectangleDrawable(Color.RED, new Point(1, 1), dim);
@@ -47,6 +49,7 @@ public class VuePrincipale {
     Dimension dim = new Dimension(10, 10);
     IDrawable rect = new RectangleDrawable(Color.BLACK, new Point(placeNid.getX(), placeNid.getY()),
         dim);
+
     jc.addDrawable(rect);
   }
 }

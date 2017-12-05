@@ -34,6 +34,5 @@ public abstract class FormDrawable implements IMovableDrawable {
   public void setPosition(Point p) {
     rect.x = (p.x - rect.width / 2);
     rect.y = (p.y - rect.height / 2);
-
   }
 }
