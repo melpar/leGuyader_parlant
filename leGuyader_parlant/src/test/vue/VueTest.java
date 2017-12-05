@@ -26,6 +26,7 @@ public class VueTest {
     terrainTest.premiereReine(fourmiReine);
     fourmiReine.pond();
     Nid nid = terrainTest.getFourmiliere().getNidFourmiliere();
+
     for (int i = 0; i < 200; i++) {
       Proie proie = new Proie(terrainTest.getFourmiliere().getPlaceFourmiliere(), 2);
       proie.setEtat(new ProieMorte());
