@@ -125,6 +125,25 @@ public class VuePrincipale implements ReportObserver {
 
   }
 
+  /**
+   * Permet de mettre à jour la vue.
+   * 
+   * @param place
+   *          place à modifier
+   */
+  private void miseAJour(Place place) {
+    if (!this.placesPheromone.containsKey(place)) {
+      Pheromone value = place.getListePheromone().get(place.getListePheromone().size() - 1);
+      Dimension dim = new Dimension(3 * COEFFICIENT, 3 * COEFFICIENT);
+      IDrawable rect = new RectangleDrawable(Color.GREEN,
+          new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
+      jc.addDrawable(rect);
+      casesPheromone.put(place, rect);
+
+      this.placesPheromone.put(place, value);
+    }
+  }
+
   private void miseAJourProie(ReportObservable rep) {
     ReportMouvementProie report = (ReportMouvementProie) rep;
     Place ancienne = report.getAnciennePlace();
@@ -163,24 +182,11 @@ public class VuePrincipale implements ReportObserver {
   }
 
   private void enleverPheromone(Place place) {
-    // if (this.placesPheromone.get(place) != null) {
-    // this.placesPheromone.remove(place);
-    // jc.removeDrawable(casesPheromone.get(place));
-    //
-    // }
-  }
+    if (this.placesPheromone.get(place) != null) {
+      this.placesPheromone.remove(place);
+      jc.removeDrawable(casesPheromone.get(place));
 
-  private void miseAJour(Place place) {
-    // Pheromone value =
-    // place.getListePheromone().get(place.getListePheromone().size());
-    // Dimension dim = new Dimension(3 * COEFFICIENT, 3 * COEFFICIENT);
-    // IDrawable rect = new RectangleDrawable(Color.GREEN,
-    // new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
-    // jc.addDrawable(rect);
-    // casesPheromone.put(place, rect);
-    //
-    // this.placesPheromone.put(place, value);
-
+    }
   }
 
   private void ajouteFourmi(Place place, boolean isChasse) {

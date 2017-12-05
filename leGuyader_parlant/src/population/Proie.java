@@ -57,8 +57,6 @@ public class Proie implements TempsObserver {
     ReportMouvementProie report = ReportMouvementProie.getInstance();
     report.traceMouvement(ancienne, this.placeProie);
 
-    ReportPheromone reportPhero = ReportPheromone.getInstance();
-    reportPhero.tracePlace(this.placeProie);
   }
 
   public double getPoids() {

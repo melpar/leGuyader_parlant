@@ -5,6 +5,7 @@ import environnement.Terrain;
 import mediateur.MediateurDeplacementChasse;
 import population.Fourmi;
 import report.ReportMouvementChasse;
+import report.ReportPheromone;
 
 /**
  * Fourmi adulte, ouvrière.
@@ -38,6 +39,9 @@ public class Ouvriere extends RoleAbstract {
     // System.out.println("Nouvelle place : " + this.maFourmi.getPlace().getX() +
     // ","
     // + this.maFourmi.getPlace().getY());
+
+    ReportPheromone reportPhero = ReportPheromone.getInstance();
+    reportPhero.tracePlace(this.maFourmi.getPlace());
     ReportMouvementChasse report = ReportMouvementChasse.getInstance();
     report.traceMouvement(ancienne, this.maFourmi.getPlace());
   }

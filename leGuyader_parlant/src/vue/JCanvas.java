@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class JCanvas extends JPanel {
 
   private List<IDrawable> drawables = new LinkedList<IDrawable>();
-
+  Graphics g;
   // private List<IDrawable> drawablesModifies = new LinkedList<IDrawable>();
 
   public void paint(Graphics g) {
@@ -21,6 +21,7 @@ public class JCanvas extends JPanel {
       IDrawable d = drawables.get(i);
       d.draw(g);
     }
+    this.g = g;
     // drawables = new LinkedList<IDrawable>();
   }
 
