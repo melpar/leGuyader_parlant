@@ -89,7 +89,7 @@ public class Terrain {
     for (int indice = 0; indice < nombreProie; indice++) {
       double poids = Math.random() * (200 - 2);
       Place placeProie = this.genPlace();
-      this.listeProie.add(new Proie(placeProie, poids));
+      this.listeProie.add(new Proie(placeProie, Math.floor(poids)));
     }
   }
 
