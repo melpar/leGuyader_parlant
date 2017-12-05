@@ -5,6 +5,7 @@ import java.util.List;
 
 import environnement.Fourmiliere;
 import environnement.Place;
+import environnement.Terrain;
 import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
@@ -16,6 +17,22 @@ public class ReportPlace extends Report {
   private int y;
 
   private CompteurFourmi cpt;
+
+  @Override
+  public void tracePlace(Place place) {
+    this.cpt = new CompteurFourmi();
+    List<Fourmi> lesFourmis = new ArrayList<Fourmi>();
+    for (Fourmi uneFourmi : lesFourmis) {
+      cpt.traceFourmi(uneFourmi);
+    }
+    this.x = place.getX();
+    this.y = place.getY();
+
+  }
+
+  public String toString() {
+    return "test";
+  }
 
   @Override
   public void traceFourmi(Fourmi uneFourmi) {
@@ -48,14 +65,8 @@ public class ReportPlace extends Report {
   }
 
   @Override
-  public void tracePlace(Place place) {
-    this.cpt = new CompteurFourmi();
-    List<Fourmi> lesFourmis = new ArrayList<Fourmi>();
-    for (Fourmi uneFourmi : lesFourmis) {
-      cpt.traceFourmi(uneFourmi);
-    }
-    this.x = place.getX();
-    this.y = place.getY();
+  public void traceTerrain(Terrain unterrain) {
+    // TODO Auto-generated method stub
 
   }
 }

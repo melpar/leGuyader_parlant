@@ -14,6 +14,7 @@ import org.junit.Test;
 import population.Fourmi;
 import population.Proie;
 import report.ReportFourmiliere;
+import report.ReportTerrain;
 import temps.Temps;
 
 public class EnvironnementTest {
@@ -194,7 +195,7 @@ public class EnvironnementTest {
     Fourmiliere fourmiliereTest = this.terrainTest.getFourmiliere();
     Nid nidFourmiliere = fourmiliereTest.getNidFourmiliere();
     ArrayList<Fourmi> listeFourmi = new ArrayList<Fourmi>();
-
+    this.terrainTest.genProie(15);
     Temps tempsCourant = new Temps();
     for (int i = 0; i < 30; i++) {
       listeFourmi.add(
@@ -207,15 +208,15 @@ public class EnvironnementTest {
     ArrayList<Proie> listeProie = new ArrayList<Proie>();
 
     for (int i = 0; i < 30; i++) {
-      listeProie.add(new Proie(this.terrainTest.genPlace(), 2.4));
+      listeProie.add(new Proie(nidFourmiliere.getPlaceNid(), 2.4));
     }
     for (int i = 0; i < 30; i++) {
       nidFourmiliere.ajouterProie(listeProie.get(i));
     }
 
-    ReportFourmiliere report = new ReportFourmiliere();
-    report.traceFourmiliere(this.terrainTest.getFourmiliere());
-    System.out.println(report.toString());
+    ReportTerrain reportTerrainTest = new ReportTerrain();
+    reportTerrainTest.traceTerrain(this.terrainTest);
+    System.out.println(reportTerrainTest.toString());
   }
 
 }

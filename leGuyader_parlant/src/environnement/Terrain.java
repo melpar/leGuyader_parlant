@@ -180,4 +180,12 @@ public class Terrain {
     this.listeProie = listeProie;
   }
 
+  public Place[] getPlaceTerrain() {
+    return placeTerrain;
+  }
+
+  public void setPlaceTerrain(Place[] placeTerrain) {
+    this.placeTerrain = placeTerrain;
+  }
+
 }

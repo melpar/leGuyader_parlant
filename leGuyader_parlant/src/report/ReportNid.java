@@ -2,6 +2,7 @@ package report;
 
 import environnement.Fourmiliere;
 import environnement.Place;
+import environnement.Terrain;
 import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import java.util.ArrayList;
@@ -79,6 +80,12 @@ public class ReportNid extends Report {
 
   @Override
   public void tracePlace(Place place) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void traceTerrain(Terrain unterrain) {
     // TODO Auto-generated method stub
 
   }
