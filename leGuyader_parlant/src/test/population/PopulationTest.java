@@ -5,6 +5,7 @@ import org.junit.Test;
 import environnement.Place;
 import environnement.Terrain;
 import population.Fourmi;
+import population.Proie;
 import population.etat.Etats;
 import report.CompteurFourmi;
 import temps.Duree;
@@ -40,26 +41,6 @@ public class PopulationTest {
     assert (fourmi.getEtat().getEtat() == Etats.NYMPHE);
     fourmi.changeEtat(fourmi.getEtat().getEtat(), dureeNymphe);
     assert (fourmi.getEtat().getEtat() == Etats.ADULTE);
-  }
-
-  /**
-   * Permet de lancer un thread temps. Permet de suivre l'évolution d'une fourmi.
-   * 
-   * @param args
-   *          liste des arguments.
-   */
-  public static void main(String[] args) {
-    Terrain terrain = new Terrain(500, 500);
-    Place place = new Place(0, 0);
-    Temps tempsCourant = new Temps();
-
-    Fourmi fourmi = new Fourmi(false, place, tempsCourant);
-    tempsCourant.addObserveur(fourmi);
-
-    assert (fourmi.getEtat().getEtat() == Etats.OEUF);
-    Thread th = new Thread(tempsCourant);
-    th.start();
-
   }
 
   @Test
