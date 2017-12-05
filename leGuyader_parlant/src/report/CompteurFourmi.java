@@ -12,7 +12,9 @@ import population.CompteurObserver;
 import population.Fourmi;
 import population.Proie;
 import population.ReportObserver;
+import population.etat.Cadavre;
 import population.etat.EtatAbstract;
+import population.etat.ProieMorte;
 
 public class CompteurFourmi extends Report implements CompteurObservable {
   private int cptOeuf;
@@ -25,6 +27,7 @@ public class CompteurFourmi extends Report implements CompteurObservable {
   private static CompteurFourmi instance;
 
   private Nid nid;
+  private int cptProieCadavre;
 
   private CompteurFourmi() {
     this.observers = new ArrayList<CompteurObserver>();
@@ -100,8 +103,9 @@ public class CompteurFourmi extends Report implements CompteurObservable {
 
   @Override
   public void traceProie(Proie proie) {
-    // TODO Auto-generated method stub
-
+    if (proie.getEtat() instanceof ProieMorte) {
+      this.cptProieCadavre++;
+    }
   }
 
   @Override
@@ -178,6 +182,7 @@ public class CompteurFourmi extends Report implements CompteurObservable {
     this.cptLarve = 0;
     this.cptNymphe = 0;
     this.cptOeuf = 0;
+    this.cptProieCadavre = 0;
 
   }
 
@@ -187,5 +192,13 @@ public class CompteurFourmi extends Report implements CompteurObservable {
 
   public void ajoutObserver(CompteurObserver compteur) {
     this.observers.add(compteur);
+  }
+
+  public int getCptProieCadavre() {
+    return cptProieCadavre;
+  }
+
+  public void setCptProieCadavre(int cptProieCadavre) {
+    this.cptProieCadavre = cptProieCadavre;
   }
 }

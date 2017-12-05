@@ -1,5 +1,6 @@
 package population.etat;
 
+import environnement.Terrain;
 import mediateur.MediateurDeplacement;
 import mediateur.MediateurDeplacementDepot;
 import mediateur.MediateurDeplacementFourmiliere;
@@ -52,7 +53,7 @@ public class Adulte extends EtatAbstract {
       default:
         break;
     }
-    this.mediateur = MediateurDeplacementDepot.getInstance();
+    this.mediateur = new MediateurDeplacementDepot(Terrain.getInstance());
   }
 
   public RoleAbstract getRole() {
@@ -81,7 +82,11 @@ public class Adulte extends EtatAbstract {
   }
 
   public void changerTrajet() {
-    this.mediateur = MediateurDeplacementFourmiliere.getInstance();
+    if (this.mediateur instanceof MediateurDeplacementFourmiliere) {
+      this.mediateur = new MediateurDeplacementDepot(Terrain.getInstance());
+    } else {
+      this.mediateur = new MediateurDeplacementFourmiliere(Terrain.getInstance());
+    }
   }
 
   public void deplace() {

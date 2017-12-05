@@ -9,35 +9,11 @@ import java.util.List;
 import population.Fourmi;
 
 public class MediateurDeplacementChasse {
-  private static MediateurDeplacementChasse instance;
   private Terrain terrain;
   private Fourmi fourmi;
 
-  private MediateurDeplacementChasse(Terrain terrain) {
+  public MediateurDeplacementChasse(Terrain terrain) {
     this.terrain = terrain;
-  }
-
-  /**
-   * Permet de récupérer une instance du médiateur (singleton).
-   * 
-   * @param terrain
-   *          terrain de référence
-   * @return retourne l'instance de MediateurDeplacementChasse
-   */
-  public static MediateurDeplacementChasse getInstance(Terrain terrain) {
-    if (MediateurDeplacementChasse.instance == null) {
-      MediateurDeplacementChasse.instance = new MediateurDeplacementChasse(terrain);
-    }
-    return MediateurDeplacementChasse.instance;
-  }
-
-  /**
-   * Permet de récupérer une instance du médiateur (singleton).
-   * 
-   * @return retourne l'instance de MediateurDeplacementChasse
-   */
-  public static MediateurDeplacementChasse getInstance() {
-    return MediateurDeplacementChasse.instance;
   }
 
   /**

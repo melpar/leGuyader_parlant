@@ -26,7 +26,7 @@ public class Ouvriere extends RoleAbstract {
   public Ouvriere(Fourmi fourmi) {
     super(fourmi);
     this.monRole = Roles.OUVRIERE;
-    this.mediateur = MediateurDeplacementChasse.getInstance();
+    this.mediateur = new MediateurDeplacementChasse(Terrain.getInstance());
   }
 
   /**

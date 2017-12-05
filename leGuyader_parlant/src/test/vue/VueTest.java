@@ -16,13 +16,17 @@ import vue.VuePrincipale;
 public class VueTest {
   public static void main(String[] args) {
     Temps tempsCourant = new Temps();
-    Terrain terrainTest = new Terrain(200, 200, tempsCourant);
+    Terrain terrainTest = Terrain.getInstance(200, 200, tempsCourant);
 
     Fourmi fourmiReine = new Fourmi(true, terrainTest.getPlace(30, 45), tempsCourant);
     fourmiReine.setReine();
     terrainTest.premiereReine(fourmiReine);
     fourmiReine.pond();
 
+    for (int i = 0; i < 100; i++) {
+      terrainTest.getFourmiliere().getDepotFourmiliere()
+          .ajouterCadavreProie(new Proie(terrainTest.getFourmiliere().getPlaceFourmiliere(), 2));
+    }
     terrainTest.genProie(15);
 
     for (Proie proie : terrainTest.getListeProie()) {

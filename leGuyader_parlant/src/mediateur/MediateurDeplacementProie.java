@@ -9,35 +9,11 @@ import population.Fourmi;
 import population.Proie;
 
 public class MediateurDeplacementProie {
-  private static MediateurDeplacementProie instance;
   private Terrain terrain;
   private Proie uneProie;
 
-  private MediateurDeplacementProie(Terrain terrain) {
+  public MediateurDeplacementProie(Terrain terrain) {
     this.terrain = terrain;
-  }
-
-  /**
-   * Permet de récupérer une instance du médiateur (singleton).
-   * 
-   * @param terrain
-   *          terrain de référence
-   * @return retourne l'instance de MediateurDeplacementChasse
-   */
-  public static MediateurDeplacementProie getInstance(Terrain terrain) {
-    if (MediateurDeplacementProie.instance == null) {
-      MediateurDeplacementProie.instance = new MediateurDeplacementProie(terrain);
-    }
-    return MediateurDeplacementProie.instance;
-  }
-
-  /**
-   * Permet de récupérer une instance du médiateur (singleton).
-   * 
-   * @return retourne l'instance de MediateurDeplacementChasse
-   */
-  public static MediateurDeplacementProie getInstance() {
-    return MediateurDeplacementProie.instance;
   }
 
   /**

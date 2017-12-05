@@ -4,38 +4,15 @@ import environnement.Place;
 import environnement.Terrain;
 import population.Fourmi;
 import population.Proie;
+import population.etat.Adulte;
 import report.ReportMouvementDepot;
 
 public class MediateurDeplacementFourmiliere implements MediateurDeplacement {
-  private static MediateurDeplacementFourmiliere instance;
   private Terrain terrain;
   private Fourmi uneFourmi;
 
-  private MediateurDeplacementFourmiliere(Terrain terrain) {
+  public MediateurDeplacementFourmiliere(Terrain terrain) {
     this.terrain = terrain;
-  }
-
-  /**
-   * Permet de récupérer une instance du médiateur (singleton).
-   * 
-   * @param terrain
-   *          terrain de référence
-   * @return retourne l'instance de MediateurDeplacementChasse
-   */
-  public static MediateurDeplacementFourmiliere getInstance(Terrain terrain) {
-    if (MediateurDeplacementFourmiliere.instance == null) {
-      MediateurDeplacementFourmiliere.instance = new MediateurDeplacementFourmiliere(terrain);
-    }
-    return MediateurDeplacementFourmiliere.instance;
-  }
-
-  /**
-   * Permet de récupérer une instance du médiateur (singleton).
-   * 
-   * @return retourne l'instance de MediateurDeplacementChasse
-   */
-  public static MediateurDeplacementFourmiliere getInstance() {
-    return MediateurDeplacementFourmiliere.instance;
   }
 
   /**
@@ -67,6 +44,7 @@ public class MediateurDeplacementFourmiliere implements MediateurDeplacement {
       }
     } else {
       System.out.println("____________________________fourmiliere");
+      ((Adulte) this.uneFourmi.getEtat()).changerTrajet();
     }
     System.out.println(positionXFinal + " " + positionYFinal);
     // Modification de la place

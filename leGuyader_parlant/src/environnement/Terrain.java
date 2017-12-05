@@ -26,9 +26,20 @@ public class Terrain {
   private Fourmiliere fourmiliere;
   private Place[] placeTerrain;
   private List<Proie> listeProie;
-
+  private static Terrain instanceTerrain;
   private static final int LARGEUR_MIN_TERRAIN = 5;
   private static final int LONGUEUR_MIN_TERRAIN = 5;
+
+  public static Terrain getInstance() {
+    return Terrain.instanceTerrain;
+  }
+
+  public static Terrain getInstance(int largeurTerrain, int longueurTerrain, Temps tempsCourant) {
+    if (Terrain.instanceTerrain == null) {
+      Terrain.instanceTerrain = new Terrain(largeurTerrain, longueurTerrain, tempsCourant);
+    }
+    return Terrain.instanceTerrain;
+  }
 
   /**
    * Contructeur du terrain.
@@ -38,7 +49,7 @@ public class Terrain {
    * @param longueurTerrain
    *          Entier qui represente la longueur du terrain.
    */
-  public Terrain(int largeurTerrain, int longueurTerrain, Temps tempsCourant) {
+  private Terrain(int largeurTerrain, int longueurTerrain, Temps tempsCourant) {
     if (largeurTerrain > LARGEUR_MIN_TERRAIN) {
       this.largeurTerrain = largeurTerrain;
     } else {
@@ -59,11 +70,6 @@ public class Terrain {
     }
     this.listeProie = new ArrayList<Proie>();
 
-    // initialisation instance Mediateur
-    MediateurDeplacementChasse.getInstance(this);
-    MediateurDeplacementProie.getInstance(this);
-    MediateurDeplacementDepot.getInstance(this);
-    MediateurDeplacementFourmiliere.getInstance(this);
   }
 
   /**

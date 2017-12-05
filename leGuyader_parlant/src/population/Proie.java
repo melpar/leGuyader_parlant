@@ -1,6 +1,7 @@
 package population;
 
 import environnement.Place;
+import environnement.Terrain;
 import mediateur.MediateurDeplacementChasse;
 import mediateur.MediateurDeplacementProie;
 import population.etat.EtatProieAbstract;
@@ -27,7 +28,7 @@ public class Proie implements TempsObserver {
     this.placeProie = place;
     this.poids = poids;
     this.etat = new ProieVivante();
-    this.mediateurProie = MediateurDeplacementProie.getInstance();
+    this.mediateurProie = new MediateurDeplacementProie(Terrain.getInstance());
   }
 
   public EtatProieAbstract getEtat() {

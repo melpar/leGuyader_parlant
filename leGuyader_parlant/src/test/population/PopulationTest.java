@@ -59,7 +59,7 @@ public class PopulationTest {
     Place place = new Place(0, 0, tempsCourant);
     Fourmi fourmi = new Fourmi(false, place, tempsCourant);
     fourmi.setReine();
-    Terrain terrainTest = new Terrain(500, 500, tempsCourant);
+    Terrain terrainTest = Terrain.getInstance(500, 500, tempsCourant);
     terrainTest.premiereReine(fourmi);
     fourmi.pond();
     CompteurFourmi cpt = CompteurFourmi.getInstance();
