@@ -40,6 +40,7 @@ public class Proie implements TempsObserver {
     System.out.print("Proie [" + this.getPlaceProie().getX() + " : ");
     System.out.print(this.getPlaceProie().getY() + "]\n");
     this.etat.changeTemps();
+    this.deplace();
 
   }
 

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mediateur.MediateurDeplacementChasse;
+import mediateur.MediateurDeplacementProie;
 import population.Fourmi;
 import population.Proie;
 import population.etat.Adulte;
