@@ -13,13 +13,15 @@ public class VuePrincipale {
   private Terrain terrain;
   private JCanvas jc;
 
+  public VuePrincipale(Terrain terrain) {
+    this.terrain = terrain;
+  }
+
   public void affichage() {
     jc = new JCanvas();
     jc.setBackground(Color.WHITE);
-    jc.setPreferredSize(new Dimension(400, 200));
-    Dimension dim = new Dimension(20, 20);
+    jc.setPreferredSize(new Dimension(terrain.getLargeurTerrain(), terrain.getLongueurTerrain()));
 
-    jc.addDrawable(rect);
     GUIHelper.showOnFrame(jc, "test JCanvas with IDrawables");
   }
 
@@ -27,11 +29,24 @@ public class VuePrincipale {
     List<Place> placesAdultes = terrain.getPlacesAdultes();
     List<Place> placesProies = terrain.getPlaceProies();
 
-    Place fourmilière = terrain.getPlaceNid();
+    Place placeNid = terrain.getPlaceNid();
 
     for (Place place : placesAdultes) {
-      IDrawable rect = new RectangleDrawable(Color.RED, new Point(10, 10), dim);
-      jc.addDrawable(d);
+      Dimension dim = new Dimension(place.getX(), place.getY());
+      IDrawable rect = new RectangleDrawable(Color.RED, new Point(1, 1), dim);
+      jc.addDrawable(rect);
     }
+
+    for (Place place : placesProies) {
+      Dimension dim = new Dimension(3, 3);
+      IDrawable rect = new RectangleDrawable(Color.BLUE, new Point(place.getX(), place.getY()),
+          dim);
+      jc.addDrawable(rect);
+    }
+
+    Dimension dim = new Dimension(10, 10);
+    IDrawable rect = new RectangleDrawable(Color.BLACK, new Point(placeNid.getX(), placeNid.getY()),
+        dim);
+    jc.addDrawable(rect);
   }
 }
