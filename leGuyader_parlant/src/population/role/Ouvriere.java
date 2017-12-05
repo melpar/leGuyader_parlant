@@ -32,7 +32,7 @@ public class Ouvriere extends RoleAbstract {
    * Permet de déplacer la fourmi associée.
    */
   public void deplace() {
-    Place ancienne = new Place(this.maFourmi.getPlace().getX(), this.maFourmi.getPlace().getY());
+    Place ancienne = this.maFourmi.getPlace();
     mediateur.setFourmi(maFourmi);
     mediateur.deplacement();
     System.out.println("Nouvelle place : " + this.maFourmi.getPlace().getX() + ","

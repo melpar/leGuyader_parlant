@@ -6,6 +6,8 @@ import mediateur.MediateurDeplacementProie;
 import population.etat.EtatProieAbstract;
 import population.etat.ProieVivante;
 import population.role.RoleAbstract;
+import report.ReportMouvementChasse;
+import report.ReportMouvementProie;
 
 /**
  * Permet de gérer les proies.
@@ -48,10 +50,13 @@ public class Proie implements TempsObserver {
    * Permet de déplacer la fourmi associée.
    */
   public void deplace() {
+    Place ancienne = this.placeProie;
     mediateurProie.setProie(this);
     mediateurProie.deplacement();
     System.out.println(
         "Nouvelle place : " + this.getPlaceProie().getX() + "," + this.getPlaceProie().getY());
+    ReportMouvementProie report = ReportMouvementProie.getInstance();
+    report.traceMouvement(ancienne, this.placeProie);
   }
 
   public double getPoids() {

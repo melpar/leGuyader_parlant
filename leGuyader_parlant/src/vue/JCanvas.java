@@ -10,14 +10,19 @@ import javax.swing.JPanel;
 
 public class JCanvas extends JPanel {
 
-  private List drawables = new LinkedList();
+  private List<IDrawable> drawables = new LinkedList<IDrawable>();
+
+  // private List<IDrawable> drawablesModifies = new LinkedList<IDrawable>();
 
   public void paint(Graphics g) {
     super.paint(g);
-    for (Iterator iter = drawables.iterator(); iter.hasNext();) {
-      IDrawable d = (IDrawable) iter.next();
+    // for (Iterator<IDrawable> iter = drawables.iterator(); iter.hasNext();) {
+    for (int i = 0; i < drawables.size(); i++) {
+      System.out.println(drawables.size());
+      IDrawable d = drawables.get(i);
       d.draw(g);
     }
+    // drawables = new LinkedList<IDrawable>();
   }
 
   public void addDrawable(IDrawable d) {

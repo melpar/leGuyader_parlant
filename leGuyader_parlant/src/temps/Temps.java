@@ -21,10 +21,11 @@ public class Temps implements Runnable {
 
   @Override
   public void run() {
-    while (this.tempsCourant.getMois() < 6) {
+    while (true) {
       try {
-        Thread.sleep(10);
-        this.tempsCourant.addMinute(10);
+        Thread.sleep(100);
+        this.tempsCourant.addJour(1);
+        ;
         this.applique();
       } catch (InterruptedException e) {
         // TODO Auto-generated catch block

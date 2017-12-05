@@ -24,11 +24,11 @@ public class VueTest {
 
     terrainTest.genProie(15);
 
-    ArrayList<Proie> listeProie = new ArrayList<Proie>();
-
-    ReportTerrain reportTerrainTest = new ReportTerrain();
-    reportTerrainTest.traceTerrain(terrainTest);
-    System.out.println(reportTerrainTest.toString());
+    for (Proie proie : terrainTest.getListeProie()) {
+      tempsCourant.addObserveur(proie);
+    }
+    // ReportTerrain reportTerrainTest = new ReportTerrain();
+    // reportTerrainTest.traceTerrain(terrainTest);
 
     VuePrincipale vue = new VuePrincipale(terrainTest);
     vue.affichage();
