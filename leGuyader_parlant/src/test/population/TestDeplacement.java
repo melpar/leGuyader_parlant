@@ -12,7 +12,7 @@ public class TestDeplacement {
   public static void main(String[] args) {
     // TODO Auto-generated method stub
     Temps tempsCourant = new Temps();
-    Terrain terrain = new Terrain(500, 500);
+    Terrain terrain = new Terrain(500, 500, tempsCourant);
     TestDeplacement test = new TestDeplacement();
     // test.testDeplacementFourmi(terrain, tempsCourant);
     // test.testDeplacementProie(terrain, tempsCourant);

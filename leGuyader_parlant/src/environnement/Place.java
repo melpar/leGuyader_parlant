@@ -1,9 +1,13 @@
 package environnement;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import mediateur.MediateurPheromone;
 import temps.Duree;
+import temps.Temps;
 
 /**
  * Representation d'une positition sur le terrain.
@@ -14,7 +18,8 @@ import temps.Duree;
 public class Place {
   private int positionX;
   private int positionY;
-  private List<Pheromone> listePheromone;
+  private Temps tempsCourant;
+  private Map<Pheromone, MediateurPheromone> listePheromone;
 
   /**
    * Constructeur de Place.
@@ -24,10 +29,11 @@ public class Place {
    * @param y
    *          Position sur l'axe Y.
    */
-  public Place(int x, int y) {
+  public Place(int x, int y, Temps tempsCourant) {
     this.positionX = x;
     this.positionY = y;
-    this.listePheromone = new ArrayList<Pheromone>();
+    this.listePheromone = new HashMap<Pheromone, MediateurPheromone>();
+    this.tempsCourant = tempsCourant;
   }
 
   public int getX() {
@@ -57,17 +63,11 @@ public class Place {
   public Boolean ajouterPheromone(Pheromone pheromone) {
     int indice = this.contientPheromone(pheromone);
     if (indice == (-1)) {
-      this.listePheromone.add(pheromone);
+      MediateurPheromone gestion = new MediateurPheromone(pheromone, this.tempsCourant);
+      this.listePheromone.put(pheromone, gestion);
       return true;
     }
-
-    Duree nouvelleDuree = this.listePheromone.get(indice).getDuree();
-
-    if (pheromone.getDuree().estSuperieur(nouvelleDuree)) {
-      this.listePheromone.get(indice).setDuree(nouvelleDuree);
-      return true;
-    }
-    return false;
+    return true;
   }
 
   /**
@@ -82,7 +82,7 @@ public class Place {
       return -1;
     }
     for (int indice = 0; indice < this.listePheromone.size(); indice++) {
-      if (this.listePheromone.get(indice).equals(pheromone.name())) {
+      if (this.listePheromone.get(indice) != null) {
         return indice;
       }
     }
@@ -90,11 +90,7 @@ public class Place {
   }
 
   public List<Pheromone> getListePheromone() {
-    return listePheromone;
-  }
-
-  public void setListePheromone(List<Pheromone> listePheromone) {
-    this.listePheromone = listePheromone;
+    return new ArrayList<Pheromone>(listePheromone.keySet());
   }
 
 }

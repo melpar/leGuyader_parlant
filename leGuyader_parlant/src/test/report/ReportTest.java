@@ -22,8 +22,9 @@ public class ReportTest {
   @Test
   public void testCompteur() {
     List<Fourmi> listeFourmis = new ArrayList<Fourmi>();
-    Place place = new Place(0, 0);
     Temps tempsCourant = new Temps();
+    Place place = new Place(0, 0, tempsCourant);
+
     for (int i = 0; i < 100; i++) {
       Fourmi uneFourmi = new Fourmi(false, place, tempsCourant);
       switch (i % 5) {
@@ -56,8 +57,9 @@ public class ReportTest {
 
   @Test
   public void testEtatsFourmi() {
-    Place place = new Place(0, 0);
     Temps tempsCourant = new Temps();
+
+    Place place = new Place(0, 0, tempsCourant);
     Fourmi uneFourmi = new Fourmi(false, place, tempsCourant);
     EtatsFourmi compteur = new EtatsFourmi();
     compteur.traceEtat(uneFourmi.getEtat());
@@ -82,8 +84,9 @@ public class ReportTest {
 
   @Test
   public void testReportFourmi() {
-    Place place = new Place(0, 0);
     Temps tempsCourant = new Temps();
+
+    Place place = new Place(0, 0, tempsCourant);
     Fourmi uneFourmi = new Fourmi(false, place, tempsCourant);
 
     ReportFourmi compteur = new ReportFourmi();

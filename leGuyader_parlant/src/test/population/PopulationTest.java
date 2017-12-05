@@ -14,8 +14,8 @@ import temps.Temps;
 public class PopulationTest {
   @Test
   public void creationFourmi() {
-    Place place = new Place(0, 0);
     Temps tempsCourant = new Temps();
+    Place place = new Place(0, 0, tempsCourant);
     Fourmi fourmi = new Fourmi(false, place, tempsCourant);
     assert (fourmi.getAge().equals(new Duree()));
     assert (fourmi.getaMange() == 0);
@@ -32,7 +32,7 @@ public class PopulationTest {
     Duree dureeNymphe = new Duree(dureeLarve);
     dureeNymphe.addJour(5);
 
-    Place place = new Place(0, 0);
+    Place place = new Place(0, 0, tempsCourant);
     Fourmi fourmi = new Fourmi(false, place, tempsCourant);
     assert (fourmi.getEtat().getEtat() == Etats.OEUF);
     fourmi.changeEtat(fourmi.getEtat().getEtat(), dureeOeuf);
@@ -45,8 +45,9 @@ public class PopulationTest {
 
   @Test
   public void testIsReine() {
-    Place place = new Place(0, 0);
     Temps tempsCourant = new Temps();
+
+    Place place = new Place(0, 0, tempsCourant);
     Fourmi fourmi = new Fourmi(false, place, tempsCourant);
     fourmi.setReine();
     assert (fourmi.isReine());
@@ -54,11 +55,11 @@ public class PopulationTest {
 
   @Test
   public void testReine() {
-    Place place = new Place(0, 0);
     Temps tempsCourant = new Temps();
+    Place place = new Place(0, 0, tempsCourant);
     Fourmi fourmi = new Fourmi(false, place, tempsCourant);
     fourmi.setReine();
-    Terrain terrainTest = new Terrain(500, 500);
+    Terrain terrainTest = new Terrain(500, 500, tempsCourant);
     terrainTest.premiereReine(fourmi);
     fourmi.pond();
     CompteurFourmi cpt = CompteurFourmi.getInstance();

@@ -12,6 +12,7 @@ import population.Fourmi;
 import population.Proie;
 import population.etat.Adulte;
 import population.role.Reine;
+import temps.Temps;
 
 /**
  * Representation du terrain.
@@ -37,7 +38,7 @@ public class Terrain {
    * @param longueurTerrain
    *          Entier qui represente la longueur du terrain.
    */
-  public Terrain(int largeurTerrain, int longueurTerrain) {
+  public Terrain(int largeurTerrain, int longueurTerrain, Temps tempsCourant) {
     if (largeurTerrain > LARGEUR_MIN_TERRAIN) {
       this.largeurTerrain = largeurTerrain;
     } else {
@@ -53,7 +54,7 @@ public class Terrain {
     for (int positionX = 0; positionX < this.longueurTerrain; positionX++) {
       for (int positionY = 0; positionY < this.largeurTerrain; positionY++) {
         this.placeTerrain[positionX + (positionY * this.largeurTerrain)] = new Place(positionX,
-            positionY);
+            positionY, tempsCourant);
       }
     }
     this.listeProie = new ArrayList<Proie>();

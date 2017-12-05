@@ -24,8 +24,9 @@ public class EnvironnementTest {
 
   @Before
   public void initTest() {
-    this.terrainTest = new Terrain(500, 500);
     Temps tempsCourant = new Temps();
+
+    this.terrainTest = new Terrain(500, 500, tempsCourant);
     this.fourmiReine = new Fourmi(true, this.terrainTest.getPlace(30, 45), tempsCourant);
     this.fourmiReine.setReine();
     this.terrainTest.premiereReine(fourmiReine);
