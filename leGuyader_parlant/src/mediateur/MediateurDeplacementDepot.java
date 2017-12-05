@@ -4,6 +4,7 @@ import environnement.Fourmiliere;
 import environnement.Place;
 import environnement.Terrain;
 import environnement.fourmiliere.Depot;
+import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
 import population.etat.Adulte;
@@ -62,10 +63,10 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
 
   public void setFourmi(Fourmi uneFourmi) {
     this.uneFourmi = uneFourmi;
-    Depot depot = this.terrain.getFourmiliere().getDepotFourmiliere();
-    if (depot.getListeCadavreProie().size() > 0) {
-      System.out.println("proie" + depot.getListeCadavreProie().size());
-      this.setProie(depot.getListeCadavreProie().get(0));
+    Nid nid = this.terrain.getFourmiliere().getNidFourmiliere();
+    if (nid.getListeProie().size() > 0) {
+      System.out.println("proie" + nid.getListeProie().size());
+      this.setProie(nid.getListeProie().get(0));
     }
   }
 

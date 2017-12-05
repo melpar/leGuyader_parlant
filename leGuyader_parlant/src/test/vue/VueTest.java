@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import environnement.Fourmiliere;
 import environnement.Place;
 import environnement.Terrain;
+import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
+import population.etat.EtatProieAbstract;
 import population.etat.Etats;
+import population.etat.ProieMorte;
 import report.ReportTerrain;
 import temps.Temps;
 import vue.VuePrincipale;
@@ -22,10 +25,12 @@ public class VueTest {
     fourmiReine.setReine();
     terrainTest.premiereReine(fourmiReine);
     fourmiReine.pond();
+    Nid nid = terrainTest.getFourmiliere().getNidFourmiliere();
+    for (int i = 0; i < 200; i++) {
+      Proie proie = new Proie(terrainTest.getFourmiliere().getPlaceFourmiliere(), 2);
+      proie.setEtat(new ProieMorte());
+      nid.ajouterProie(proie);
 
-    for (int i = 0; i < 100; i++) {
-      terrainTest.getFourmiliere().getDepotFourmiliere()
-          .ajouterCadavreProie(new Proie(terrainTest.getFourmiliere().getPlaceFourmiliere(), 2));
     }
     terrainTest.genProie(15);
 
