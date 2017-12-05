@@ -1,6 +1,8 @@
 package population.etat;
 
+import mediateur.MediateurDeplacement;
 import mediateur.MediateurDeplacementDepot;
+import mediateur.MediateurDeplacementFourmiliere;
 import population.Fourmi;
 import population.role.Ouvriere;
 import population.role.RoleAbstract;
@@ -21,7 +23,7 @@ public class Adulte extends EtatAbstract {
    * Role de la fourmie.
    */
   private RoleAbstract role;
-  private MediateurDeplacementDepot mediateurDepot;
+  private MediateurDeplacement mediateur;
 
   /**
    * Créé un état adulte.
@@ -50,7 +52,7 @@ public class Adulte extends EtatAbstract {
       default:
         break;
     }
-    this.mediateurDepot = MediateurDeplacementDepot.getInstance();
+    this.mediateur = MediateurDeplacementDepot.getInstance();
   }
 
   public RoleAbstract getRole() {
@@ -78,9 +80,13 @@ public class Adulte extends EtatAbstract {
 
   }
 
+  public void changerTrajet() {
+    this.mediateur = MediateurDeplacementFourmiliere.getInstance();
+  }
+
   public void deplace() {
-    mediateurDepot.setFourmi(maFourmi);
-    mediateurDepot.deplacement();
+    mediateur.setFourmi(maFourmi);
+    mediateur.deplacement();
     // System.out.println(
     // "fourmi :[" + maFourmi.getPlace().getX() + " : " + maFourmi.getPlace().getX()
     // + "]");

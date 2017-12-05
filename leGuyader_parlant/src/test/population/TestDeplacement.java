@@ -42,7 +42,14 @@ public class TestDeplacement {
     Fourmi fourmi = new Fourmi(false, terrain.getPlace(0, 0), tempsCourant);
     Fourmi fourmiReine = new Fourmi(false, terrain.getPlace(0, 0), tempsCourant);
     fourmiReine.setReine();
+    terrain.genProie(20);
     terrain.premiereReine(fourmiReine);
+
+    Depot depot = terrain.getFourmiliere().getDepotFourmiliere();
+    for (int i = 0; i < terrain.getNombreProie(); i++) {
+      depot.ajouterCadavreProie(terrain.getListeProie().get(0));
+      terrain.getListeProie().remove(0);
+    }
     tempsCourant.addObserveur(fourmi);
     Thread th = new Thread(tempsCourant);
     th.start();
