@@ -190,4 +190,8 @@ public class Fourmi implements TempsObserver {
       ((Reine) ((Adulte) this.getEtat()).getRole()).pond();
     }
   }
+
+  public boolean isAdulte() {
+    return this.etat.getEtat().equals(Etats.ADULTE);
+  }
 }

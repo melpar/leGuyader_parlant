@@ -92,4 +92,10 @@ public class ReportTerrain extends Report {
 
   }
 
+  @Override
+  public void traceMouvement(Place placeDep, Place placeFin) {
+    // TODO Auto-generated method stub
+
+  }
+
 }

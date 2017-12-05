@@ -26,4 +26,5 @@ public abstract class Report {
 
   public abstract void traceTerrain(Terrain unterrain);
 
+  public abstract void traceMouvement(Place placeDep, Place placeFin);
 }

@@ -134,4 +134,10 @@ public class CompteurFourmi extends Report {
   public void setCptCadavre(int cptCadavre) {
     this.cptCadavre = cptCadavre;
   }
+
+  @Override
+  public void traceMouvement(Place placeDep, Place placeFin) {
+    // TODO Auto-generated method stub
+
+  }
 }

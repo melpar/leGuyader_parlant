@@ -57,6 +57,7 @@ public class Terrain {
 
     // initialisation instance Mediateur
     MediateurDeplacementChasse.getInstance(this);
+    MediateurDeplacementProie.getInstance(this);
   }
 
   /**
@@ -202,6 +203,12 @@ public class Terrain {
 
   public List<Place> getPlacesAdultes() {
     List<Place> places = new ArrayList<Place>();
+    List<Fourmi> fourmis = this.fourmiliere.getNidFourmiliere().getListeFourmi();
+    for (Fourmi fourmi : fourmis) {
+      if (fourmi.isAdulte() && fourmi.getPlace().equals(this.fourmiliere.getPlaceFourmiliere())) {
+        places.add(fourmi.getPlace());
+      }
+    }
     return places;
   }
 

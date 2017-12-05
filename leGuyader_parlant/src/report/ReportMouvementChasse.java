@@ -1,5 +1,7 @@
 package report;
 
+import java.util.List;
+
 import environnement.Fourmiliere;
 import environnement.Place;
 import environnement.Terrain;
@@ -7,13 +9,39 @@ import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
+import population.ReportObserver;
 import population.etat.EtatAbstract;
-import population.etat.Etats;
-import temps.Duree;
 
-public class EtatsFourmi extends Report {
-  Etats etat;
-  Duree dateFin;
+public class ReportMouvementChasse extends Report implements ReportObservable {
+  Place anciennePlace;
+  Place nouvellePlace;
+
+  List<ReportObserver> observers;
+
+  private static ReportMouvementChasse instance;
+
+  private ReportMouvementChasse() {
+
+  }
+
+  public static ReportMouvementChasse getInstance() {
+    if (instance == null) {
+      instance = new ReportMouvementChasse();
+    }
+    return instance;
+  }
+
+  public void addObserver(ReportObserver obs) {
+    this.observers.add(obs);
+  }
+
+  @Override
+  public void applique() {
+    for (ReportObserver obs : observers) {
+      obs.agitSur(this);
+    }
+
+  }
 
   @Override
   public void traceFourmi(Fourmi uneFourmi) {
@@ -23,20 +51,8 @@ public class EtatsFourmi extends Report {
 
   @Override
   public void traceEtat(EtatAbstract etatAbstract) {
-    this.etat = etatAbstract.getEtat();
-    this.dateFin = etatAbstract.getDateFin();
+    // TODO Auto-generated method stub
 
-  }
-
-  /**
-   * Retourne l'ensemble des éléments de l'instance sous la forme d'une chaine de
-   * caractere.
-   */
-  public String toString() {
-    StringBuilder ret = new StringBuilder();
-    ret.append("Etat : ").append(etat).append("\n");
-    ret.append("Date de fin de l'état : ").append(dateFin.toString()).append("\n");
-    return ret.toString();
   }
 
   @Override
@@ -77,7 +93,26 @@ public class EtatsFourmi extends Report {
 
   @Override
   public void traceMouvement(Place placeDep, Place placeFin) {
-    // TODO Auto-generated method stub
+    this.anciennePlace = placeDep;
+    this.nouvellePlace = placeFin;
+    this.applique();
 
   }
+
+  public Place getAnciennePlace() {
+    return anciennePlace;
+  }
+
+  public void setAnciennePlace(Place anciennePlace) {
+    this.anciennePlace = anciennePlace;
+  }
+
+  public Place getNouvellePlace() {
+    return nouvellePlace;
+  }
+
+  public void setNouvellePlace(Place nouvellePlace) {
+    this.nouvellePlace = nouvellePlace;
+  }
+
 }

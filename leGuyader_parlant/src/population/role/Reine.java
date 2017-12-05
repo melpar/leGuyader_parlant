@@ -41,6 +41,8 @@ public class Reine extends RoleAbstract {
         }
         Fourmi uneFourmi = new Fourmi(isMale, this.fourmiliere.getPlaceFourmiliere(),
             this.maFourmi.getTempsCourant());
+        this.maFourmi.getTempsCourant().addObserveur(uneFourmi);
+        uneFourmi.setTempsCourant(this.maFourmi.getTempsCourant());
         this.fourmiliere.getNidFourmiliere().ajouterFourmi(uneFourmi);
       }
     }

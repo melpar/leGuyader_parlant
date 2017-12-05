@@ -75,4 +75,10 @@ public class ReportPlace extends Report {
     // TODO Auto-generated method stub
 
   }
+
+  @Override
+  public void traceMouvement(Place placeDep, Place placeFin) {
+    // TODO Auto-generated method stub
+
+  }
 }
