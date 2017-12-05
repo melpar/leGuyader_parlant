@@ -35,8 +35,9 @@ public class Ouvriere extends RoleAbstract {
     Place ancienne = this.maFourmi.getPlace();
     mediateur.setFourmi(maFourmi);
     mediateur.deplacement();
-    System.out.println("Nouvelle place : " + this.maFourmi.getPlace().getX() + ","
-        + this.maFourmi.getPlace().getY());
+    // System.out.println("Nouvelle place : " + this.maFourmi.getPlace().getX() +
+    // ","
+    // + this.maFourmi.getPlace().getY());
     ReportMouvementChasse report = ReportMouvementChasse.getInstance();
     report.traceMouvement(ancienne, this.maFourmi.getPlace());
   }

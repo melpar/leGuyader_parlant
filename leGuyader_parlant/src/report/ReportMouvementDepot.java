@@ -13,21 +13,21 @@ import population.Proie;
 import population.ReportObserver;
 import population.etat.EtatAbstract;
 
-public class ReportMouvementChasse extends Report implements ReportObservable {
+public class ReportMouvementDepot extends Report implements ReportObservable {
   Place anciennePlace;
   Place nouvellePlace;
   Fourmi fourmi;
   List<ReportObserver> observers;
 
-  private static ReportMouvementChasse instance;
+  private static ReportMouvementDepot instance;
 
-  private ReportMouvementChasse() {
+  private ReportMouvementDepot() {
     this.observers = new ArrayList<ReportObserver>();
   }
 
-  public static ReportMouvementChasse getInstance() {
+  public static ReportMouvementDepot getInstance() {
     if (instance == null) {
-      instance = new ReportMouvementChasse();
+      instance = new ReportMouvementDepot();
     }
     return instance;
   }

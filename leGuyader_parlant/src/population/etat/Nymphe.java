@@ -39,9 +39,7 @@ public class Nymphe extends EtatAbstract {
   public void agitSur() {
 
     if (this.estFini()) {
-      System.out.println("nymphe");
       this.changeEtat();
-      System.out.println("adulte");
     }
   }
 }

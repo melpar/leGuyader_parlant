@@ -8,6 +8,7 @@ import population.etat.ProieVivante;
 import population.role.RoleAbstract;
 import report.ReportMouvementChasse;
 import report.ReportMouvementProie;
+import report.ReportPheromone;
 
 /**
  * Permet de gérer les proies.
@@ -39,8 +40,6 @@ public class Proie implements TempsObserver {
 
   @Override
   public void agitSur() {
-    System.out.print("Proie [" + this.getPlaceProie().getX() + " : ");
-    System.out.print(this.getPlaceProie().getY() + "]\n");
     this.etat.changeTemps();
     this.deplace();
 
@@ -57,6 +56,9 @@ public class Proie implements TempsObserver {
         "Nouvelle place : " + this.getPlaceProie().getX() + "," + this.getPlaceProie().getY());
     ReportMouvementProie report = ReportMouvementProie.getInstance();
     report.traceMouvement(ancienne, this.placeProie);
+
+    ReportPheromone reportPhero = ReportPheromone.getInstance();
+    reportPhero.tracePlace(this.placeProie);
   }
 
   public double getPoids() {

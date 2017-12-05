@@ -38,9 +38,7 @@ public class Oeuf extends EtatAbstract {
   public void agitSur() {
 
     if (this.estFini()) {
-      System.out.println("oeuf");
       this.changeEtat();
-      System.out.println("larve");
     }
   }
 

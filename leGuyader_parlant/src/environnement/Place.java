@@ -89,4 +89,12 @@ public class Place {
     return -1;
   }
 
+  public List<Pheromone> getListePheromone() {
+    return listePheromone;
+  }
+
+  public void setListePheromone(List<Pheromone> listePheromone) {
+    this.listePheromone = listePheromone;
+  }
+
 }

@@ -7,37 +7,48 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import environnement.Pheromone;
 import environnement.Place;
 import environnement.Terrain;
 import population.ReportObserver;
 import population.TempsObserver;
 import report.ReportMouvementChasse;
+import report.ReportMouvementDepot;
 import report.ReportMouvementProie;
 import report.ReportObservable;
+import report.ReportPheromone;
 
 public class VuePrincipale implements ReportObserver {
 
-  private final int COEFFICIENT = 4;
+  public static final int COEFFICIENT = 4;
   private Terrain terrain;
   private JCanvas jc;
   private ListenerNid listenerNid;
 
-  private Map<Place, IDrawable> cases;
+  private Map<Place, IDrawable> casesFourmis;
   private Map<Place, IDrawable> casesProies;
+  private Map<Place, IDrawable> casesPheromone;
   private Map<Place, Integer> placesFourmi;
   private Map<Place, Integer> placesProie;
+  private Map<Place, Pheromone> placesPheromone;
 
   public VuePrincipale(Terrain terrain) {
     this.terrain = terrain;
     listenerNid = new ListenerNid(this.terrain);
+    this.placesPheromone = new HashMap<Place, Pheromone>();
     this.placesFourmi = new HashMap<Place, Integer>();
     this.placesProie = new HashMap<Place, Integer>();
-    this.cases = new HashMap<Place, IDrawable>();
+    this.casesFourmis = new HashMap<Place, IDrawable>();
     this.casesProies = new HashMap<Place, IDrawable>();
+    this.casesPheromone = new HashMap<Place, IDrawable>();
     ReportMouvementChasse report = ReportMouvementChasse.getInstance();
     report.addObserver(this);
+    ReportMouvementDepot reportDepot = ReportMouvementDepot.getInstance();
+    reportDepot.addObserver(this);
     ReportMouvementProie reportProie = ReportMouvementProie.getInstance();
     reportProie.addObserver(this);
+    ReportPheromone reportPheromone = ReportPheromone.getInstance();
+    reportPheromone.addObserver(this);
   }
 
   public void affichage() {
@@ -61,7 +72,7 @@ public class VuePrincipale implements ReportObserver {
       IDrawable rect = new RectangleDrawable(Color.RED,
           new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
       jc.addDrawable(rect);
-      cases.put(place, rect);
+      casesFourmis.put(place, rect);
       ajoutePlace(this.placesFourmi, place);
     }
 
@@ -81,7 +92,7 @@ public class VuePrincipale implements ReportObserver {
 
     Place placeDepot = terrain.getPlaceDepot();
     IDrawable rectDepot = new RectangleDrawable(Color.ORANGE,
-        new Point(placeDepot.getX(), placeDepot.getY()), dim);
+        new Point(placeDepot.getX() * COEFFICIENT, placeDepot.getY() * COEFFICIENT), dim);
     jc.addDrawable(rectDepot);
   }
 
@@ -97,7 +108,6 @@ public class VuePrincipale implements ReportObserver {
 
   @Override
   public void agitSur(ReportObservable report) {
-    System.out.println("maj");
     this.miseAJour(report);
 
   }
@@ -105,8 +115,12 @@ public class VuePrincipale implements ReportObserver {
   private void miseAJour(ReportObservable report) {
     if (report instanceof ReportMouvementChasse) {
       miseAJourChasse(report);
+    } else if (report instanceof ReportMouvementDepot) {
+      miseAJourDepot(report);
     } else if (report instanceof ReportMouvementProie) {
       miseAJourProie(report);
+    } else if (report instanceof ReportPheromone) {
+      miseAJourPheromone(report);
     }
 
   }
@@ -116,7 +130,7 @@ public class VuePrincipale implements ReportObserver {
     Place ancienne = report.getAnciennePlace();
     Place nouvelle = report.getNouvellePlace();
 
-    enleveProie(ancienne, this.placesProie);
+    enleveProie(ancienne);
     ajouteProie(nouvelle);
   }
 
@@ -125,33 +139,77 @@ public class VuePrincipale implements ReportObserver {
     Place ancienne = report.getAnciennePlace();
     Place nouvelle = report.getNouvellePlace();
 
-    enleve(ancienne, this.placesFourmi);
-    ajouteFourmiChasse(nouvelle);
+    enleveFourmi(ancienne, true);
+    ajouteFourmi(nouvelle, true);
   }
 
-  private void ajouteFourmiChasse(Place place) {
+  private void miseAJourDepot(ReportObservable rep) {
+    ReportMouvementDepot report = (ReportMouvementDepot) rep;
+    Place ancienne = report.getAnciennePlace();
+    Place nouvelle = report.getNouvellePlace();
+
+    enleveFourmi(ancienne, false);
+    ajouteFourmi(nouvelle, false);
+  }
+
+  private void miseAJourPheromone(ReportObservable rep) {
+    ReportPheromone report = (ReportPheromone) rep;
+    Place place = report.getPlace();
+    if (place.getListePheromone().size() == 0) {
+      this.enleverPheromone(place);
+    } else {
+      this.miseAJour(place);
+    }
+  }
+
+  private void enleverPheromone(Place place) {
+    // if (this.placesPheromone.get(place) != null) {
+    // this.placesPheromone.remove(place);
+    // jc.removeDrawable(casesPheromone.get(place));
+    //
+    // }
+  }
+
+  private void miseAJour(Place place) {
+    // Pheromone value =
+    // place.getListePheromone().get(place.getListePheromone().size());
+    // Dimension dim = new Dimension(3 * COEFFICIENT, 3 * COEFFICIENT);
+    // IDrawable rect = new RectangleDrawable(Color.GREEN,
+    // new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
+    // jc.addDrawable(rect);
+    // casesPheromone.put(place, rect);
+    //
+    // this.placesPheromone.put(place, value);
+
+  }
+
+  private void ajouteFourmi(Place place, boolean isChasse) {
     int value = 1;
     if (this.placesFourmi.containsKey(place)) {
       value = this.placesFourmi.get(place);
       value++;
     } else {
       Dimension dim = new Dimension(3 * COEFFICIENT, 3 * COEFFICIENT);
-      IDrawable rect = new RectangleDrawable(Color.RED,
+      Color color = Color.RED;
+      if (!isChasse) {
+        color = Color.PINK;
+      }
+      IDrawable rect = new RectangleDrawable(color,
           new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
       jc.addDrawable(rect);
-      cases.put(place, rect);
+      casesFourmis.put(place, rect);
     }
     this.placesFourmi.put(place, value);
 
   }
 
-  private void enleve(Place place, Map<Place, Integer> liste) {
-    if (liste.get(place) != null) {
-      if (liste.get(place) == 1) {
-        liste.remove(place);
-        jc.removeDrawable(cases.get(place));
+  private void enleveFourmi(Place place, boolean isChasse) {
+    if (this.placesFourmi.get(place) != null) {
+      if (this.placesFourmi.get(place) == 1) {
+        this.placesFourmi.remove(place);
+        jc.removeDrawable(casesFourmis.get(place));
       } else {
-        liste.put(place, liste.get(place) - 1);
+        this.placesFourmi.put(place, this.placesFourmi.get(place) - 1);
       }
     }
 
@@ -173,13 +231,13 @@ public class VuePrincipale implements ReportObserver {
 
   }
 
-  private void enleveProie(Place place, Map<Place, Integer> liste) {
-    if (liste.get(place) != null) {
-      if (liste.get(place) == 1) {
-        liste.remove(place);
+  private void enleveProie(Place place) {
+    if (this.placesProie.get(place) != null) {
+      if (placesProie.get(place) == 1) {
+        placesProie.remove(place);
         jc.removeDrawable(casesProies.get(place));
       } else {
-        liste.put(place, liste.get(place) - 1);
+        placesProie.put(place, placesProie.get(place) - 1);
       }
     }
 

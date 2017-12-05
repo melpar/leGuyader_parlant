@@ -38,9 +38,7 @@ public class Larve extends EtatAbstract {
    */
   public void agitSur() {
     if (this.estFini()) {
-      System.out.println("larve");
       this.changeEtat();
-      System.out.println("nymphe");
     }
 
   }

@@ -7,6 +7,7 @@ import population.role.RoleAbstract;
 import population.role.Roles;
 import population.role.Sexue;
 import population.role.Soldat;
+import report.ReportMouvementChasse;
 import temps.Duree;
 
 /**
@@ -80,7 +81,9 @@ public class Adulte extends EtatAbstract {
   public void deplace() {
     mediateurDepot.setFourmi(maFourmi);
     mediateurDepot.deplacement();
-    System.out.println(
-        "fourmi :[" + maFourmi.getPlace().getX() + " : " + maFourmi.getPlace().getX() + "]");
+    // System.out.println(
+    // "fourmi :[" + maFourmi.getPlace().getX() + " : " + maFourmi.getPlace().getX()
+    // + "]");
+
   }
 }

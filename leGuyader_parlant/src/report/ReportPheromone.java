@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import environnement.Fourmiliere;
+import environnement.Pheromone;
 import environnement.Place;
 import environnement.Terrain;
 import environnement.fourmiliere.Depot;
@@ -13,21 +14,25 @@ import population.Proie;
 import population.ReportObserver;
 import population.etat.EtatAbstract;
 
-public class ReportMouvementChasse extends Report implements ReportObservable {
-  Place anciennePlace;
-  Place nouvellePlace;
-  Fourmi fourmi;
+public class ReportPheromone extends Report implements ReportObservable {
+  private Place place;
+
   List<ReportObserver> observers;
 
-  private static ReportMouvementChasse instance;
+  private static ReportPheromone instance;
 
-  private ReportMouvementChasse() {
+  private ReportPheromone() {
     this.observers = new ArrayList<ReportObserver>();
   }
 
-  public static ReportMouvementChasse getInstance() {
+  /**
+   * Pattern singleton.
+   * 
+   * @return retourne l'instance du report
+   */
+  public static ReportPheromone getInstance() {
     if (instance == null) {
-      instance = new ReportMouvementChasse();
+      instance = new ReportPheromone();
     }
     return instance;
   }
@@ -82,8 +87,8 @@ public class ReportMouvementChasse extends Report implements ReportObservable {
 
   @Override
   public void tracePlace(Place place) {
-    // TODO Auto-generated method stub
-
+    this.setPlace(place);
+    this.applique();
   }
 
   @Override
@@ -94,26 +99,14 @@ public class ReportMouvementChasse extends Report implements ReportObservable {
 
   @Override
   public void traceMouvement(Place placeDep, Place placeFin) {
-    this.anciennePlace = placeDep;
-    this.nouvellePlace = placeFin;
-    this.applique();
-
   }
 
-  public Place getAnciennePlace() {
-    return anciennePlace;
+  public Place getPlace() {
+    return place;
   }
 
-  public void setAnciennePlace(Place anciennePlace) {
-    this.anciennePlace = anciennePlace;
-  }
-
-  public Place getNouvellePlace() {
-    return nouvellePlace;
-  }
-
-  public void setNouvellePlace(Place nouvellePlace) {
-    this.nouvellePlace = nouvellePlace;
+  public void setPlace(Place place) {
+    this.place = place;
   }
 
 }

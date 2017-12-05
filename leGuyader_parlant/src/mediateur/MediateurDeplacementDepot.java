@@ -4,6 +4,7 @@ import environnement.Place;
 import environnement.Terrain;
 import environnement.fourmiliere.Depot;
 import population.Fourmi;
+import report.ReportMouvementDepot;
 
 public class MediateurDeplacementDepot {
   private static MediateurDeplacementDepot instance;
@@ -41,13 +42,14 @@ public class MediateurDeplacementDepot {
    * Permet de réaliser un déplacement.
    */
   public void deplacement() {
+    Place ancienne = this.uneFourmi.getPlace();
     // Calcul de la nouvelle place
     int positionX = this.uneFourmi.getPlace().getX();
     int positionY = this.uneFourmi.getPlace().getY();
     int positionXFinal = positionX;
     int positionYFinal = positionY;
-    Depot depot = this.terrain.getFourmiliere().getDepotFourmiliere();
-    Place place = depot.getPlaceDepot();
+    // Depot depot = this.terrain.getFourmiliere().getDepotFourmiliere();
+    Place place = this.terrain.getPlaceDepot();
     if ((place.getX() != positionX) || (place.getY() != positionY)) {
       if (place.getX() != positionX) {
         if (positionX < place.getX()) {
@@ -64,10 +66,14 @@ public class MediateurDeplacementDepot {
           positionYFinal = positionY - 1;
         }
       }
+    } else {
+      System.out.println("____________________________dépot");
     }
-
+    System.out.println(positionXFinal + " " + positionYFinal);
     // Modification de la place
     this.uneFourmi.setPlace(this.terrain.getPlace(positionXFinal, positionYFinal));
+    ReportMouvementDepot report = ReportMouvementDepot.getInstance();
+    report.traceMouvement(ancienne, this.uneFourmi.getPlace());
   }
 
   public void setFourmi(Fourmi uneFourmi) {
