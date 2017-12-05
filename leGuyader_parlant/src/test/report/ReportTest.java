@@ -46,7 +46,7 @@ public class ReportTest {
 
       listeFourmis.add(uneFourmi);
     }
-    CompteurFourmi compteur = new CompteurFourmi();
+    CompteurFourmi compteur = CompteurFourmi.getInstance();
     for (Fourmi uneFourmi : listeFourmis) {
       compteur.traceFourmi(uneFourmi);
     }

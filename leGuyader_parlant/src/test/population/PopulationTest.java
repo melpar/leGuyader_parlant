@@ -61,7 +61,7 @@ public class PopulationTest {
     Terrain terrainTest = new Terrain(500, 500);
     terrainTest.premiereReine(fourmi);
     fourmi.pond();
-    CompteurFourmi cpt = new CompteurFourmi();
+    CompteurFourmi cpt = CompteurFourmi.getInstance();
     assert (terrainTest.getFourmiliere().getNidFourmiliere().getNombreFourmi() == 51);
     for (Fourmi uneFourmi : terrainTest.getFourmiliere().getNidFourmiliere().getListeFourmi()) {
       cpt.traceFourmi(uneFourmi);

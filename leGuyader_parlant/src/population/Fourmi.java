@@ -2,6 +2,7 @@ package population;
 
 import environnement.Fourmiliere;
 import environnement.Place;
+import environnement.Terrain;
 import environnement.fabrique.FabriqueFourmiliere;
 import population.etat.Adulte;
 import population.etat.Cadavre;
@@ -13,6 +14,7 @@ import population.etat.Oeuf;
 import population.role.Reine;
 import population.role.RoleAbstract;
 import population.role.Roles;
+import report.CompteurFourmi;
 import report.Report;
 import temps.Duree;
 import temps.Temps;
@@ -83,18 +85,23 @@ public class Fourmi implements TempsObserver {
    */
   public void changeEtat(Etats etat, Duree tempsCourant) {
     this.tempsCourant.removeObserveur(this.etat);
+    CompteurFourmi cpt = CompteurFourmi.getInstance();
     switch (etat) {
       case OEUF:
         this.etat = new Larve(this, tempsCourant);
+        cpt.applique();
         break;
       case LARVE:
         this.etat = new Nymphe(this, tempsCourant);
+        cpt.applique();
         break;
       case NYMPHE:
         this.etat = new Adulte(this, tempsCourant);
+        cpt.applique();
         break;
       default:
         this.etat = new Cadavre(this, tempsCourant);
+        cpt.applique();
         break;
     }
 

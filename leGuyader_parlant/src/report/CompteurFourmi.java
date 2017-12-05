@@ -1,20 +1,41 @@
 package report;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import environnement.Fourmiliere;
 import environnement.Place;
 import environnement.Terrain;
 import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
+import population.CompteurObserver;
 import population.Fourmi;
 import population.Proie;
+import population.ReportObserver;
 import population.etat.EtatAbstract;
 
-public class CompteurFourmi extends Report {
+public class CompteurFourmi extends Report implements CompteurObservable {
   private int cptOeuf;
   private int cptLarve;
   private int cptNymphe;
   private int cptAdulte;
   private int cptCadavre;
+  List<CompteurObserver> observers;
+
+  private static CompteurFourmi instance;
+
+  private Nid nid;
+
+  private CompteurFourmi() {
+    this.observers = new ArrayList<CompteurObserver>();
+  }
+
+  public static CompteurFourmi getInstance() {
+    if (instance == null) {
+      instance = new CompteurFourmi();
+    }
+    return instance;
+  }
 
   /**
    * Permet de faire une trace d'une fourmi.
@@ -139,5 +160,32 @@ public class CompteurFourmi extends Report {
   public void traceMouvement(Place placeDep, Place placeFin) {
     // TODO Auto-generated method stub
 
+  }
+
+  @Override
+  public void applique() {
+    this.remiseAZero();
+
+    for (CompteurObserver obs : observers) {
+      obs.agitSur(this);
+    }
+
+  }
+
+  private void remiseAZero() {
+    this.cptAdulte = 0;
+    this.cptCadavre = 0;
+    this.cptLarve = 0;
+    this.cptNymphe = 0;
+    this.cptOeuf = 0;
+
+  }
+
+  public void setNid(Nid nid2) {
+    this.nid = nid2;
+  }
+
+  public void ajoutObserver(CompteurObserver compteur) {
+    this.observers.add(compteur);
   }
 }

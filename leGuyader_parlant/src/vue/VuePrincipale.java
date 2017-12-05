@@ -35,6 +35,8 @@ public class VuePrincipale implements ReportObserver {
     this.casesProies = new HashMap<Place, IDrawable>();
     ReportMouvementChasse report = ReportMouvementChasse.getInstance();
     report.addObserver(this);
+    ReportMouvementProie reportProie = ReportMouvementProie.getInstance();
+    reportProie.addObserver(this);
   }
 
   public void affichage() {
@@ -103,11 +105,11 @@ public class VuePrincipale implements ReportObserver {
   }
 
   private void miseAJourProie(ReportObservable rep) {
-    ReportMouvementChasse report = (ReportMouvementChasse) rep;
+    ReportMouvementProie report = (ReportMouvementProie) rep;
     Place ancienne = report.getAnciennePlace();
     Place nouvelle = report.getNouvellePlace();
 
-    enleveProie(ancienne, this.placesFourmi);
+    enleveProie(ancienne, this.placesProie);
     ajouteProie(nouvelle);
   }
 

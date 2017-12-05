@@ -20,7 +20,7 @@ public class ReportPlace extends Report {
 
   @Override
   public void tracePlace(Place place) {
-    this.cpt = new CompteurFourmi();
+    this.cpt = CompteurFourmi.getInstance();
     List<Fourmi> lesFourmis = new ArrayList<Fourmi>();
     for (Fourmi uneFourmi : lesFourmis) {
       cpt.traceFourmi(uneFourmi);

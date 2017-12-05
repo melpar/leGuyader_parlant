@@ -6,6 +6,7 @@ import java.util.List;
 
 import population.Fourmi;
 import population.Proie;
+import report.CompteurFourmi;
 
 /**
  * Representation du Nid. Cette classe possede une liste de proies et une liste
@@ -26,6 +27,8 @@ public class Nid {
     this.listeFourmi = new ArrayList<Fourmi>();
     this.listeProie = new ArrayList<Proie>();
     this.placeNid = place;
+    CompteurFourmi cpt = CompteurFourmi.getInstance();
+    cpt.setNid(this);
   }
 
   public void ajouterProie(Proie nouvelleProie) {

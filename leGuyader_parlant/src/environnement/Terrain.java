@@ -161,7 +161,7 @@ public class Terrain {
       posX = 0;
     }
     if (posY >= this.largeurTerrain) {
-      posY = this.largeurTerrain;
+      posY = this.largeurTerrain - 1;
     }
 
     if (posY < 0) {
