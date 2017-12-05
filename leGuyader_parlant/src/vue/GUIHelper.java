@@ -19,6 +19,7 @@ public class GUIHelper {
     frame.getContentPane().add(component);
     frame.pack();
     frame.setVisible(true);
+    frame.setResizable(false);
   }
 
 }

@@ -10,11 +10,11 @@ import population.Proie;
 import population.etat.EtatAbstract;
 
 public class CompteurFourmi extends Report {
-  int cptOeuf;
-  int cptLarve;
-  int cptNymphe;
-  int cptAdulte;
-  int cptCadavre;
+  private int cptOeuf;
+  private int cptLarve;
+  private int cptNymphe;
+  private int cptAdulte;
+  private int cptCadavre;
 
   /**
    * Permet de faire une trace d'une fourmi.
@@ -93,5 +93,45 @@ public class CompteurFourmi extends Report {
   public void traceTerrain(Terrain unterrain) {
     // TODO Auto-generated method stub
 
+  }
+
+  public int getCptOeuf() {
+    return cptOeuf;
+  }
+
+  public void setCptOeuf(int cptOeuf) {
+    this.cptOeuf = cptOeuf;
+  }
+
+  public int getCptLarve() {
+    return cptLarve;
+  }
+
+  public void setCptLarve(int cptLarve) {
+    this.cptLarve = cptLarve;
+  }
+
+  public int getCptNymphe() {
+    return cptNymphe;
+  }
+
+  public void setCptNymphe(int cptNymphe) {
+    this.cptNymphe = cptNymphe;
+  }
+
+  public int getCptAdulte() {
+    return cptAdulte;
+  }
+
+  public void setCptAdulte(int cptAdulte) {
+    this.cptAdulte = cptAdulte;
+  }
+
+  public int getCptCadavre() {
+    return cptCadavre;
+  }
+
+  public void setCptCadavre(int cptCadavre) {
+    this.cptCadavre = cptCadavre;
   }
 }
