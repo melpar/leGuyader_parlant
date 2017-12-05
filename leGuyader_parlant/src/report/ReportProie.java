@@ -11,22 +11,22 @@ import population.etat.EtatAbstract;
 
 public class ReportProie extends Report {
 
-  private int positionX;
-  private int positionY;
+  private Place place;
   private double poids;
 
   @Override
   public void traceProie(Proie uneProie) {
-    this.positionX = uneProie.getPlaceProie().getX();
-    this.positionY = uneProie.getPlaceProie().getY();
+    this.place = uneProie.getPlaceProie();
     this.poids = uneProie.getPoids();
   }
 
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append("Proie  ");
-    stringBuilder.append(" à la position (").append(positionX).append(",").append(positionY);
-    stringBuilder.append(") Poids (").append(this.poids).append(")\n");
+    stringBuilder.append("Proie ( ").append(this.poids).append(" mg)");
+    stringBuilder.append(" à la position ");
+    ReportPlace reportPlace = new ReportPlace();
+    reportPlace.tracePlace(this.place);
+    stringBuilder.append(reportPlace.toString());
     return stringBuilder.toString();
   }
 
