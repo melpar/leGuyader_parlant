@@ -66,7 +66,6 @@ public class MediateurDeplacementProie {
 
     // Modification de la place
     this.uneProie.setPlaceProie(nouvellePlace);
-    System.out.println("test");
   }
 
   public void setProie(Proie uneProie) {

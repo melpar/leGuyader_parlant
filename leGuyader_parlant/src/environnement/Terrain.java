@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mediateur.MediateurDeplacementChasse;
+import mediateur.MediateurDeplacementDepot;
 import mediateur.MediateurDeplacementProie;
 import population.Fourmi;
 import population.Proie;
@@ -59,6 +60,7 @@ public class Terrain {
     // initialisation instance Mediateur
     MediateurDeplacementChasse.getInstance(this);
     MediateurDeplacementProie.getInstance(this);
+    MediateurDeplacementDepot.getInstance(this);
   }
 
   /**

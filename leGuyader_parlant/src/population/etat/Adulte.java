@@ -1,9 +1,12 @@
 package population.etat;
 
+import mediateur.MediateurDeplacementDepot;
 import population.Fourmi;
 import population.role.Ouvriere;
 import population.role.RoleAbstract;
 import population.role.Roles;
+import population.role.Sexue;
+import population.role.Soldat;
 import temps.Duree;
 
 /**
@@ -17,6 +20,7 @@ public class Adulte extends EtatAbstract {
    * Role de la fourmie.
    */
   private RoleAbstract role;
+  private MediateurDeplacementDepot mediateurDepot;
 
   /**
    * Créé un état adulte.
@@ -31,7 +35,21 @@ public class Adulte extends EtatAbstract {
     this.dateFin = new Duree(dureeCourante);
     this.etat = Etats.ADULTE;
     this.tempsCourant = dureeCourante;
-    this.role = new Ouvriere(maFourmi);
+    int roleAdulte = (int) (Math.random() * (3));
+    switch (roleAdulte) {
+      case 0:
+        this.role = new Ouvriere(maFourmi);
+        break;
+      case 1:
+        this.role = new Soldat(maFourmi);
+        break;
+      case 2:
+        this.role = new Sexue(maFourmi);
+        break;
+      default:
+        break;
+    }
+    this.mediateurDepot = MediateurDeplacementDepot.getInstance();
   }
 
   public RoleAbstract getRole() {
@@ -51,7 +69,18 @@ public class Adulte extends EtatAbstract {
   public void agitSur() {
     if (this.getRole().getRole() == Roles.OUVRIERE) {
       ((Ouvriere) this.getRole()).deplace();
+    } else {
+      if (this.getRole().getRole() != Roles.REINE) {
+        this.deplace();
+      }
     }
 
+  }
+
+  public void deplace() {
+    mediateurDepot.setFourmi(maFourmi);
+    mediateurDepot.deplacement();
+    System.out.println(
+        "fourmi :[" + maFourmi.getPlace().getX() + " : " + maFourmi.getPlace().getX() + "]");
   }
 }

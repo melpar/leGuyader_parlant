@@ -1,11 +1,11 @@
 package mediateur;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import environnement.Pheromone;
 import environnement.Place;
 import environnement.Terrain;
+import java.util.ArrayList;
+import java.util.List;
+
 import population.Fourmi;
 
 public class MediateurDeplacementChasse {
