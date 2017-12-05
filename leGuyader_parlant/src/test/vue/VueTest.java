@@ -15,7 +15,7 @@ import vue.VuePrincipale;
 
 public class VueTest {
   public static void main(String[] args) {
-    Terrain terrainTest = new Terrain(500, 500);
+    Terrain terrainTest = new Terrain(200, 200);
     Temps tempsCourant = new Temps();
     Fourmi fourmiReine = new Fourmi(true, terrainTest.getPlace(30, 45), tempsCourant);
     fourmiReine.setReine();

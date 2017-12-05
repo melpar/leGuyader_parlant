@@ -3,6 +3,7 @@ package mediateur;
 import java.util.ArrayList;
 import java.util.List;
 
+import environnement.Pheromone;
 import environnement.Place;
 import environnement.Terrain;
 import population.Fourmi;
@@ -65,6 +66,7 @@ public class MediateurDeplacementChasse {
 
     // Modification de la place
     this.fourmi.setPlace(nouvellePlace);
+    nouvellePlace.ajouterPheromone(Pheromone.PHEROMONE_CHASSE);
   }
 
   public void setFourmi(Fourmi uneFourmi) {

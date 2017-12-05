@@ -34,7 +34,7 @@ public class Reine extends RoleAbstract {
    */
   public void pond() {
     if (this.fourmiliere != null) {
-      for (int i = 0; i < 50; i++) {
+      for (int i = 0; i < 100; i++) {
         boolean isMale = false;
         if (i % 2 == 0) {
           isMale = true;

@@ -17,6 +17,7 @@ import report.ReportObservable;
 
 public class VuePrincipale implements ReportObserver {
 
+  private final int COEFFICIENT = 4;
   private Terrain terrain;
   private JCanvas jc;
   private ListenerNid listenerNid;
@@ -42,7 +43,8 @@ public class VuePrincipale implements ReportObserver {
   public void affichage() {
     jc = new JCanvas();
     jc.setBackground(Color.WHITE);
-    jc.setPreferredSize(new Dimension(terrain.getLargeurTerrain(), terrain.getLongueurTerrain()));
+    jc.setPreferredSize(new Dimension(terrain.getLargeurTerrain() * COEFFICIENT,
+        terrain.getLongueurTerrain() * COEFFICIENT));
     jc.addMouseListener(listenerNid);
     GUIHelper.showOnFrame(jc, "Fourmilière");
     this.initialisation();
@@ -55,27 +57,32 @@ public class VuePrincipale implements ReportObserver {
     Place placeNid = terrain.getPlaceNid();
     this.listenerNid.setPlaceNid(placeNid);
     for (Place place : placesAdultes) {
-      Dimension dim = new Dimension(10, 10);
-      IDrawable rect = new RectangleDrawable(Color.RED, new Point(place.getX(), place.getY()), dim);
+      Dimension dim = new Dimension(10 * COEFFICIENT, 10 * COEFFICIENT);
+      IDrawable rect = new RectangleDrawable(Color.RED,
+          new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
       jc.addDrawable(rect);
       cases.put(place, rect);
       ajoutePlace(this.placesFourmi, place);
     }
 
     for (Place place : placesProies) {
-      Dimension dim = new Dimension(3, 3);
-      IDrawable rect = new RectangleDrawable(Color.BLUE, new Point(place.getX(), place.getY()),
-          dim);
+      Dimension dim = new Dimension(3 * COEFFICIENT, 3 * COEFFICIENT);
+      IDrawable rect = new RectangleDrawable(Color.BLUE,
+          new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
       jc.addDrawable(rect);
       casesProies.put(place, rect);
       ajoutePlace(this.placesProie, place);
     }
 
-    Dimension dim = new Dimension(10, 10);
-    IDrawable rect = new RectangleDrawable(Color.BLACK, new Point(placeNid.getX(), placeNid.getY()),
-        dim);
-
+    Dimension dim = new Dimension(10 * COEFFICIENT, 10 * COEFFICIENT);
+    IDrawable rect = new RectangleDrawable(Color.BLACK,
+        new Point(placeNid.getX() * COEFFICIENT, placeNid.getY() * COEFFICIENT), dim);
     jc.addDrawable(rect);
+
+    Place placeDepot = terrain.getPlaceDepot();
+    IDrawable rectDepot = new RectangleDrawable(Color.ORANGE,
+        new Point(placeDepot.getX(), placeDepot.getY()), dim);
+    jc.addDrawable(rectDepot);
   }
 
   private void ajoutePlace(Map<Place, Integer> liste, Place place) {
@@ -128,8 +135,9 @@ public class VuePrincipale implements ReportObserver {
       value = this.placesFourmi.get(place);
       value++;
     } else {
-      Dimension dim = new Dimension(3, 3);
-      IDrawable rect = new RectangleDrawable(Color.RED, new Point(place.getX(), place.getY()), dim);
+      Dimension dim = new Dimension(3 * COEFFICIENT, 3 * COEFFICIENT);
+      IDrawable rect = new RectangleDrawable(Color.RED,
+          new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
       jc.addDrawable(rect);
       cases.put(place, rect);
     }
@@ -155,9 +163,9 @@ public class VuePrincipale implements ReportObserver {
       value = this.placesProie.get(place);
       value++;
     } else {
-      Dimension dim = new Dimension(3, 3);
-      IDrawable rect = new RectangleDrawable(Color.BLUE, new Point(place.getX(), place.getY()),
-          dim);
+      Dimension dim = new Dimension(3 * COEFFICIENT, 3 * COEFFICIENT);
+      IDrawable rect = new RectangleDrawable(Color.BLUE,
+          new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
       jc.addDrawable(rect);
       casesProies.put(place, rect);
     }

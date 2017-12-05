@@ -213,4 +213,8 @@ public class Terrain {
     return places;
   }
 
+  public Place getPlaceDepot() {
+    return this.fourmiliere.getDepotFourmiliere().getPlaceDepot();
+  }
+
 }

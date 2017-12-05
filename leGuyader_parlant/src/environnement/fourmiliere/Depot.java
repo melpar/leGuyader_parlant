@@ -63,4 +63,12 @@ public class Depot {
     this.listeCadavreProie = listeCadavreProie;
   }
 
+  public Place getPlaceDepot() {
+    return placeDepot;
+  }
+
+  public void setPlaceDepot(Place placeDepot) {
+    this.placeDepot = placeDepot;
+  }
+
 }
