@@ -17,6 +17,9 @@ public class ReportTerrain extends Report {
   private Fourmiliere unefourmiliere;
   private List<Proie> uneListeProie;
 
+  /**
+   * 
+   */
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append("Terrain :\n");

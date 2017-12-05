@@ -13,8 +13,8 @@ import population.Proie;
 import population.etat.EtatAbstract;
 
 public class ReportPlace extends Report {
-  private int x;
-  private int y;
+  private int positionX;
+  private int positionY;
 
   private CompteurFourmi cpt;
 
@@ -25,15 +25,18 @@ public class ReportPlace extends Report {
     for (Fourmi uneFourmi : lesFourmis) {
       cpt.traceFourmi(uneFourmi);
     }
-    this.x = place.getX();
-    this.y = place.getY();
+    this.positionX = place.getX();
+    this.positionY = place.getY();
 
   }
 
+  /**
+   * 
+   */
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append("( ").append(this.x).append(" : ");
-    stringBuilder.append(this.y).append(" )\n");
+    stringBuilder.append("( ").append(this.positionX).append(" : ");
+    stringBuilder.append(this.positionY).append(" )\n");
     return stringBuilder.toString();
   }
 
