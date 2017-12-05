@@ -188,4 +188,21 @@ public class Terrain {
     this.placeTerrain = placeTerrain;
   }
 
+  public Place getPlaceNid() {
+    return this.fourmiliere.getNidFourmiliere().getPlaceNid();
+  }
+
+  public List<Place> getPlaceProies() {
+    List<Place> places = new ArrayList<Place>();
+    for (Proie proie : this.listeProie) {
+      places.add(proie.getPlaceProie());
+    }
+    return places;
+  }
+
+  public List<Place> getPlacesAdultes() {
+    List<Place> places = new ArrayList<Place>();
+    return places;
+  }
+
 }
