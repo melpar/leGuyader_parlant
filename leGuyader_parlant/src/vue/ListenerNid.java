@@ -20,10 +20,10 @@ public class ListenerNid implements MouseListener {
 
   @Override
   public void mouseClicked(MouseEvent e) {
-    if ((this.placeNid.getX() * VuePrincipale.COEFFICIENT + 5) > e.getX()
-        && (this.placeNid.getX() * VuePrincipale.COEFFICIENT - 5) < e.getX()) {
-      if ((this.placeNid.getY() * VuePrincipale.COEFFICIENT + 5) > e.getY()
-          && (this.placeNid.getY() * VuePrincipale.COEFFICIENT - 5) < e.getY()) {
+    if (((this.placeNid.getX() + 5) * VuePrincipale.COEFFICIENT) > e.getX()
+        && ((this.placeNid.getX() - 5) * VuePrincipale.COEFFICIENT) < e.getX()) {
+      if (((this.placeNid.getY() + 5) * VuePrincipale.COEFFICIENT) > e.getY()
+          && ((this.placeNid.getY() - 5) * VuePrincipale.COEFFICIENT) < e.getY()) {
         PopUpNid popup = new PopUpNid(terrain.getFourmiliere().getNidFourmiliere().getListeFourmi(),
             this.terrain.getFourmiliere().getNidFourmiliere().getListeProie());
       }

@@ -27,7 +27,7 @@ public class VueTest {
     fourmiReine.pond();
     Nid nid = terrainTest.getFourmiliere().getNidFourmiliere();
 
-    for (int i = 0; i < 200; i++) {
+    for (int i = 0; i < 500; i++) {
       Proie proie = new Proie(terrainTest.getFourmiliere().getPlaceFourmiliere(), 2);
       proie.setEtat(new ProieMorte());
       nid.ajouterProie(proie);
@@ -46,5 +46,6 @@ public class VueTest {
 
     Thread th = new Thread(tempsCourant);
     th.start();
+
   }
 }

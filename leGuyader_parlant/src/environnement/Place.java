@@ -63,7 +63,7 @@ public class Place {
   public Boolean ajouterPheromone(Pheromone pheromone) {
     int indice = this.contientPheromone(pheromone);
     if (indice == (-1)) {
-      MediateurPheromone gestion = new MediateurPheromone(pheromone, this.tempsCourant);
+      MediateurPheromone gestion = new MediateurPheromone(pheromone, this.tempsCourant, this);
       this.listePheromone.put(pheromone, gestion);
       return true;
     }
@@ -91,6 +91,11 @@ public class Place {
 
   public List<Pheromone> getListePheromone() {
     return new ArrayList<Pheromone>(listePheromone.keySet());
+  }
+
+  public void removePheromone(Pheromone pheromone) {
+    this.listePheromone.remove(pheromone);
+    
   }
 
 }

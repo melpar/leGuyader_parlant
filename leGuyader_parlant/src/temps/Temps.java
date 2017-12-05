@@ -19,12 +19,16 @@ public class Temps implements Runnable {
     this.observeurs.add(observeur);
   }
 
+  public void removeObserveur(TempsObserver observeur) {
+    this.observeurs.remove(observeur);
+  }
+
   @Override
   public void run() {
     while (true) {
       try {
         Thread.sleep(100);
-        this.tempsCourant.addJour(1);
+        this.tempsCourant.addHeure(1);
         this.applique();
       } catch (InterruptedException e) {
         // TODO Auto-generated catch block
@@ -34,9 +38,8 @@ public class Temps implements Runnable {
   }
 
   private void applique() {
-    System.out.println("applique " + this.tempsCourant.toString());
-    for (TempsObserver observeur : observeurs) {
-      observeur.agitSur();
+    for (int i = 0; i < observeurs.size(); i++) {
+      observeurs.get(i).agitSur();
     }
 
   }

@@ -120,6 +120,7 @@ public class VuePrincipale implements ReportObserver {
     } else if (report instanceof ReportMouvementProie) {
       miseAJourProie(report);
     } else if (report instanceof ReportPheromone) {
+
       miseAJourPheromone(report);
     }
 
@@ -174,6 +175,7 @@ public class VuePrincipale implements ReportObserver {
   private void miseAJourPheromone(ReportObservable rep) {
     ReportPheromone report = (ReportPheromone) rep;
     Place place = report.getPlace();
+
     if (place.getListePheromone().size() == 0) {
       this.enleverPheromone(place);
     } else {
@@ -183,9 +185,9 @@ public class VuePrincipale implements ReportObserver {
 
   private void enleverPheromone(Place place) {
     if (this.placesPheromone.get(place) != null) {
+
       this.placesPheromone.remove(place);
       jc.removeDrawable(casesPheromone.get(place));
-
     }
   }
 

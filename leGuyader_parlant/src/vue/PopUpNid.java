@@ -23,7 +23,7 @@ public class PopUpNid extends JFrame implements CompteurObserver {
 
   public PopUpNid(List<Fourmi> fourmis, List<Proie> proies) {
     super();
-    this.setSize(new Dimension(120, 120));
+    this.setSize(new Dimension(200, 200));
     this.setVisible(true);
     this.listeFourmis = fourmis;
     this.listeProie = proies;
@@ -60,7 +60,6 @@ public class PopUpNid extends JFrame implements CompteurObserver {
 
   @Override
   public void agitSur(CompteurObservable report) {
-    System.out.println(" sur");
     this.afficherInformationsNid();
 
   }

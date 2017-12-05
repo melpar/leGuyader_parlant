@@ -8,4 +8,5 @@ public interface MediateurDeplacement {
 
   public void setFourmi(Fourmi uneFourmi);
 
+  public Fourmi getFourmi();
 }

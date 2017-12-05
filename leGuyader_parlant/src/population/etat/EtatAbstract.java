@@ -29,7 +29,7 @@ public abstract class EtatAbstract {
 
   protected boolean estFini() {
 
-    return this.tempsCourant.equals(dateFin);
+    return this.tempsCourant.estSuperieur(dateFin);
   }
 
   public void setTempsCourant(Duree tps) {

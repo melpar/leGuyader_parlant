@@ -53,8 +53,6 @@ public class Proie implements TempsObserver {
     Place ancienne = this.placeProie;
     mediateurProie.setProie(this);
     mediateurProie.deplacement();
-    System.out.println(
-        "Nouvelle place : " + this.getPlaceProie().getX() + "," + this.getPlaceProie().getY());
     ReportMouvementProie report = ReportMouvementProie.getInstance();
     report.traceMouvement(ancienne, this.placeProie);
 

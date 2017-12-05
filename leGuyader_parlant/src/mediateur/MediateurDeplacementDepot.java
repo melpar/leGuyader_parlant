@@ -8,6 +8,7 @@ import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
 import population.etat.Adulte;
+import report.CompteurFourmi;
 import report.ReportMouvementDepot;
 
 public class MediateurDeplacementDepot implements MediateurDeplacement {
@@ -51,9 +52,7 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
       } else {
         this.terrain.getFourmiliere().getDepotFourmiliere().ajouterCadavreProie(this.uneProie);
         ((Adulte) uneFourmi.getEtat()).changerTrajet();
-        System.out.println("____________________________dépot");
       }
-      System.out.println(positionXFinal + " " + positionYFinal);
       // Modification de la place
       this.uneFourmi.setPlace(this.terrain.getPlace(positionXFinal, positionYFinal));
       ReportMouvementDepot report = ReportMouvementDepot.getInstance();
@@ -65,14 +64,21 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
     this.uneFourmi = uneFourmi;
     Nid nid = this.terrain.getFourmiliere().getNidFourmiliere();
     if (nid.getListeProie().size() > 0) {
-      System.out.println("proie" + nid.getListeProie().size());
       this.setProie(nid.getListeProie().get(0));
+      CompteurFourmi cpt = CompteurFourmi.getInstance();
+      cpt.applique();
+
     }
   }
 
   public void setProie(Proie uneProie) {
     this.terrain.getFourmiliere().getNidFourmiliere().supprimerProie(uneProie);
     this.uneProie = uneProie;
+  }
+
+  @Override
+  public Fourmi getFourmi() {
+    return this.uneFourmi;
   }
 
 }

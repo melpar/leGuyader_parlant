@@ -109,9 +109,8 @@ public class Fourmi implements TempsObserver {
 
   @Override
   public void agitSur() {
-    System.out.println("Ancien etat : " + this.etat.getEtat());
     this.etat.agitSur();
-    System.out.println("Nouvel etat : " + this.etat.getEtat());
+
   }
 
   void trace(Report report) {

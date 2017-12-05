@@ -90,7 +90,9 @@ public class Adulte extends EtatAbstract {
   }
 
   public void deplace() {
-    mediateur.setFourmi(maFourmi);
+    if (mediateur.getFourmi() == null) {
+      mediateur.setFourmi(maFourmi);
+    }
     mediateur.deplacement();
     // System.out.println(
     // "fourmi :[" + maFourmi.getPlace().getX() + " : " + maFourmi.getPlace().getX()

@@ -7,18 +7,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 import population.Fourmi;
+import population.TempsObserver;
+import report.ReportPheromone;
 import temps.Duree;
 import temps.Temps;
 
-public class MediateurPheromone {
+public class MediateurPheromone implements TempsObserver {
   Pheromone pheromone;
   Temps tempsCourant;
   Duree dureeCourante;
+  Place place;
 
-  public MediateurPheromone(Pheromone pheromone, Temps tempsCourant) {
+  public MediateurPheromone(Pheromone pheromone, Temps tempsCourant, Place place) {
     this.pheromone = pheromone;
     this.tempsCourant = tempsCourant;
     this.dureeCourante = new Duree(tempsCourant.getTempsCourant());
+    this.place = place;
+    this.tempsCourant.addObserveur(this);
+  }
+
+  @Override
+  public void agitSur() {
+    // TODO Auto-generated method stub
+    if (tempsCourant.getTempsCourant()
+        .estSuperieur(Duree.ajouter(pheromone.getDuree(), this.dureeCourante))) {
+      this.place.removePheromone(this.pheromone);
+      ReportPheromone reportPhero = ReportPheromone.getInstance();
+      reportPhero.tracePlace(this.place);
+      this.tempsCourant.removeObserveur(this);
+    }
+
   }
 
 }

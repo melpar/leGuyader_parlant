@@ -43,10 +43,8 @@ public class MediateurDeplacementFourmiliere implements MediateurDeplacement {
         }
       }
     } else {
-      System.out.println("____________________________fourmiliere");
       ((Adulte) this.uneFourmi.getEtat()).changerTrajet();
     }
-    System.out.println(positionXFinal + " " + positionYFinal);
     // Modification de la place
     this.uneFourmi.setPlace(this.terrain.getPlace(positionXFinal, positionYFinal));
     ReportMouvementDepot report = ReportMouvementDepot.getInstance();
@@ -55,6 +53,11 @@ public class MediateurDeplacementFourmiliere implements MediateurDeplacement {
 
   public void setFourmi(Fourmi uneFourmi) {
     this.uneFourmi = uneFourmi;
+  }
+
+  @Override
+  public Fourmi getFourmi() {
+    return this.uneFourmi;
   }
 
 }
