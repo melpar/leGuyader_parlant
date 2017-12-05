@@ -31,7 +31,10 @@ public class ReportPlace extends Report {
   }
 
   public String toString() {
-    return "test";
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("( ").append(this.x).append(" : ");
+    stringBuilder.append(this.y).append(" )\n");
+    return stringBuilder.toString();
   }
 
   @Override

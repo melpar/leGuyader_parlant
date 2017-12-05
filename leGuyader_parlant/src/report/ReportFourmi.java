@@ -11,8 +11,7 @@ import population.etat.EtatAbstract;
 
 public class ReportFourmi extends Report {
 
-  private int positionX;
-  private int positionY;
+  private Place place;
   private String etat;
 
   /**
@@ -22,15 +21,16 @@ public class ReportFourmi extends Report {
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(this.etat);
-    stringBuilder.append(" à la position (").append(positionX).append(",").append(positionY);
-    stringBuilder.append(")\n");
+    stringBuilder.append(" à la position ");
+    ReportPlace reportPlace = new ReportPlace();
+    reportPlace.tracePlace(this.place);
+    stringBuilder.append(reportPlace.toString());
     return stringBuilder.toString();
   }
 
   @Override
   public void traceFourmi(Fourmi uneFourmi) {
-    this.positionX = uneFourmi.getPlace().getX();
-    this.positionY = uneFourmi.getPlace().getY();
+    this.place = uneFourmi.getPlace();
     this.etat = uneFourmi.getEtat().getEtat().name();
   }
 
