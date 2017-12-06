@@ -31,7 +31,6 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
       int positionY = this.uneFourmi.getPlace().getY();
       int positionXFinal = positionX;
       int positionYFinal = positionY;
-      // Depot depot = this.terrain.getFourmiliere().getDepotFourmiliere();
       Place place = this.terrain.getPlaceDepot();
       if ((place.getX() != positionX) || (place.getY() != positionY)) {
         if (place.getX() != positionX) {
@@ -49,14 +48,17 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
             positionYFinal = positionY - 1;
           }
         }
+        this.uneFourmi.setPlace(this.terrain.getPlace(positionXFinal, positionYFinal));
+        this.uneProie.setPlaceProie(this.uneFourmi.getPlace());
+        ReportMouvementDepot report = ReportMouvementDepot.getInstance();
+        report.traceMouvement(ancienne, this.uneFourmi.getPlace());
       } else {
         this.terrain.getFourmiliere().getDepotFourmiliere().ajouterCadavreProie(this.uneProie);
+        this.uneProie = null;
         ((Adulte) uneFourmi.getEtat()).changerTrajet();
       }
       // Modification de la place
-      this.uneFourmi.setPlace(this.terrain.getPlace(positionXFinal, positionYFinal));
-      ReportMouvementDepot report = ReportMouvementDepot.getInstance();
-      report.traceMouvement(ancienne, this.uneFourmi.getPlace());
+
     }
   }
 

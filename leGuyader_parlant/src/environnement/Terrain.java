@@ -29,6 +29,7 @@ public class Terrain {
   private static Terrain instanceTerrain;
   private static final int LARGEUR_MIN_TERRAIN = 5;
   private static final int LONGUEUR_MIN_TERRAIN = 5;
+  private static final int DISTANCE_MAX_DEPOT = 50;
 
   public static Terrain getInstance() {
     return Terrain.instanceTerrain;
@@ -94,7 +95,7 @@ public class Terrain {
     fourmiReine.setReine();
     this.setFourmiliere(fourmiReine.creeFourmiliere());
     ((Reine) ((Adulte) fourmiReine.getEtat()).getRole()).setFourmiliere(this.fourmiliere);
-    this.fourmiliere.setDepotFourmiliere(new Depot(this.genPlace()));
+    this.fourmiliere.setDepotFourmiliere(this.genDepot(DISTANCE_MAX_DEPOT));
     this.fourmiliere.ajouterFourmiNid(fourmiReine);
   }
 
@@ -104,6 +105,33 @@ public class Terrain {
       Place placeProie = this.genPlace();
       this.listeProie.add(new Proie(placeProie, Math.floor(poids)));
     }
+  }
+
+  public Depot genDepot(int distance) {
+    Place placeFourmiliere = this.fourmiliere.getPlaceFourmiliere();
+
+    int maxX = (placeFourmiliere.getX() + distance);
+    int minX = (placeFourmiliere.getX() - distance);
+    int axeX = (int) (Math.random() * (maxX - minX)) + minX;
+
+    int maxY = (placeFourmiliere.getY() + distance);
+    int minY = (placeFourmiliere.getY() - distance);
+    int axeY = (int) (Math.random() * (maxY - minY)) + minY;
+
+    if (axeX < 0) {
+      axeX = 0;
+    }
+    if (axeY < 0) {
+      axeY = 0;
+    }
+    if (axeX > this.longueurTerrain - 1) {
+      axeX = this.longueurTerrain;
+    }
+    if (axeY > this.largeurTerrain - 1) {
+      axeY = this.largeurTerrain;
+    }
+
+    return new Depot(this.getPlace(axeX, axeY));
   }
 
   /**
