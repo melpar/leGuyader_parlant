@@ -8,6 +8,10 @@ package population.etat;
  */
 public class ProieMorte extends EtatProieAbstract {
 
+  public ProieMorte() {
+    this.etatLibelle = EtatsProies.CADAVRE;
+  }
+
   @Override
   public void changeTemps() {
     // TODO Auto-generated method stub

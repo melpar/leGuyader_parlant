@@ -8,7 +8,6 @@ import java.util.List;
 
 import population.Fourmi;
 import population.Proie;
-import population.etat.ProieCapturee;
 
 public class MediateurDeplacementChasse {
   private Terrain terrain;
@@ -61,7 +60,7 @@ public class MediateurDeplacementChasse {
       Proie uneProie = terrain.aProieALaPlace(nouvellePlace);
 
       if (uneProie != null) {
-        if ((uneProie.isEnCombat() == null)) {
+        if ((uneProie.isEnCombat() == null && uneProie.getTempsAttenteCombat())) {
           MediateurCombat combat = new MediateurCombat(uneProie, fourmi.getTempsCourant());
           combat.ajouterFourmi(fourmi);
           fourmi.setEnCombat(true);

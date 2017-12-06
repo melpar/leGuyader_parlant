@@ -39,15 +39,22 @@ public class Adulte extends EtatAbstract {
     this.dateFin = new Duree(dureeCourante);
     this.etat = Etats.ADULTE;
     this.tempsCourant = dureeCourante;
-    int roleAdulte = (int) (Math.random() * (3));
+    int roleAdulte = (int) (Math.random() * (10));
     switch (roleAdulte) {
       case 0:
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
         this.role = new Ouvriere(maFourmi);
         break;
-      case 1:
+      case 6:
+      case 7:
         this.role = new Soldat(maFourmi);
         break;
-      case 2:
+      case 8:
+      case 9:
         this.role = new Sexue(maFourmi);
         break;
       default:

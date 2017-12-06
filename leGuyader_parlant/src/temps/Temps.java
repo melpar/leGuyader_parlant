@@ -28,7 +28,7 @@ public class Temps implements Runnable {
     while (true) {
       try {
         Thread.sleep(10);
-        this.tempsCourant.addMinute(30);
+        this.tempsCourant.addJour(1);
 
         this.applique();
       } catch (InterruptedException e) {

@@ -11,6 +11,10 @@ import temps.Duree;
 public class ProieVivante extends EtatProieAbstract {
   private Duree tempsAvantPartir;
 
+  public ProieVivante() {
+    this.etatLibelle = EtatsProies.VIVANTE;
+  }
+
   @Override
   public void changeTemps() {
     // TODO Auto-generated method stub

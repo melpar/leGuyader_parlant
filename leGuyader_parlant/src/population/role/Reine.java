@@ -15,7 +15,9 @@ import temps.Duree;
 public class Reine extends RoleAbstract implements TempsObserver {
 
   private Fourmiliere fourmiliere;
-
+  private Duree finFecondation;
+  private final int NOMBRE_MOIS_FECONDATION = 1;
+  private boolean enFecondation;
   /**
    * Créé un role reine.
    * 
@@ -32,6 +34,7 @@ public class Reine extends RoleAbstract implements TempsObserver {
     this.dateFin = new Duree();
     this.dateFin.addMois((int) (Math.random() * 12));
     this.dateFin.addAnnee((int) (Math.random() * 6) + 4);
+    this.enFecondation = false;
   }
 
   public void setFourmiliere(Fourmiliere fourmiliere) {
@@ -43,7 +46,9 @@ public class Reine extends RoleAbstract implements TempsObserver {
    */
   public void pond() {
     if (this.fourmiliere != null) {
-      for (int i = 0; i < 100; i++) {
+      this.enFecondation = false;
+      int nombreOeufs = 40 + (int) (Math.random() * 60);
+      for (int i = 0; i < nombreOeufs; i++) {
         boolean isMale = false;
         if (i % 2 == 0) {
           isMale = true;
@@ -54,11 +59,20 @@ public class Reine extends RoleAbstract implements TempsObserver {
         uneFourmi.setTempsCourant(this.maFourmi.getTempsCourant());
         this.fourmiliere.getNidFourmiliere().ajouterFourmi(uneFourmi);
       }
+      this.enFecondation = true;
+      this.finFecondation = new Duree(this.maFourmi.getTempsCourant().getTempsCourant());
+      finFecondation.addMois(NOMBRE_MOIS_FECONDATION);
     }
   }
 
   @Override
   public void agitSur() {
+    // ponte
+    if (maFourmi.getTempsCourant().getTempsCourant().estSuperieur(finFecondation)) {
+      this.pond();
+
+    }
+    // mort
     if (maFourmi.getTempsCourant().getTempsCourant()
         .estSuperieur(Duree.ajouter(this.maFourmi.getNaissance(), dateFin))) {
       this.maFourmi.changeEtat(this.maFourmi.getEtat().getEtat(),

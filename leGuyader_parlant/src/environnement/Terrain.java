@@ -4,10 +4,6 @@ import environnement.fourmiliere.Depot;
 import java.util.ArrayList;
 import java.util.List;
 
-import mediateur.MediateurDeplacementChasse;
-import mediateur.MediateurDeplacementDepot;
-import mediateur.MediateurDeplacementFourmiliere;
-import mediateur.MediateurDeplacementProie;
 import population.Fourmi;
 import population.Proie;
 import population.etat.Adulte;

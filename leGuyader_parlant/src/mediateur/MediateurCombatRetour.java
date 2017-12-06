@@ -79,7 +79,7 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
       for (Fourmi laFourmi : lesFourmis) {
         laFourmi.setEnCombat(false);
       }
-      uneProie.setEtat(new ProieCapturee());
+      uneProie.setEtat(new ProieCapturee(uneFourmi.getTempsCourant(), uneProie));
       uneFourmi.getTempsCourant().removeObserveur(this);
     }
 

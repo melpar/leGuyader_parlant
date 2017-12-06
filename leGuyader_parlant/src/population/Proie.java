@@ -7,6 +7,8 @@ import mediateur.MediateurCombatAbstract;
 import mediateur.MediateurDeplacementChasse;
 import mediateur.MediateurDeplacementProie;
 import population.etat.EtatProieAbstract;
+import population.etat.EtatsProies;
+import population.etat.ProieCapturee;
 import population.etat.ProieVivante;
 import population.role.RoleAbstract;
 import report.ReportMouvementChasse;
@@ -25,6 +27,7 @@ public class Proie implements TempsObserver {
   private Place placeProie;
   private MediateurDeplacementProie mediateurProie;
   private MediateurCombatAbstract enCombat;
+  private int attente;
 
   public Proie(Place place, double poids) {
     super();
@@ -33,6 +36,7 @@ public class Proie implements TempsObserver {
     this.etat = new ProieVivante();
     this.mediateurProie = new MediateurDeplacementProie(Terrain.getInstance());
     this.enCombat = null;
+    this.attente = 0;
   }
 
   public EtatProieAbstract getEtat() {
@@ -45,9 +49,13 @@ public class Proie implements TempsObserver {
 
   @Override
   public void agitSur() {
-    this.etat.changeTemps();
-    this.deplace();
 
+    this.etat.changeTemps();
+    if (this.getEtat().getLibelle() == EtatsProies.VIVANTE) {
+      this.deplace();
+    } else {
+      System.out.println("arrêté " + this.getEtat().getLibelle());
+    }
   }
 
   /**
@@ -84,6 +92,30 @@ public class Proie implements TempsObserver {
 
   public void setEnCombat(MediateurCombatAbstract enCombat) {
     this.enCombat = enCombat;
+  }
+
+  public MediateurDeplacementProie getMediateurProie() {
+    return mediateurProie;
+  }
+
+  public void setMediateurProie(MediateurDeplacementProie mediateurProie) {
+    this.mediateurProie = mediateurProie;
+  }
+
+  public boolean getTempsAttenteCombat() {
+    if (this.attente == 1) {
+      this.attente--;
+      return false;
+    }
+    return true;
+  }
+
+  public int getAttente() {
+    return attente;
+  }
+
+  public void setAttente(int attente) {
+    this.attente = attente;
   }
 
 }

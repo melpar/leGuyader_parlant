@@ -13,6 +13,10 @@ public abstract class MediateurCombatAbstract {
   protected Temps tempsCourant;
   protected Duree dureeDebut;
 
+  public void setProie(Proie proie) {
+    this.uneProie = proie;
+  }
+
   public boolean besoinAide() {
     return sommePoidsFourmis() < this.uneProie.getPoids();
   }
