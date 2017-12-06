@@ -1,8 +1,5 @@
 package report;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import environnement.Fourmiliere;
 import environnement.Place;
 import environnement.Terrain;
@@ -10,39 +7,23 @@ import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
-import population.ReportObserver;
 import population.etat.EtatAbstract;
 import temps.Temps;
 
-public class ReportMouvementProie extends Report implements ReportObservable {
-  Place anciennePlace;
-  Place nouvellePlace;
+public class ReportTemps extends Report {
 
-  List<ReportObserver> observers;
-
-  private static ReportMouvementProie instance;
-
-  private ReportMouvementProie() {
-    this.observers = new ArrayList<ReportObserver>();
-  }
-
-  public static ReportMouvementProie getInstance() {
-    if (instance == null) {
-      instance = new ReportMouvementProie();
-    }
-    return instance;
-  }
-
-  public void addObserver(ReportObserver obs) {
-    this.observers.add(obs);
-  }
+  Temps unTemps;
 
   @Override
-  public void applique() {
-    for (ReportObserver obs : observers) {
-      obs.agitSur(this);
-    }
+  public void traceTemps(Temps temps) {
+    this.unTemps = temps;
 
+  }
+
+  public String toString() {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(this.unTemps.getTempsCourant().toString());
+    return stringBuilder.toString();
   }
 
   @Override
@@ -95,30 +76,6 @@ public class ReportMouvementProie extends Report implements ReportObservable {
 
   @Override
   public void traceMouvement(Place placeDep, Place placeFin) {
-    this.anciennePlace = placeDep;
-    this.nouvellePlace = placeFin;
-    this.applique();
-
-  }
-
-  public Place getAnciennePlace() {
-    return anciennePlace;
-  }
-
-  public void setAnciennePlace(Place anciennePlace) {
-    this.anciennePlace = anciennePlace;
-  }
-
-  public Place getNouvellePlace() {
-    return nouvellePlace;
-  }
-
-  public void setNouvellePlace(Place nouvellePlace) {
-    this.nouvellePlace = nouvellePlace;
-  }
-
-  @Override
-  public void traceTemps(Temps temps) {
     // TODO Auto-generated method stub
 
   }

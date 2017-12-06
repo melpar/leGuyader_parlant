@@ -8,6 +8,7 @@ import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
 import population.etat.EtatAbstract;
+import temps.Temps;
 
 public abstract class Report {
   public abstract void traceFourmi(Fourmi uneFourmi);
@@ -27,4 +28,6 @@ public abstract class Report {
   public abstract void traceTerrain(Terrain unterrain);
 
   public abstract void traceMouvement(Place placeDep, Place placeFin);
+
+  public abstract void traceTemps(Temps temps);
 }

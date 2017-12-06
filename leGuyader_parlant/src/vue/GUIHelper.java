@@ -5,6 +5,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class GUIHelper {
 
@@ -15,6 +16,8 @@ public class GUIHelper {
         System.exit(0);
       }
     };
+
+    JPanel info = new JPanel();
     frame.addWindowListener(wa);
     frame.getContentPane().add(component);
     frame.pack();

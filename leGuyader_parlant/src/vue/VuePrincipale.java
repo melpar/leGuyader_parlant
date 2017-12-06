@@ -21,6 +21,7 @@ import report.ReportPheromone;
 public class VuePrincipale implements ReportObserver {
 
   public static final int COEFFICIENT = 4;
+  public static final int TAILLE_INFORMATION = 20;
   private Terrain terrain;
   private JCanvas jc;
   private ListenerNid listenerNid;
@@ -54,7 +55,7 @@ public class VuePrincipale implements ReportObserver {
   public void affichage() {
     jc = new JCanvas();
     jc.setBackground(Color.WHITE);
-    jc.setPreferredSize(new Dimension(terrain.getLargeurTerrain() * COEFFICIENT,
+    jc.setPreferredSize(new Dimension((terrain.getLargeurTerrain() * COEFFICIENT),
         terrain.getLongueurTerrain() * COEFFICIENT));
     jc.addMouseListener(listenerNid);
     GUIHelper.showOnFrame(jc, "Fourmilière");

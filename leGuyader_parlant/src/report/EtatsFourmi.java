@@ -10,6 +10,7 @@ import population.Proie;
 import population.etat.EtatAbstract;
 import population.etat.Etats;
 import temps.Duree;
+import temps.Temps;
 
 public class EtatsFourmi extends Report {
   Etats etat;
@@ -77,6 +78,12 @@ public class EtatsFourmi extends Report {
 
   @Override
   public void traceMouvement(Place placeDep, Place placeFin) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void traceTemps(Temps temps) {
     // TODO Auto-generated method stub
 
   }

@@ -11,6 +11,7 @@ import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
 import population.etat.EtatAbstract;
+import temps.Temps;
 
 public class ReportPlace extends Report {
   private int positionX;
@@ -78,6 +79,12 @@ public class ReportPlace extends Report {
 
   @Override
   public void traceMouvement(Place placeDep, Place placeFin) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void traceTemps(Temps temps) {
     // TODO Auto-generated method stub
 
   }

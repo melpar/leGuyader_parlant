@@ -13,6 +13,7 @@ import population.Fourmi;
 import population.Proie;
 import population.ReportObserver;
 import population.etat.EtatAbstract;
+import temps.Temps;
 
 public class ReportPheromone extends Report implements ReportObservable {
   private Place place;
@@ -107,6 +108,12 @@ public class ReportPheromone extends Report implements ReportObservable {
 
   public void setPlace(Place place) {
     this.place = place;
+  }
+
+  @Override
+  public void traceTemps(Temps temps) {
+    // TODO Auto-generated method stub
+
   }
 
 }

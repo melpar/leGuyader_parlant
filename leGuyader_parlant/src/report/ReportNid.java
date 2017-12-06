@@ -11,6 +11,7 @@ import java.util.List;
 import population.Fourmi;
 import population.Proie;
 import population.etat.EtatAbstract;
+import temps.Temps;
 
 public class ReportNid extends Report {
   private List<Fourmi> listeFourmi;
@@ -92,6 +93,12 @@ public class ReportNid extends Report {
 
   @Override
   public void traceMouvement(Place placeDep, Place placeFin) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void traceTemps(Temps temps) {
     // TODO Auto-generated method stub
 
   }

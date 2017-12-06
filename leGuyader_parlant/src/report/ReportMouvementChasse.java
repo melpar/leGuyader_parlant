@@ -12,6 +12,7 @@ import population.Fourmi;
 import population.Proie;
 import population.ReportObserver;
 import population.etat.EtatAbstract;
+import temps.Temps;
 
 public class ReportMouvementChasse extends Report implements ReportObservable {
   Place anciennePlace;
@@ -114,6 +115,12 @@ public class ReportMouvementChasse extends Report implements ReportObservable {
 
   public void setNouvellePlace(Place nouvellePlace) {
     this.nouvellePlace = nouvellePlace;
+  }
+
+  @Override
+  public void traceTemps(Temps temps) {
+    // TODO Auto-generated method stub
+
   }
 
 }
