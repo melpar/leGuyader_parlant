@@ -9,6 +9,12 @@ import population.Fourmi;
 import population.Proie;
 import population.etat.EtatsProies;
 
+/**
+ * Permet de gérer le déplacement aléatoire des proies.
+ * 
+ * @author parlanme
+ *
+ */
 public class MediateurDeplacementProie {
   private Terrain terrain;
   private Proie uneProie;
@@ -18,7 +24,7 @@ public class MediateurDeplacementProie {
   }
 
   /**
-   * Permet de rÃ©aliser un dÃ©placement.
+   * Permet de rÃ©aliser un dÃ©placement aléatoire de la proie.
    */
   public void deplacement() {
     if (this.uneProie.isEnCombat() == null

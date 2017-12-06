@@ -5,6 +5,12 @@ import population.TempsObserver;
 import report.Report;
 import temps.Duree;
 
+/**
+ * Regroupe les fonctions nécessaires à la gestion des états des fourmis.
+ * 
+ * @author parlanme
+ *
+ */
 public abstract class EtatAbstract {
   protected Fourmi maFourmi;
   protected Etats etat;

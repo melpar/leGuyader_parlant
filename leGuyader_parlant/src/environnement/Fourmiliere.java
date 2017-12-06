@@ -29,6 +29,12 @@ public class Fourmiliere {
     this.placeFourmiliere = placeF;
   }
 
+  /**
+   * Permet de créer une fourmiliere sur une place donnée
+   * 
+   * @param place
+   *          place donnée
+   */
   public Fourmiliere(Place place) {
     this.placeFourmiliere = place;
     this.nidFourmiliere = new Nid(place);

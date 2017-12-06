@@ -12,6 +12,12 @@ import report.CompteurNid;
 import report.ReportMouvementDepot;
 import report.ReportMouvementProie;
 
+/**
+ * Permet de gérer le déplacement de fourmis, pour aller au dépot.
+ * 
+ * @author parlanme
+ *
+ */
 public class MediateurDeplacementDepot implements MediateurDeplacement {
   private Terrain terrain;
   private Fourmi uneFourmi;
@@ -23,7 +29,7 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
   }
 
   /**
-   * Permet de rÃ©aliser un dÃ©placement.
+   * Permet de rÃ©aliser un dÃ©placement, permet à une fourmi d'aller dépot.
    */
   public void deplacement() {
 

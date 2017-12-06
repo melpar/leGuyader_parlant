@@ -19,6 +19,13 @@ import report.ReportMouvementProie;
 import temps.Duree;
 import temps.Temps;
 
+/**
+ * Permet de gérer le déplacement de fourmis, dans le cadre du retour aprés un
+ * combat.
+ * 
+ * @author parlanme
+ *
+ */
 public class MediateurCombatRetour extends MediateurCombatAbstract implements TempsObserver {
 
   public MediateurCombatRetour(Proie uneProie, List<Fourmi> lesFourmis, Temps tempsCourant) {
@@ -34,6 +41,9 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
     this.lesFourmis.add(uneFourmi);
   }
 
+  /**
+   * A chaque évolution du temps, les fourmis avec la proie se rapprochent du nid.
+   */
   @Override
   public void agitSur() {
     Terrain terrain = Terrain.getInstance();

@@ -9,6 +9,13 @@ import population.etat.ProieVivante;
 import temps.Duree;
 import temps.Temps;
 
+/**
+ * Permet de définir les éléments nécessaires au combat. Est implémenté par
+ * MediateurCombat et MediateurCombatRetour.
+ * 
+ * @author parlanme
+ *
+ */
 public abstract class MediateurCombatAbstract {
   protected List<Fourmi> lesFourmis;
   protected Proie uneProie;

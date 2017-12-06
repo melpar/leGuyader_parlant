@@ -12,6 +12,12 @@ import report.ReportPheromone;
 import temps.Duree;
 import temps.Temps;
 
+/**
+ * Permet de gérer les phéromones.
+ * 
+ * @author parlanme
+ *
+ */
 public class MediateurPheromone implements TempsObserver {
   Pheromone pheromone;
   Temps tempsCourant;
@@ -26,6 +32,9 @@ public class MediateurPheromone implements TempsObserver {
     this.tempsCourant.addObserveur(this);
   }
 
+  /**
+   * Si le temps est écoulé, le phéromone est détruit.
+   */
   @Override
   public void agitSur() {
     // TODO Auto-generated method stub

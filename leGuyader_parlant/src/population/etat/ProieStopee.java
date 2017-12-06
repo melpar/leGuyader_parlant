@@ -9,6 +9,13 @@ import population.Proie;
 import temps.Duree;
 import temps.Temps;
 
+/**
+ * Lorsqu'une proie est stoppée par une ou plusieurs fourmi(s). Dans cet état,
+ * le combat est en cours.
+ * 
+ * @author parlanme
+ *
+ */
 public class ProieStopee extends EtatProieAbstract {
 
   private final int nombeHeures = 10;

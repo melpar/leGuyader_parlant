@@ -7,6 +7,12 @@ import population.Proie;
 import population.etat.Adulte;
 import report.ReportMouvementDepot;
 
+/**
+ * Permet de gérer le déplacement de fourmis, pour revenir à la fourmilière.
+ * 
+ * @author parlanme
+ *
+ */
 public class MediateurDeplacementFourmiliere implements MediateurDeplacement {
   private Terrain terrain;
   private Fourmi uneFourmi;
@@ -16,7 +22,8 @@ public class MediateurDeplacementFourmiliere implements MediateurDeplacement {
   }
 
   /**
-   * Permet de rÃ©aliser un dÃ©placement.
+   * Permet de rÃ©aliser un dÃ©placement. Permet à une fourmi de retourner à la
+   * fourmilière.
    */
   public void deplacement() {
     Place ancienne = this.uneFourmi.getPlace();

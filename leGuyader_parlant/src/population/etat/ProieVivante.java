@@ -3,7 +3,7 @@ package population.etat;
 import temps.Duree;
 
 /**
- * Lorsqu'une proie est vivante, et pas capturÃ©e.
+ * Lorsqu'une proie est vivante, elle est libre de bouger aléatoirement.
  * 
  * @author parlanme
  *

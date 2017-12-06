@@ -6,10 +6,15 @@ import java.util.List;
 import population.Fourmi;
 import population.Proie;
 import population.TempsObserver;
-import population.etat.ProieStopee;
 import temps.Duree;
 import temps.Temps;
 
+/**
+ * Permet de gérer le combat d'une proie avec une ou des fourmi(s).
+ * 
+ * @author parlanme
+ *
+ */
 public class MediateurCombat extends MediateurCombatAbstract implements TempsObserver {
 
   /**
@@ -28,6 +33,10 @@ public class MediateurCombat extends MediateurCombatAbstract implements TempsObs
     this.dureeDebut = new Duree(tempsCourant.getTempsCourant());
   }
 
+  /**
+   * Si la/les fourmi(s) n'ont pas besoin d'aide supplémentaire, la proie est
+   * ramenée au dépot.
+   */
   @Override
   public void agitSur() {
     Duree ajouter = new Duree();

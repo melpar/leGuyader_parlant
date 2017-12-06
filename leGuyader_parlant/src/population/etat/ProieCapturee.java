@@ -9,7 +9,7 @@ import temps.Duree;
 import temps.Temps;
 
 /**
- * Lorsqu'une proie est capturÃ©e par une fourmi.
+ * Lorsqu'une proie est capturée par une fourmi. La fourmi la ramène au nid.
  * 
  * @author parlanme
  *

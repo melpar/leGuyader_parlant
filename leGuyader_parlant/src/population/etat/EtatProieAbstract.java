@@ -1,5 +1,11 @@
 package population.etat;
 
+/**
+ * Regroupe les fonctions nécessaires à la gestion des états des proies.
+ * 
+ * @author parlanme
+ *
+ */
 public abstract class EtatProieAbstract {
 
   protected EtatsProies etatLibelle;
