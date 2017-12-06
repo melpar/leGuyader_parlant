@@ -13,7 +13,7 @@ import population.etat.EtatAbstract;
 import population.etat.Larve;
 import population.etat.Nymphe;
 import population.etat.Oeuf;
-import report.CompteurFourmi;
+import report.CompteurNid;
 import report.EtatsFourmi;
 import report.ReportFourmi;
 import temps.Temps;
@@ -47,7 +47,7 @@ public class ReportTest {
 
       listeFourmis.add(uneFourmi);
     }
-    CompteurFourmi compteur = CompteurFourmi.getInstance();
+    CompteurNid compteur = CompteurNid.getInstance();
     for (Fourmi uneFourmi : listeFourmis) {
       compteur.traceFourmi(uneFourmi);
     }

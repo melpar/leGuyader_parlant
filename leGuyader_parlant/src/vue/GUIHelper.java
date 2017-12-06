@@ -17,7 +17,7 @@ import environnement.Terrain;
 import population.Fourmi;
 import population.Proie;
 import population.TempsObserver;
-import report.CompteurFourmi;
+import report.CompteurNid;
 import report.ReportTemps;
 import temps.Temps;
 
@@ -31,7 +31,7 @@ public class GUIHelper implements TempsObserver {
   private Terrain terrain;
   private JPanel InfosNid;
   private JLabel[] labelinformation;
-  private CompteurFourmi cpt;
+  private CompteurNid cpt;
 
   public void showOnFrame(JComponent component, String frameName, Temps tempsCourant) {
     this.frame = new JFrame(frameName);
@@ -41,11 +41,7 @@ public class GUIHelper implements TempsObserver {
       this.labelinformation[indice] = new JLabel();
     }
     this.terrain = Terrain.getInstance();
-    WindowAdapter wa = new WindowAdapter() {
-      public void windowClosing(WindowEvent e) {
-        System.exit(0);
-      }
-    };
+
     this.tempsCourantGui = tempsCourant;
     JPanel infosTemps = new JPanel();
     infosTemps.setLayout(new BorderLayout());
@@ -62,7 +58,13 @@ public class GUIHelper implements TempsObserver {
       this.InfosNid.add(this.labelinformation[indice]);
     }
 
-    this.frame.addWindowListener(wa);
+    WindowAdapter winAdpt = new WindowAdapter() {
+      public void windowClosing(WindowEvent e) {
+        System.exit(0);
+      }
+    };
+
+    this.frame.addWindowListener(winAdpt);
     this.frame.getContentPane().add(this.temps, BorderLayout.NORTH);
     this.frame.getContentPane().add(this.InfosNid, BorderLayout.WEST);
     this.frame.getContentPane().add(component, BorderLayout.CENTER);
@@ -81,7 +83,7 @@ public class GUIHelper implements TempsObserver {
   }
 
   public void actualiseCompteurNid() {
-    this.cpt = CompteurFourmi.getInstance();
+    this.cpt = CompteurNid.getInstance();
     cpt.remiseAZero();
     this.listeFourmis = this.terrain.getFourmiliere().getNidFourmiliere().getListeFourmi();
     for (Fourmi uneFourmi : listeFourmis) {

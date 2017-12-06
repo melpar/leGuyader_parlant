@@ -7,7 +7,7 @@ import environnement.Terrain;
 import population.Fourmi;
 import population.Proie;
 import population.etat.Etats;
-import report.CompteurFourmi;
+import report.CompteurNid;
 import temps.Duree;
 import temps.Temps;
 
@@ -62,7 +62,7 @@ public class PopulationTest {
     Terrain terrainTest = Terrain.getInstance(500, 500, tempsCourant);
     terrainTest.premiereReine(fourmi);
     fourmi.pond();
-    CompteurFourmi cpt = CompteurFourmi.getInstance();
+    CompteurNid cpt = CompteurNid.getInstance();
     assert (terrainTest.getFourmiliere().getNidFourmiliere().getNombreFourmi() == 51);
     for (Fourmi uneFourmi : terrainTest.getFourmiliere().getNidFourmiliere().getListeFourmi()) {
       cpt.traceFourmi(uneFourmi);

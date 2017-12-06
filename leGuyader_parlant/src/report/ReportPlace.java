@@ -17,11 +17,11 @@ public class ReportPlace extends Report {
   private int positionX;
   private int positionY;
 
-  private CompteurFourmi cpt;
+  private CompteurNid cpt;
 
   @Override
   public void tracePlace(Place place) {
-    this.cpt = CompteurFourmi.getInstance();
+    this.cpt = CompteurNid.getInstance();
     List<Fourmi> lesFourmis = new ArrayList<Fourmi>();
     for (Fourmi uneFourmi : lesFourmis) {
       cpt.traceFourmi(uneFourmi);

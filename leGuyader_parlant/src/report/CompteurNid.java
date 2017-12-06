@@ -17,7 +17,7 @@ import population.etat.EtatAbstract;
 import population.etat.ProieMorte;
 import temps.Temps;
 
-public class CompteurFourmi extends Report implements CompteurObservable {
+public class CompteurNid extends Report implements CompteurObservable {
   private int cptOeuf;
   private int cptLarve;
   private int cptNymphe;
@@ -25,18 +25,17 @@ public class CompteurFourmi extends Report implements CompteurObservable {
   private int cptCadavre;
   List<CompteurObserver> observers;
 
-  private static CompteurFourmi instance;
+  private static CompteurNid instance;
 
-  private Nid nid;
   private int cptProie;
 
-  private CompteurFourmi() {
+  private CompteurNid() {
     this.observers = new ArrayList<CompteurObserver>();
   }
 
-  public static CompteurFourmi getInstance() {
+  public static CompteurNid getInstance() {
     if (instance == null) {
-      instance = new CompteurFourmi();
+      instance = new CompteurNid();
     }
     return instance;
   }
@@ -184,10 +183,6 @@ public class CompteurFourmi extends Report implements CompteurObservable {
     this.cptOeuf = 0;
     this.cptProie = 0;
 
-  }
-
-  public void setNid(Nid nid2) {
-    this.nid = nid2;
   }
 
   public void ajoutObserver(CompteurObserver compteur) {

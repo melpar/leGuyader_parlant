@@ -14,7 +14,7 @@ import population.etat.Oeuf;
 import population.role.Reine;
 import population.role.RoleAbstract;
 import population.role.Roles;
-import report.CompteurFourmi;
+import report.CompteurNid;
 import report.Report;
 import temps.Duree;
 import temps.Temps;
@@ -88,7 +88,7 @@ public class Fourmi implements TempsObserver {
    */
   public void changeEtat(Etats etat, Duree tempsCourant) {
     this.tempsCourant.removeObserveur(this.etat);
-    CompteurFourmi cpt = CompteurFourmi.getInstance();
+    CompteurNid cpt = CompteurNid.getInstance();
     switch (etat) {
       case OEUF:
         this.etat = new Larve(this, tempsCourant);

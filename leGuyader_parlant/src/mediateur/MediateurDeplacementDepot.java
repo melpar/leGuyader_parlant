@@ -8,7 +8,7 @@ import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
 import population.etat.Adulte;
-import report.CompteurFourmi;
+import report.CompteurNid;
 import report.ReportMouvementDepot;
 
 public class MediateurDeplacementDepot implements MediateurDeplacement {
@@ -80,12 +80,12 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
     Nid nid = this.terrain.getFourmiliere().getNidFourmiliere();
     if (nid.getListeProie().size() > 0) {
       this.setProie(nid.getListeProie().get(0));
-      CompteurFourmi cpt = CompteurFourmi.getInstance();
+      CompteurNid cpt = CompteurNid.getInstance();
       cpt.applique();
     } else {
-      if (CompteurFourmi.getInstance().getcptCadavre() != 0) {
+      if (CompteurNid.getInstance().getcptCadavre() != 0) {
         this.setCadavre(nid.getCadavreFourmi());
-        CompteurFourmi cpt = CompteurFourmi.getInstance();
+        CompteurNid cpt = CompteurNid.getInstance();
         cpt.applique();
       }
     }
@@ -96,12 +96,12 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
     Nid nid = this.terrain.getFourmiliere().getNidFourmiliere();
     if (nid.getListeProie().size() > 0) {
       this.setProie(nid.getListeProie().get(0));
-      CompteurFourmi cpt = CompteurFourmi.getInstance();
+      CompteurNid cpt = CompteurNid.getInstance();
       cpt.applique();
     } else {
-      if (CompteurFourmi.getInstance().getcptCadavre() != 0) {
+      if (CompteurNid.getInstance().getcptCadavre() != 0) {
         this.setCadavre(nid.getCadavreFourmi());
-        CompteurFourmi cpt = CompteurFourmi.getInstance();
+        CompteurNid cpt = CompteurNid.getInstance();
         cpt.applique();
       }
     }

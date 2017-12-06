@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import population.CompteurObserver;
 import population.Fourmi;
 import population.Proie;
-import report.CompteurFourmi;
+import report.CompteurNid;
 import report.CompteurObservable;
 import report.ReportObservable;
 
@@ -29,13 +29,13 @@ public class PopUpNid extends JFrame implements CompteurObserver {
     this.listeProie = proies;
     panelInfos = new JPanel();
     this.afficherInformationsNid();
-    CompteurFourmi compteurFourmi = CompteurFourmi.getInstance();
+    CompteurNid compteurFourmi = CompteurNid.getInstance();
     compteurFourmi.ajoutObserver(this);
     this.add(panelInfos);
   }
 
   private void afficherInformationsNid() {
-    CompteurFourmi cpt = CompteurFourmi.getInstance();
+    CompteurNid cpt = CompteurNid.getInstance();
     cpt.remiseAZero();
     for (Fourmi uneFourmi : this.listeFourmis) {
       cpt.traceFourmi(uneFourmi);
