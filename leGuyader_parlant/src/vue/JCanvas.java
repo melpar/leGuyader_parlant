@@ -17,11 +17,13 @@ public class JCanvas extends JPanel {
   public void paint(Graphics g) {
     super.paint(g);
     // for (Iterator<IDrawable> iter = drawables.iterator(); iter.hasNext();) {
-    for (int i = 0; i < drawables.size(); i++) {
-      IDrawable d = drawables.get(i);
-      d.draw(g);
+    try {
+      for (int i = 0; i < drawables.size(); i++) {
+        IDrawable d = drawables.get(i);
+        d.draw(g);
+      }
+    } catch (java.lang.NullPointerException | java.lang.IndexOutOfBoundsException exc) {
     }
-    this.g = g;
     // drawables = new LinkedList<IDrawable>();
   }
 
