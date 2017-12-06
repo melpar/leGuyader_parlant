@@ -6,6 +6,8 @@ import java.util.List;
 
 import population.Fourmi;
 import population.Proie;
+import population.etat.Etats;
+import population.role.Roles;
 import report.CompteurFourmi;
 
 /**
@@ -97,6 +99,16 @@ public class Nid {
 
   public void setListeProie(List<Proie> listeProie) {
     this.listeProie = listeProie;
+  }
+
+  public Fourmi getCadavreFourmi() {
+    // TODO Auto-generated method stub
+    for (int indice = 0; indice < this.listeFourmi.size(); indice++) {
+      if (this.listeFourmi.get(indice).getEtat().getEtat() == Etats.CADAVRE) {
+        return this.listeFourmi.get(indice);
+      }
+    }
+    return null;
   }
 
 }

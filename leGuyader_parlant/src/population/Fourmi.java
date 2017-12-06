@@ -20,7 +20,7 @@ import temps.Duree;
 import temps.Temps;
 
 public class Fourmi implements TempsObserver {
-  private Duree age;
+  private Duree naissance;
   private boolean isMale;
   private double poids;
   private double amange;
@@ -38,7 +38,7 @@ public class Fourmi implements TempsObserver {
    *          position a la creation
    */
   public Fourmi(boolean isMale, Place place, Temps dureeCourante) {
-    this.age = new Duree();
+    this.naissance = new Duree(dureeCourante.getTempsCourant());
     this.isMale = isMale;
     double poids = 15 + Math.random() * (20 - 15);
     this.poids = Math.floor(poids);
@@ -103,6 +103,7 @@ public class Fourmi implements TempsObserver {
         cpt.applique();
         break;
       default:
+        this.tempsCourant.removeObserveur((Reine) ((Adulte) this.etat).getRole());
         this.etat = new Cadavre(this, tempsCourant);
         cpt.applique();
         break;
@@ -137,12 +138,12 @@ public class Fourmi implements TempsObserver {
     this.etat = etat;
   }
 
-  public Duree getAge() {
-    return age;
+  public Duree getNaissance() {
+    return naissance;
   }
 
-  public void setAge(Duree age) {
-    this.age = age;
+  public void setNaissance(Duree age) {
+    this.naissance = age;
   }
 
   public boolean isMale() {

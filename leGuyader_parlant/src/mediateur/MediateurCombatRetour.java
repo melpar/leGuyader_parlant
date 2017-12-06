@@ -35,7 +35,6 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
 
   @Override
   public void agitSur() {
-    System.out.println("deplacement retour");
     Terrain terrain = Terrain.getInstance();
     Fourmi uneFourmi = this.lesFourmis.get(0);
     Place ancienne = uneFourmi.getPlace();
@@ -44,7 +43,6 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
     int positionY = uneFourmi.getPlace().getY();
     int positionXFinal = positionX;
     int positionYFinal = positionY;
-    System.out.println("position init " + positionX + " " + positionY);
     Place place = terrain.getFourmiliere().getPlaceFourmiliere();
     if ((place.getX() != positionX) || (place.getY() != positionY)) {
       if (place.getX() != positionX) {
@@ -62,7 +60,6 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
           positionYFinal = positionY - 1;
         }
       }
-      System.out.println("position init " + positionXFinal + " " + positionYFinal);
       // Modification de la place
       for (Fourmi fourmi : this.lesFourmis) {
         fourmi.setPlace(terrain.getPlace(positionXFinal, positionYFinal));
@@ -73,7 +70,6 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
       ReportMouvementProie report = ReportMouvementProie.getInstance();
       report.traceMouvement(ancienne, uneProie.getPlaceProie());
     } else {
-      System.out.println("arrivé");
       Terrain unTerrain = Terrain.getInstance();
       unTerrain.supprimerProie(uneProie);
       unTerrain.getFourmiliere().getNidFourmiliere().ajouterProie(uneProie);

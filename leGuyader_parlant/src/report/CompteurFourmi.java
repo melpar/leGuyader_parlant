@@ -28,7 +28,6 @@ public class CompteurFourmi extends Report implements CompteurObservable {
   private static CompteurFourmi instance;
 
   private Nid nid;
-  private int cptProieCadavre;
   private int cptProie;
 
   private CompteurFourmi() {
@@ -107,7 +106,7 @@ public class CompteurFourmi extends Report implements CompteurObservable {
   @Override
   public void traceProie(Proie proie) {
     if (proie.getEtat() instanceof ProieMorte) {
-      this.cptProieCadavre++;
+      this.cptCadavre++;
     } else {
       this.cptProie++;
     }
@@ -157,10 +156,6 @@ public class CompteurFourmi extends Report implements CompteurObservable {
     this.cptAdulte = cptAdulte;
   }
 
-  public int getCptCadavre() {
-    return cptCadavre;
-  }
-
   public void setCptCadavre(int cptCadavre) {
     this.cptCadavre = cptCadavre;
   }
@@ -187,7 +182,6 @@ public class CompteurFourmi extends Report implements CompteurObservable {
     this.cptLarve = 0;
     this.cptNymphe = 0;
     this.cptOeuf = 0;
-    this.cptProieCadavre = 0;
     this.cptProie = 0;
 
   }
@@ -200,12 +194,12 @@ public class CompteurFourmi extends Report implements CompteurObservable {
     this.observers.add(compteur);
   }
 
-  public int getCptProieCadavre() {
-    return cptProieCadavre;
+  public int getcptCadavre() {
+    return cptCadavre;
   }
 
-  public void setCptProieCadavre(int cptProieCadavre) {
-    this.cptProieCadavre = cptProieCadavre;
+  public void setcptCadavre(int cptCadavre) {
+    this.cptCadavre = cptCadavre;
   }
 
   @Override

@@ -14,6 +14,7 @@ import report.ReportMouvementDepot;
 public class MediateurDeplacementDepot implements MediateurDeplacement {
   private Terrain terrain;
   private Fourmi uneFourmi;
+  private Fourmi cadavreFourmi;
   private Proie uneProie;
 
   public MediateurDeplacementDepot(Terrain terrain) {
@@ -24,7 +25,8 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
    * Permet de réaliser un déplacement.
    */
   public void deplacement() {
-    if (this.uneProie != null) {
+
+    if (this.uneProie != null || this.cadavreFourmi != null) {
       Place ancienne = this.uneFourmi.getPlace();
       // Calcul de la nouvelle place
       int positionX = this.uneFourmi.getPlace().getX();
@@ -49,16 +51,43 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
           }
         }
         this.uneFourmi.setPlace(this.terrain.getPlace(positionXFinal, positionYFinal));
-        this.uneProie.setPlaceProie(this.uneFourmi.getPlace());
+        if (this.uneProie != null) {
+          this.uneProie.setPlaceProie(this.uneFourmi.getPlace());
+        } else {
+          this.cadavreFourmi.setPlace(this.uneFourmi.getPlace());
+        }
         ReportMouvementDepot report = ReportMouvementDepot.getInstance();
         report.traceMouvement(ancienne, this.uneFourmi.getPlace());
+
       } else {
-        this.terrain.getFourmiliere().getDepotFourmiliere().ajouterCadavreProie(this.uneProie);
-        this.uneProie = null;
+        if (this.uneProie != null) {
+          this.terrain.getFourmiliere().getDepotFourmiliere().ajouterCadavreProie(this.uneProie);
+          this.uneProie = null;
+        } else {
+          this.terrain.getFourmiliere().getDepotFourmiliere().ajouterCadavreFourmi(cadavreFourmi);
+          this.cadavreFourmi = null;
+        }
         ((Adulte) uneFourmi.getEtat()).changerTrajet();
       }
       // Modification de la place
 
+    } else {
+      miseAJourCadavre();
+    }
+  }
+
+  private void miseAJourCadavre() {
+    Nid nid = this.terrain.getFourmiliere().getNidFourmiliere();
+    if (nid.getListeProie().size() > 0) {
+      this.setProie(nid.getListeProie().get(0));
+      CompteurFourmi cpt = CompteurFourmi.getInstance();
+      cpt.applique();
+    } else {
+      if (CompteurFourmi.getInstance().getcptCadavre() != 0) {
+        this.setCadavre(nid.getCadavreFourmi());
+        CompteurFourmi cpt = CompteurFourmi.getInstance();
+        cpt.applique();
+      }
     }
   }
 
@@ -69,13 +98,23 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
       this.setProie(nid.getListeProie().get(0));
       CompteurFourmi cpt = CompteurFourmi.getInstance();
       cpt.applique();
-
+    } else {
+      if (CompteurFourmi.getInstance().getcptCadavre() != 0) {
+        this.setCadavre(nid.getCadavreFourmi());
+        CompteurFourmi cpt = CompteurFourmi.getInstance();
+        cpt.applique();
+      }
     }
   }
 
   public void setProie(Proie uneProie) {
     this.terrain.getFourmiliere().getNidFourmiliere().supprimerProie(uneProie);
     this.uneProie = uneProie;
+  }
+
+  public void setCadavre(Fourmi cadavreFourmi) {
+    this.terrain.getFourmiliere().getNidFourmiliere().supprimerFourmi(cadavreFourmi);
+    this.cadavreFourmi = cadavreFourmi;
   }
 
   @Override

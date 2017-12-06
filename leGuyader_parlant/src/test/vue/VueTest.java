@@ -9,9 +9,11 @@ import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
+import population.etat.Adulte;
 import population.etat.EtatProieAbstract;
 import population.etat.Etats;
 import population.etat.ProieMorte;
+import population.role.Reine;
 import report.ReportTerrain;
 import temps.Temps;
 import vue.VuePrincipale;
@@ -25,6 +27,7 @@ public class VueTest {
     fourmiReine.setReine();
     terrainTest.premiereReine(fourmiReine);
     fourmiReine.pond();
+    tempsCourant.addObserveur((Reine) ((Adulte) fourmiReine.getEtat()).getRole());
     Nid nid = terrainTest.getFourmiliere().getNidFourmiliere();
 
     // for (int i = 0; i < 500; i++) {

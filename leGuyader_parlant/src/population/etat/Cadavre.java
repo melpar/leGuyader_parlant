@@ -1,5 +1,6 @@
 package population.etat;
 
+import environnement.Terrain;
 import population.Fourmi;
 import temps.Duree;
 
@@ -24,6 +25,7 @@ public class Cadavre extends EtatAbstract {
     this.dateFin = new Duree(dureeCourante);
     this.etat = Etats.CADAVRE;
     this.tempsCourant = dureeCourante;
+
   }
 
   @Override

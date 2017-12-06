@@ -1,6 +1,7 @@
 package population.role;
 
 import environnement.Fourmiliere;
+import environnement.Terrain;
 import population.Fourmi;
 import population.TempsObserver;
 import temps.Duree;
@@ -30,7 +31,7 @@ public class Reine extends RoleAbstract implements TempsObserver {
     this.fourmiliere = null;
     this.dateFin = new Duree();
     this.dateFin.addMois((int) (Math.random() * 12));
-    this.dateFin.addMois((int) (Math.random() * 6) + 4);
+    this.dateFin.addAnnee((int) (Math.random() * 6) + 4);
   }
 
   public void setFourmiliere(Fourmiliere fourmiliere) {
@@ -58,8 +59,10 @@ public class Reine extends RoleAbstract implements TempsObserver {
 
   @Override
   public void agitSur() {
-    this.maFourmi.changeEtat(this.maFourmi.getEtat().getEtat(),
-        this.maFourmi.getTempsCourant().getTempsCourant());
-
+    if (maFourmi.getTempsCourant().getTempsCourant()
+        .estSuperieur(Duree.ajouter(this.maFourmi.getNaissance(), dateFin))) {
+      this.maFourmi.changeEtat(this.maFourmi.getEtat().getEtat(),
+          this.maFourmi.getTempsCourant().getTempsCourant());
+    }
   }
 }

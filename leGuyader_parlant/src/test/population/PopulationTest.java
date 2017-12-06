@@ -17,7 +17,7 @@ public class PopulationTest {
     Temps tempsCourant = new Temps();
     Place place = new Place(0, 0, tempsCourant);
     Fourmi fourmi = new Fourmi(false, place, tempsCourant);
-    assert (fourmi.getAge().equals(new Duree()));
+    assert (fourmi.getNaissance().equals(new Duree()));
     assert (fourmi.getaMange() == 0);
     assert (fourmi.getEtat().getEtat() == Etats.OEUF);
   }

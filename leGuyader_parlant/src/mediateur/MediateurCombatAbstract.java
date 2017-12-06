@@ -22,7 +22,6 @@ public abstract class MediateurCombatAbstract {
     for (Fourmi uneFourmi : this.lesFourmis) {
       somme += uneFourmi.getPoids();
     }
-    System.out.println("somme : " + somme + " " + this.uneProie.getPoids());
     return somme;
   }
 
