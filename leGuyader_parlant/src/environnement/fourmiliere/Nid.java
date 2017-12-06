@@ -7,6 +7,7 @@ import java.util.List;
 import population.Fourmi;
 import population.Proie;
 import population.etat.Etats;
+import population.etat.EtatsProies;
 import population.etat.ProieMorte;
 import population.etat.ProieVivante;
 
@@ -127,6 +128,15 @@ public class Nid {
     for (int indice = 0; indice < this.listeFourmi.size(); indice++) {
       if (this.listeFourmi.get(indice).getEtat().getEtat() == Etats.CADAVRE) {
         return this.listeFourmi.get(indice);
+      }
+    }
+    return null;
+  }
+
+  public Proie getCadavreProie() {
+    for (int indice = 0; indice < this.listeProie.size(); indice++) {
+      if (this.listeProie.get(indice).getEtat().getLibelle() == EtatsProies.CADAVRE) {
+        return this.listeProie.get(indice);
       }
     }
     return null;

@@ -186,8 +186,12 @@ public class Duree {
         if (duree.getJour() < this.jour) {
           return true;
         } else if (duree.getJour() == this.jour) {
-          if (duree.getMinute() < this.minute) {
+          if (duree.getHeure() < this.heure) {
             return true;
+          } else if (duree.getHeure() == this.heure) {
+            if (duree.getMinute() < this.minute) {
+              return true;
+            }
           }
         }
       }

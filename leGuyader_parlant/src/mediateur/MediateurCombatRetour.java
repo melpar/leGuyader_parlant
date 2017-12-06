@@ -11,6 +11,7 @@ import population.TempsObserver;
 import population.etat.Adulte;
 import population.etat.EtatProieAbstract;
 import population.etat.ProieCapturee;
+import population.etat.ProieStopee;
 import report.CompteurNid;
 import report.ReportMouvementChasse;
 import report.ReportMouvementDepot;
@@ -21,8 +22,8 @@ import temps.Temps;
 public class MediateurCombatRetour extends MediateurCombatAbstract implements TempsObserver {
 
   public MediateurCombatRetour(Proie uneProie, List<Fourmi> lesFourmis, Temps tempsCourant) {
-    System.out.println("retour combat");
     this.uneProie = uneProie;
+    this.uneProie.setEtat(new ProieStopee(tempsCourant, uneProie));
     this.lesFourmis = lesFourmis;
     this.tempsCourant = tempsCourant;
     System.out.println(tempsCourant);

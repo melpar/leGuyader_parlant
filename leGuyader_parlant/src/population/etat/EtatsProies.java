@@ -1,6 +1,6 @@
 package population.etat;
 
 public enum EtatsProies {
-  VIVANTE(), CAPTURE(), CADAVRE();
+  VIVANTE(), CAPTURE(), CADAVRE(), STOPEE();
 
 }

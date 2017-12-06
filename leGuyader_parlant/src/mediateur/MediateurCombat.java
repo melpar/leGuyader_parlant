@@ -6,6 +6,7 @@ import java.util.List;
 import population.Fourmi;
 import population.Proie;
 import population.TempsObserver;
+import population.etat.ProieStopee;
 import temps.Duree;
 import temps.Temps;
 
@@ -20,8 +21,8 @@ public class MediateurCombat extends MediateurCombatAbstract implements TempsObs
    *          temps courant
    */
   public MediateurCombat(Proie uneProie, Temps tempsCourant) {
-    System.out.println("nouveau combat");
     this.uneProie = uneProie;
+
     this.lesFourmis = new ArrayList<Fourmi>();
     this.tempsCourant = tempsCourant;
     this.dureeDebut = new Duree(tempsCourant.getTempsCourant());
@@ -54,5 +55,9 @@ public class MediateurCombat extends MediateurCombatAbstract implements TempsObs
       somme += uneFourmi.getPoids();
     }
     return somme;
+  }
+
+  public List<Fourmi> getFourmis() {
+    return this.lesFourmis;
   }
 }

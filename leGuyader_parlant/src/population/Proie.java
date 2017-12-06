@@ -53,8 +53,6 @@ public class Proie implements TempsObserver {
     this.etat.changeTemps();
     if (this.getEtat().getLibelle() == EtatsProies.VIVANTE) {
       this.deplace();
-    } else {
-      System.out.println("arrêté " + this.getEtat().getLibelle());
     }
   }
 

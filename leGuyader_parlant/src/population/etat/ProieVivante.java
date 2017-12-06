@@ -18,6 +18,7 @@ public class ProieVivante extends EtatProieAbstract {
   @Override
   public void changeTemps() {
     // TODO Auto-generated method stub
+
   }
 
 }

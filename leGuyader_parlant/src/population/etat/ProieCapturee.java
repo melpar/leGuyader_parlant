@@ -15,43 +15,25 @@ import temps.Temps;
  *
  */
 public class ProieCapturee extends EtatProieAbstract {
-  private final int nombeHeures = 3;
-  private Duree dateFin;
-  private Proie laProie;
+
+  private Duree dateMort;
+  private final int DELAIS_MORT = 10;
+  private Proie maProie;
   private Temps tempsCourant;
 
-  public ProieCapturee(Temps tempsCourant, Proie uneProie) {
-    this.dateFin = new Duree(tempsCourant.getTempsCourant());
-    dateFin.addHeure(nombeHeures);
-    this.laProie = uneProie;
-    this.tempsCourant = tempsCourant;
+  public ProieCapturee(Temps tempsCourant, Proie maProie) {
     this.etatLibelle = EtatsProies.CAPTURE;
+    this.dateMort = new Duree(tempsCourant.getTempsCourant());
+    this.dateMort.addJour(DELAIS_MORT);
+    this.maProie = maProie;
+    this.tempsCourant = tempsCourant;
   }
 
   @Override
   public void changeTemps() {
-    if (this.tempsCourant.getTempsCourant().estSuperieur(dateFin)) {
-      System.out.println("je rebouge");
-      this.laProie.setEtat(new ProieVivante());
-      // this.laProie.setMediateurProie(new
-      // MediateurDeplacementProie(Terrain.getInstance()));
-
-      MediateurCombatAbstract med = this.laProie.isEnCombat();
-      med.setProie(null);
-
-      this.tempsCourant.removeObserveur((MediateurCombat) this.laProie.isEnCombat());
-      this.laProie.setEnCombat(null);
-      // this.laProie.setMediateurProie(new
-      // MediateurDeplacementProie(Terrain.getInstance()));
-      this.laProie.setAttente(1);
+    if (this.tempsCourant.getTempsCourant().estSuperieur(this.dateMort)) {
+      this.maProie.setEtat(new ProieMorte());
     }
   }
 
-  public Duree getDateFin() {
-    return dateFin;
-  }
-
-  public void setDateFin(Duree dateFin) {
-    this.dateFin = dateFin;
-  }
 }

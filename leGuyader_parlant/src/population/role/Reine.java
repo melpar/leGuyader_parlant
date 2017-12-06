@@ -16,7 +16,7 @@ public class Reine extends RoleAbstract implements TempsObserver {
 
   private Fourmiliere fourmiliere;
   private Duree finFecondation;
-  private final int NOMBRE_MOIS_FECONDATION = 1;
+  private final int NOMBRE_MOIS_FECONDATION = 3;
   private boolean enFecondation;
   /**
    * Créé un role reine.
@@ -47,7 +47,7 @@ public class Reine extends RoleAbstract implements TempsObserver {
   public void pond() {
     if (this.fourmiliere != null) {
       this.enFecondation = false;
-      int nombreOeufs = 40 + (int) (Math.random() * 60);
+      int nombreOeufs = 25 + (int) (Math.random() * 35);
       for (int i = 0; i < nombreOeufs; i++) {
         boolean isMale = false;
         if (i % 2 == 0) {

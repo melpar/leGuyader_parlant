@@ -54,13 +54,6 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
         this.uneFourmi.setPlace(this.terrain.getPlace(positionXFinal, positionYFinal));
         ReportMouvementDepot report = ReportMouvementDepot.getInstance();
         ReportMouvementProie reportProie = ReportMouvementProie.getInstance();
-        // if (this.uneProie != null) {
-        // // this.uneProie.setPlaceProie(this.uneFourmi.getPlace());
-        // // reportProie.traceMouvement(ancienne, this.uneProie.getPlaceProie());
-        // } else {
-        // this.cadavreFourmi.setPlace(this.uneFourmi.getPlace());
-        // report.traceMouvement(ancienne, this.cadavreFourmi.getPlace());
-        // }
         report.traceMouvement(ancienne, this.uneFourmi.getPlace());
 
       } else {
@@ -82,8 +75,9 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
 
   private void miseAJourCadavre() {
     Nid nid = this.terrain.getFourmiliere().getNidFourmiliere();
-    if (nid.getListeProie().size() > 0) {
-      this.setProie(nid.getListeProie().get(0));
+    Proie uneProie = nid.getCadavreProie();
+    if (uneProie != null) {
+      this.setProie(uneProie);
       CompteurNid cpt = CompteurNid.getInstance();
       cpt.applique();
     } else {

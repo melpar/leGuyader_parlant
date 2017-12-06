@@ -4,6 +4,8 @@ import java.util.List;
 
 import population.Fourmi;
 import population.Proie;
+import population.etat.ProieStopee;
+import population.etat.ProieVivante;
 import temps.Duree;
 import temps.Temps;
 
@@ -31,5 +33,8 @@ public abstract class MediateurCombatAbstract {
 
   public void ajouterFourmi(Fourmi uneFourmi) {
     this.lesFourmis.add(uneFourmi);
+    if (uneProie.getEtat() instanceof ProieVivante) {
+      uneProie.setEtat(new ProieStopee(lesFourmis.get(0).getTempsCourant(), uneProie));
+    }
   }
 }

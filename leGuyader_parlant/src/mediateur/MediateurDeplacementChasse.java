@@ -73,7 +73,6 @@ public class MediateurDeplacementChasse {
             fourmi.setEnCombat(true);
           }
         } else if (uneProie.isEnCombat() instanceof MediateurCombatRetour) {
-          System.out.println("retour");
         }
 
       }
