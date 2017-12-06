@@ -26,15 +26,27 @@ public class MediateurDeplacementChasse {
     List<Place> placePossibles = new ArrayList<Place>();
     if (x < this.terrain.getLongueurTerrain()) {
       placePossibles.add(terrain.getPlace(x + 1, y));
+      if (terrain.getPlace(x + 1, y).getListePheromone().contains(Pheromone.PHEROMONE_CHASSE)) {
+        placePossibles.add(terrain.getPlace(x + 1, y));
+      }
     }
     if (x > 0) {
       placePossibles.add(terrain.getPlace(x - 1, y));
+      if (terrain.getPlace(x - 1, y).getListePheromone().contains(Pheromone.PHEROMONE_CHASSE)) {
+        placePossibles.add(terrain.getPlace(x - 1, y));
+      }
     }
     if (y < this.terrain.getLargeurTerrain()) {
       placePossibles.add(terrain.getPlace(x, y + 1));
+      if (terrain.getPlace(x, y + 1).getListePheromone().contains(Pheromone.PHEROMONE_CHASSE)) {
+        placePossibles.add(terrain.getPlace(x, y + 1));
+      }
     }
     if (y > 0) {
       placePossibles.add(terrain.getPlace(x, y - 1));
+      if (terrain.getPlace(x, y - 1).getListePheromone().contains(Pheromone.PHEROMONE_CHASSE)) {
+        placePossibles.add(terrain.getPlace(x, y - 1));
+      }
     }
     int nombreAleatoire = (int) (Math.random() * placePossibles.size());
 
