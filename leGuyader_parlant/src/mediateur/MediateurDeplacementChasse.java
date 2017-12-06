@@ -8,22 +8,21 @@ import java.util.List;
 
 import population.Fourmi;
 import population.Proie;
+import population.etat.ProieCapturee;
 
 public class MediateurDeplacementChasse {
   private Terrain terrain;
   private Fourmi fourmi;
-  private boolean enCombat;
 
   public MediateurDeplacementChasse(Terrain terrain) {
     this.terrain = terrain;
-    enCombat = false;
   }
 
   /**
    * Permet de réaliser un déplacement.
    */
   public void deplacement() {
-    if (!enCombat) {
+    if (!fourmi.isEnCombat()) {
       // Calcul de la nouvelle place
       int x = this.fourmi.getPlace().getX();
       int y = this.fourmi.getPlace().getY();
@@ -65,14 +64,14 @@ public class MediateurDeplacementChasse {
         if ((uneProie.isEnCombat() == null)) {
           MediateurCombat combat = new MediateurCombat(uneProie, fourmi.getTempsCourant());
           combat.ajouterFourmi(fourmi);
-          enCombat = true;
+          fourmi.setEnCombat(true);
           uneProie.setEnCombat(combat);
           fourmi.getTempsCourant().addObserveur(combat);
         } else if (uneProie.isEnCombat() instanceof MediateurCombat) {
           if (uneProie.isEnCombat().besoinAide()) {
             System.out.println("besoin aide");
             uneProie.isEnCombat().ajouterFourmi(fourmi);
-            enCombat = true;
+            fourmi.setEnCombat(true);
           }
         } else if (uneProie.isEnCombat() instanceof MediateurCombatRetour) {
           System.out.println("retour");

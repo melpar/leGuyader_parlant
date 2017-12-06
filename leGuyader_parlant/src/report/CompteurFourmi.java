@@ -29,6 +29,7 @@ public class CompteurFourmi extends Report implements CompteurObservable {
 
   private Nid nid;
   private int cptProieCadavre;
+  private int cptProie;
 
   private CompteurFourmi() {
     this.observers = new ArrayList<CompteurObserver>();
@@ -76,6 +77,7 @@ public class CompteurFourmi extends Report implements CompteurObservable {
     ret.append("Nombre de nymphes : ").append(cptNymphe).append("\n");
     ret.append("Nombre d'adultes : ").append(cptAdulte).append("\n");
     ret.append("Nombre de cadavre : ").append(cptCadavre).append("\n");
+    ret.append("Nombre de proies : ").append(cptProie).append("\n");
     return ret.toString();
   }
 
@@ -106,6 +108,8 @@ public class CompteurFourmi extends Report implements CompteurObservable {
   public void traceProie(Proie proie) {
     if (proie.getEtat() instanceof ProieMorte) {
       this.cptProieCadavre++;
+    } else {
+      this.cptProie++;
     }
   }
 
@@ -184,6 +188,7 @@ public class CompteurFourmi extends Report implements CompteurObservable {
     this.cptNymphe = 0;
     this.cptOeuf = 0;
     this.cptProieCadavre = 0;
+    this.cptProie = 0;
 
   }
 
@@ -207,5 +212,13 @@ public class CompteurFourmi extends Report implements CompteurObservable {
   public void traceTemps(Temps temps) {
     // TODO Auto-generated method stub
 
+  }
+
+  public int getCptProie() {
+    return cptProie;
+  }
+
+  public void setCptProie(int cptProie) {
+    this.cptProie = cptProie;
   }
 }

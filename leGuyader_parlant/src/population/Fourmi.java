@@ -26,7 +26,7 @@ public class Fourmi implements TempsObserver {
   private double amange;
   private Place place;
   private Temps tempsCourant;
-
+  private boolean enCombat;
   private EtatAbstract etat;
 
   /**
@@ -46,6 +46,7 @@ public class Fourmi implements TempsObserver {
     this.place = place;
     this.etat = new Oeuf(dureeCourante.getTempsCourant(), this);
     this.tempsCourant = dureeCourante;
+    this.enCombat = false;
 
   }
 
@@ -201,5 +202,13 @@ public class Fourmi implements TempsObserver {
 
   public boolean isAdulte() {
     return this.etat.getEtat().equals(Etats.ADULTE);
+  }
+
+  public boolean isEnCombat() {
+    return enCombat;
+  }
+
+  public void setEnCombat(boolean enCombat) {
+    this.enCombat = enCombat;
   }
 }

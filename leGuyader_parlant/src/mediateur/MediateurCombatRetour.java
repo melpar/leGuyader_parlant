@@ -9,6 +9,9 @@ import population.Fourmi;
 import population.Proie;
 import population.TempsObserver;
 import population.etat.Adulte;
+import population.etat.EtatProieAbstract;
+import population.etat.ProieCapturee;
+import report.CompteurFourmi;
 import report.ReportMouvementChasse;
 import report.ReportMouvementDepot;
 import report.ReportMouvementProie;
@@ -71,6 +74,17 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
       report.traceMouvement(ancienne, uneProie.getPlaceProie());
     } else {
       System.out.println("arrivé");
+      Terrain unTerrain = Terrain.getInstance();
+      unTerrain.supprimerProie(uneProie);
+      unTerrain.getFourmiliere().getNidFourmiliere().ajouterProie(uneProie);
+      uneProie.setEnCombat(null);
+      CompteurFourmi cpt = CompteurFourmi.getInstance();
+      cpt.applique();
+      for (Fourmi laFourmi : lesFourmis) {
+        laFourmi.setEnCombat(false);
+      }
+      uneProie.setEtat(new ProieCapturee());
+      uneFourmi.getTempsCourant().removeObserveur(this);
     }
 
   }

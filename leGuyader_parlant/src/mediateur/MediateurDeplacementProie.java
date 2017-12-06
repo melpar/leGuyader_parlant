@@ -7,6 +7,7 @@ import environnement.Place;
 import environnement.Terrain;
 import population.Fourmi;
 import population.Proie;
+import population.etat.ProieCapturee;
 
 public class MediateurDeplacementProie {
   private Terrain terrain;
@@ -20,7 +21,7 @@ public class MediateurDeplacementProie {
    * Permet de réaliser un déplacement.
    */
   public void deplacement() {
-    if (this.uneProie.isEnCombat() == null) {
+    if (this.uneProie.isEnCombat() == null && !(this.uneProie.getEtat() instanceof ProieCapturee)) {
       // Calcul de la nouvelle place
       int x = this.uneProie.getPlaceProie().getX();
       int y = this.uneProie.getPlaceProie().getY();

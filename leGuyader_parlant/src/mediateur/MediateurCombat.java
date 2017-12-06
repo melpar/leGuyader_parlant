@@ -39,6 +39,7 @@ public class MediateurCombat extends MediateurCombatAbstract implements TempsObs
         MediateurCombatRetour enCombatRetour = new MediateurCombatRetour(uneProie,
             uneProie.isEnCombat().lesFourmis, tempsCourant);
         uneProie.setEnCombat(enCombatRetour);
+        this.lesFourmis.get(0).getTempsCourant().removeObserveur(this);
         this.lesFourmis.get(0).getTempsCourant().addObserveur(enCombatRetour);
       }
     }

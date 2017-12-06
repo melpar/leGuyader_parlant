@@ -48,11 +48,12 @@ public class PopUpNid extends JFrame implements CompteurObserver {
     this.remove(panelInfos);
     panelInfos = new JPanel();
     panelInfos.removeAll();
-    panelInfos.setLayout(new GridLayout(5, 1));
+    panelInfos.setLayout(new GridLayout(6, 1));
     panelInfos.add(new JLabel("Oeufs : " + cpt.getCptOeuf()));
     panelInfos.add(new JLabel("Larve : " + cpt.getCptLarve()));
     panelInfos.add(new JLabel("Nymphe : " + cpt.getCptNymphe()));
     panelInfos.add(new JLabel("Adulte : " + cpt.getCptAdulte()));
+    panelInfos.add(new JLabel("Proies : " + cpt.getCptProie()));
     panelInfos.add(new JLabel("Cadavres de proies : " + cpt.getCptProieCadavre()));
     this.add(panelInfos);
     this.repaint();
