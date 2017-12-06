@@ -6,7 +6,7 @@ import environnement.Place;
 public class FabriqueFourmiliere {
 
   /**
-   * lethode qui fabrique une fourmiliere
+   * Methode qui fabrique une fourmiliere
    * 
    * @param place
    *          Place de la nouvelle Fourmiliere.

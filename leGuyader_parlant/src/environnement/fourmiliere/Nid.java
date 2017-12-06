@@ -7,8 +7,8 @@ import java.util.List;
 import population.Fourmi;
 import population.Proie;
 import population.etat.Etats;
-import population.role.Roles;
-import report.CompteurNid;
+import population.etat.ProieMorte;
+import population.etat.ProieVivante;
 
 /**
  * Representation du Nid. Cette classe possede une liste de proies et une liste
@@ -99,6 +99,29 @@ public class Nid {
     this.listeProie = listeProie;
   }
 
+  public boolean possedeCadavreProie() {
+    for (int indice = 0; indice < this.listeProie.size(); indice++) {
+      if (this.listeProie.get(indice).getEtat() instanceof ProieMorte) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public Proie getProieCadavre() {
+    for (int indice = 0; indice < this.listeProie.size(); indice++) {
+      if (this.listeProie.get(indice).getEtat() instanceof ProieMorte) {
+        return this.listeProie.get(indice);
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Methode qui recupere la premiere fourmi dans l'etat cadavre. *
+   * 
+   * @return Fourmi dans l'etat cadavre
+   */
   public Fourmi getCadavreFourmi() {
     // TODO Auto-generated method stub
     for (int indice = 0; indice < this.listeFourmi.size(); indice++) {

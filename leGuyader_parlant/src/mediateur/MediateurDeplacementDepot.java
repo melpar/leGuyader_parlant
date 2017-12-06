@@ -98,8 +98,8 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
   public void setFourmi(Fourmi uneFourmi) {
     this.uneFourmi = uneFourmi;
     Nid nid = this.terrain.getFourmiliere().getNidFourmiliere();
-    if (nid.getListeProie().size() > 0) {
-      this.setProie(nid.getListeProie().get(0));
+    if ((nid.getListeProie().size() > 0) && nid.possedeCadavreProie()) {
+      this.setProie(nid.getProieCadavre());
       CompteurNid cpt = CompteurNid.getInstance();
       cpt.applique();
     } else {
