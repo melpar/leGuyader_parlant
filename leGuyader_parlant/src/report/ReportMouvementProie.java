@@ -123,4 +123,12 @@ public class ReportMouvementProie extends Report implements ReportObservable {
 
   }
 
+  public boolean isCapturee() {
+    return isCapturee;
+  }
+
+  public void setCapturee(boolean isCapturee) {
+    this.isCapturee = isCapturee;
+  }
+
 }

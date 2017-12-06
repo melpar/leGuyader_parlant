@@ -10,6 +10,7 @@ import population.Proie;
 import population.etat.Adulte;
 import report.CompteurNid;
 import report.ReportMouvementDepot;
+import report.ReportMouvementProie;
 
 public class MediateurDeplacementDepot implements MediateurDeplacement {
   private Terrain terrain;
@@ -51,12 +52,15 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
           }
         }
         this.uneFourmi.setPlace(this.terrain.getPlace(positionXFinal, positionYFinal));
-        if (this.uneProie != null) {
-          this.uneProie.setPlaceProie(this.uneFourmi.getPlace());
-        } else {
-          this.cadavreFourmi.setPlace(this.uneFourmi.getPlace());
-        }
         ReportMouvementDepot report = ReportMouvementDepot.getInstance();
+        ReportMouvementProie reportProie = ReportMouvementProie.getInstance();
+        // if (this.uneProie != null) {
+        // // this.uneProie.setPlaceProie(this.uneFourmi.getPlace());
+        // // reportProie.traceMouvement(ancienne, this.uneProie.getPlaceProie());
+        // } else {
+        // this.cadavreFourmi.setPlace(this.uneFourmi.getPlace());
+        // report.traceMouvement(ancienne, this.cadavreFourmi.getPlace());
+        // }
         report.traceMouvement(ancienne, this.uneFourmi.getPlace());
 
       } else {

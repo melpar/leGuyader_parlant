@@ -201,6 +201,7 @@ public class VuePrincipale implements ReportObserver {
     if (this.placesFourmi.containsKey(place)) {
       value = this.placesFourmi.get(place);
       value++;
+      System.out.println("sur la cas : " + value);
     } else {
       Dimension dim = new Dimension(TAILLE_CARRE_PROIE_FOURMI * COEFFICIENT,
           TAILLE_CARRE_PROIE_FOURMI * COEFFICIENT);
@@ -235,6 +236,7 @@ public class VuePrincipale implements ReportObserver {
       value = this.placesProie.get(place);
       value++;
     } else {
+
       Dimension dim = new Dimension(TAILLE_CARRE_PROIE_FOURMI * COEFFICIENT,
           TAILLE_CARRE_PROIE_FOURMI * COEFFICIENT);
       IDrawable rect = new RectangleDrawable(Color.BLUE,
