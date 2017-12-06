@@ -5,7 +5,7 @@ import temps.Duree;
 public enum Pheromone {
   PHEROMONE_DEPOT("depot"), PHEROMONE_CHASSE("chasse");
 
-  private static final int TEMPS_PHEROMONE_CHASSE = 5;
+  private static final int TEMPS_PHEROMONE_CHASSE = 2;
   private static final int TEMPS_PHEROMONE_DEPOT = 2;
   private Duree duree;
 
@@ -13,10 +13,10 @@ public enum Pheromone {
     this.duree = new Duree();
     switch (type) {
       case "depot":
-        this.duree.setHeure(TEMPS_PHEROMONE_DEPOT);
+        this.duree.setJour(TEMPS_PHEROMONE_DEPOT);
         break;
       case "chasse":
-        this.duree.setHeure(TEMPS_PHEROMONE_CHASSE);
+        this.duree.setJour(TEMPS_PHEROMONE_CHASSE);
         break;
       default:
         System.out.println("Erreur");

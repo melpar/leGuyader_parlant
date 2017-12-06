@@ -2,6 +2,8 @@ package population;
 
 import environnement.Place;
 import environnement.Terrain;
+import mediateur.MediateurCombat;
+import mediateur.MediateurCombatAbstract;
 import mediateur.MediateurDeplacementChasse;
 import mediateur.MediateurDeplacementProie;
 import population.etat.EtatProieAbstract;
@@ -22,6 +24,7 @@ public class Proie implements TempsObserver {
   private double poids;
   private Place placeProie;
   private MediateurDeplacementProie mediateurProie;
+  private MediateurCombatAbstract enCombat;
 
   public Proie(Place place, double poids) {
     super();
@@ -29,6 +32,7 @@ public class Proie implements TempsObserver {
     this.poids = poids;
     this.etat = new ProieVivante();
     this.mediateurProie = new MediateurDeplacementProie(Terrain.getInstance());
+    this.enCombat = null;
   }
 
   public EtatProieAbstract getEtat() {
@@ -72,6 +76,14 @@ public class Proie implements TempsObserver {
 
   public void setPlaceProie(Place placeProie) {
     this.placeProie = placeProie;
+  }
+
+  public MediateurCombatAbstract isEnCombat() {
+    return enCombat;
+  }
+
+  public void setEnCombat(MediateurCombatAbstract enCombat) {
+    this.enCombat = enCombat;
   }
 
 }

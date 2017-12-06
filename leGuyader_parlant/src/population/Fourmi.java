@@ -40,11 +40,13 @@ public class Fourmi implements TempsObserver {
   public Fourmi(boolean isMale, Place place, Temps dureeCourante) {
     this.age = new Duree();
     this.isMale = isMale;
-    this.poids = 0;
+    double poids = 15 + Math.random() * (20 - 15);
+    this.poids = Math.floor(poids);
     this.setaMange(0);
     this.place = place;
     this.etat = new Oeuf(dureeCourante.getTempsCourant(), this);
     this.tempsCourant = dureeCourante;
+
   }
 
   /**

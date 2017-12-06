@@ -20,28 +20,30 @@ public class MediateurDeplacementProie {
    * Permet de réaliser un déplacement.
    */
   public void deplacement() {
-    // Calcul de la nouvelle place
-    int x = this.uneProie.getPlaceProie().getX();
-    int y = this.uneProie.getPlaceProie().getY();
-    List<Place> placePossibles = new ArrayList<Place>();
-    if (x < this.terrain.getLongueurTerrain()) {
-      placePossibles.add(terrain.getPlace(x + 1, y));
-    }
-    if (x > 0) {
-      placePossibles.add(terrain.getPlace(x - 1, y));
-    }
-    if (y < this.terrain.getLargeurTerrain()) {
-      placePossibles.add(terrain.getPlace(x, y + 1));
-    }
-    if (y > 0) {
-      placePossibles.add(terrain.getPlace(x, y - 1));
-    }
-    int nombreAleatoire = (int) (Math.random() * placePossibles.size());
+    if (this.uneProie.isEnCombat() == null) {
+      // Calcul de la nouvelle place
+      int x = this.uneProie.getPlaceProie().getX();
+      int y = this.uneProie.getPlaceProie().getY();
+      List<Place> placePossibles = new ArrayList<Place>();
+      if (x < this.terrain.getLongueurTerrain()) {
+        placePossibles.add(terrain.getPlace(x + 1, y));
+      }
+      if (x > 0) {
+        placePossibles.add(terrain.getPlace(x - 1, y));
+      }
+      if (y < this.terrain.getLargeurTerrain()) {
+        placePossibles.add(terrain.getPlace(x, y + 1));
+      }
+      if (y > 0) {
+        placePossibles.add(terrain.getPlace(x, y - 1));
+      }
+      int nombreAleatoire = (int) (Math.random() * placePossibles.size());
 
-    Place nouvellePlace = placePossibles.get(nombreAleatoire);
+      Place nouvellePlace = placePossibles.get(nombreAleatoire);
 
-    // Modification de la place
-    this.uneProie.setPlaceProie(nouvellePlace);
+      // Modification de la place
+      this.uneProie.setPlaceProie(nouvellePlace);
+    }
   }
 
   public void setProie(Proie uneProie) {
