@@ -32,11 +32,14 @@ public class MediateurCombat extends MediateurCombatAbstract implements TempsObs
     Duree ajouter = new Duree();
     ajouter.addMinute(10);
     if (!besoinAide()) {
+
       System.out.println("debut " + dureeDebut + " " + tempsCourant.getTempsCourant());
       if (tempsCourant.getTempsCourant().estSuperieur(Duree.ajouter(ajouter, dureeDebut))) {
+        this.lesFourmis.get(0).getTempsCourant().removeObserveur(this);
         MediateurCombatRetour enCombatRetour = new MediateurCombatRetour(uneProie,
             uneProie.isEnCombat().lesFourmis, tempsCourant);
         uneProie.setEnCombat(enCombatRetour);
+        this.lesFourmis.get(0).getTempsCourant().addObserveur(enCombatRetour);
       }
     }
   }

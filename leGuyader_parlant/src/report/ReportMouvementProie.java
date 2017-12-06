@@ -17,7 +17,7 @@ import temps.Temps;
 public class ReportMouvementProie extends Report implements ReportObservable {
   Place anciennePlace;
   Place nouvellePlace;
-
+  boolean isCapturee;
   List<ReportObserver> observers;
 
   private static ReportMouvementProie instance;

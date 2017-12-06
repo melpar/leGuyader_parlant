@@ -9,7 +9,9 @@ import population.Fourmi;
 import population.Proie;
 import population.TempsObserver;
 import population.etat.Adulte;
+import report.ReportMouvementChasse;
 import report.ReportMouvementDepot;
+import report.ReportMouvementProie;
 import temps.Duree;
 import temps.Temps;
 
@@ -39,6 +41,7 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
     int positionY = uneFourmi.getPlace().getY();
     int positionXFinal = positionX;
     int positionYFinal = positionY;
+    System.out.println("position init " + positionX + " " + positionY);
     Place place = terrain.getFourmiliere().getPlaceFourmiliere();
     if ((place.getX() != positionX) || (place.getY() != positionY)) {
       if (place.getX() != positionX) {
@@ -56,16 +59,20 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
           positionYFinal = positionY - 1;
         }
       }
+      System.out.println("position init " + positionXFinal + " " + positionYFinal);
+      // Modification de la place
+      for (Fourmi fourmi : this.lesFourmis) {
+        fourmi.setPlace(terrain.getPlace(positionXFinal, positionYFinal));
+        ReportMouvementChasse report = ReportMouvementChasse.getInstance();
+        report.traceMouvement(ancienne, fourmi.getPlace());
+      }
+      uneProie.setPlaceProie(terrain.getPlace(positionXFinal, positionYFinal));
+      ReportMouvementProie report = ReportMouvementProie.getInstance();
+      report.traceMouvement(ancienne, uneProie.getPlaceProie());
     } else {
       System.out.println("arrivé");
     }
-    // Modification de la place
-    for (Fourmi fourmi : this.lesFourmis) {
-      fourmi.setPlace(terrain.getPlace(positionXFinal, positionYFinal));
-      ReportMouvementDepot report = ReportMouvementDepot.getInstance();
-      report.traceMouvement(ancienne, fourmi.getPlace());
 
-    }
   }
 
 }
