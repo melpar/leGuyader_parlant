@@ -228,4 +228,20 @@ public class Terrain {
     return this.fourmiliere.getDepotFourmiliere().getPlaceDepot();
   }
 
+  /**
+   * Obtenir la proie à une place.
+   * 
+   * @param nouvellePlace
+   *          place a chercher
+   * @return proie trouvée, null si n'existe pas
+   */
+  public Proie aProieALaPlace(Place nouvellePlace) {
+    for (Proie uneProie : this.listeProie) {
+      if (uneProie.getPlaceProie() == nouvellePlace) {
+        return uneProie;
+      }
+    }
+    return null;
+  }
+
 }

@@ -7,13 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import population.Fourmi;
+import population.Proie;
 
 public class MediateurDeplacementChasse {
   private Terrain terrain;
   private Fourmi fourmi;
+  private boolean enCombat;
 
   public MediateurDeplacementChasse(Terrain terrain) {
     this.terrain = terrain;
+    enCombat = false;
   }
 
   /**
@@ -55,6 +58,13 @@ public class MediateurDeplacementChasse {
     // Modification de la place
     this.fourmi.setPlace(nouvellePlace);
     nouvellePlace.ajouterPheromone(Pheromone.PHEROMONE_CHASSE);
+    Proie uneProie = terrain.aProieALaPlace(nouvellePlace);
+
+    if (uneProie != null) {
+      MediateurCombat combat = new MediateurCombat(uneProie);
+      combat.ajouterFourmi(fourmi);
+      enCombat = true;
+    }
   }
 
   public void setFourmi(Fourmi uneFourmi) {

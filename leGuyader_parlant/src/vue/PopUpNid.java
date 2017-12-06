@@ -36,6 +36,7 @@ public class PopUpNid extends JFrame implements CompteurObserver {
 
   private void afficherInformationsNid() {
     CompteurFourmi cpt = CompteurFourmi.getInstance();
+    cpt.remiseAZero();
     for (Fourmi uneFourmi : this.listeFourmis) {
       cpt.traceFourmi(uneFourmi);
     }

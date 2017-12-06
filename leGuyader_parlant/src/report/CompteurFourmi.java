@@ -176,7 +176,7 @@ public class CompteurFourmi extends Report implements CompteurObservable {
 
   }
 
-  private void remiseAZero() {
+  public void remiseAZero() {
     this.cptAdulte = 0;
     this.cptCadavre = 0;
     this.cptLarve = 0;
