@@ -12,6 +12,7 @@ import population.CompteurObserver;
 import population.Fourmi;
 import population.Proie;
 import population.ReportObserver;
+import population.etat.Adulte;
 import population.etat.Cadavre;
 import population.etat.EtatAbstract;
 import population.etat.ProieMorte;
@@ -22,6 +23,10 @@ public class CompteurNid extends Report implements CompteurObservable {
   private int cptLarve;
   private int cptNymphe;
   private int cptAdulte;
+  private int cptOuvriere;
+  private int cptReine;
+  private int cptSoldat;
+  private int cptSexue;
   private int cptCadavre;
   List<CompteurObserver> observers;
 
@@ -57,6 +62,20 @@ public class CompteurNid extends Report implements CompteurObservable {
         break;
       case ADULTE:
         this.cptAdulte++;
+        switch (((Adulte) uneFourmi.getEtat()).getRole().getRole()) {
+          case SOLDAT:
+            this.cptSoldat++;
+            break;
+          case OUVRIERE:
+            this.cptOuvriere++;
+            break;
+          case REINE:
+            this.cptReine++;
+            break;
+          case SEXUE:
+            this.cptSexue++;
+            break;
+        }
         break;
       default:
         this.cptCadavre++;
@@ -182,6 +201,10 @@ public class CompteurNid extends Report implements CompteurObservable {
     this.cptNymphe = 0;
     this.cptOeuf = 0;
     this.cptProie = 0;
+    this.cptOuvriere = 0;
+    this.cptReine = 0;
+    this.cptSexue = 0;
+    this.cptSoldat = 0;
 
   }
 
@@ -210,4 +233,25 @@ public class CompteurNid extends Report implements CompteurObservable {
   public void setCptProie(int cptProie) {
     this.cptProie = cptProie;
   }
+
+  public int getCptReine() {
+    return cptReine;
+  }
+
+  public int getCptSoldat() {
+    return cptSoldat;
+  }
+
+  public int getCptSexue() {
+    return cptSexue;
+  }
+
+  public int getCptOuvriere() {
+    return cptOuvriere;
+  }
+
+  public List<CompteurObserver> getObservers() {
+    return observers;
+  }
+
 }

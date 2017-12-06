@@ -39,15 +39,18 @@ public class GUIHelper implements TempsObserver {
   private CompteurNid cptNid;
   private CompteurDepot cptDepot;
 
+  private static final int NOMBRE_LABEL_NID = 11;
+  private static final int NOMBRE_LABEL_DEPOT = 3;
+
   public void showOnFrame(JComponent component, String frameName, Temps tempsCourant) {
     this.frame = new JFrame(frameName);
     tempsCourant.addObserveur(this);
-    this.labelinformationNid = new JLabel[7];
+    this.labelinformationNid = new JLabel[NOMBRE_LABEL_NID];
     for (int indice = 0; indice < this.labelinformationNid.length; indice++) {
       this.labelinformationNid[indice] = new JLabel();
     }
 
-    this.labelinformationDepot = new JLabel[3];
+    this.labelinformationDepot = new JLabel[NOMBRE_LABEL_DEPOT];
     for (int indice = 0; indice < this.labelinformationDepot.length; indice++) {
       this.labelinformationDepot[indice] = new JLabel();
     }
@@ -64,14 +67,14 @@ public class GUIHelper implements TempsObserver {
     this.temps.setText(this.reportTemps.toString());
 
     this.infosNid = new JPanel();
-    this.infosNid.setLayout(new GridLayout(7, 1));
+    this.infosNid.setLayout(new GridLayout(NOMBRE_LABEL_NID, 1));
     this.actualiseCompteurNid();
     for (int indice = 0; indice < this.labelinformationNid.length; indice++) {
       this.infosNid.add(this.labelinformationNid[indice]);
     }
 
     this.infosDepot = new JPanel();
-    this.infosDepot.setLayout(new GridLayout(3, 1));
+    this.infosDepot.setLayout(new GridLayout(NOMBRE_LABEL_DEPOT, 1));
     this.actualiseCompteurDepot();
     for (int indice = 0; indice < this.labelinformationDepot.length; indice++) {
       this.infosDepot.add(this.labelinformationDepot[indice]);
@@ -119,8 +122,36 @@ public class GUIHelper implements TempsObserver {
     this.labelinformationNid[2].setText("Larve : " + cptNid.getCptLarve());
     this.labelinformationNid[3].setText("Nymphe : " + cptNid.getCptNymphe());
     this.labelinformationNid[4].setText("Adulte : " + cptNid.getCptAdulte());
-    this.labelinformationNid[5].setText("Proies : " + cptNid.getCptProie());
-    this.labelinformationNid[6].setText("Cadavres : " + cptNid.getcptCadavre());
+    this.labelinformationNid[5].setText("    Reine : " + cptNid.getCptReine());
+
+    int pourcentOuvriere = 0;
+    if (this.cptNid.getCptOuvriere() > 0) {
+      pourcentOuvriere = (int) (((double) cptNid.getCptOuvriere() / (double) cptNid.getCptAdulte())
+          * 100);
+    }
+    this.labelinformationNid[6]
+        .setText("    Ouvriere : " + cptNid.getCptOuvriere() + "(" + pourcentOuvriere + " % )");
+
+    int pourcentSoldat = 0;
+    if (this.cptNid.getCptSoldat() > 0) {
+      pourcentSoldat = (int) (((double) cptNid.getCptSoldat() / (double) cptNid.getCptAdulte())
+          * 100);
+    }
+
+    this.labelinformationNid[7]
+        .setText("    Soldat : " + cptNid.getCptSoldat() + "(" + pourcentSoldat + " % )");
+
+    int pourcentSexue = 0;
+    if (this.cptNid.getCptSexue() > 0) {
+      pourcentSexue = (int) (((double) cptNid.getCptSexue() / (double) cptNid.getCptAdulte())
+          * 100);
+    }
+
+    this.labelinformationNid[8]
+        .setText("    Sexue : " + cptNid.getCptSexue() + "(" + pourcentSexue + " % )");
+
+    this.labelinformationNid[9].setText("Proies : " + cptNid.getCptProie());
+    this.labelinformationNid[10].setText("Cadavres : " + cptNid.getcptCadavre());
 
   }
 
