@@ -17,6 +17,7 @@ import report.ReportMouvementDepot;
 import report.ReportMouvementProie;
 import report.ReportObservable;
 import report.ReportPheromone;
+import temps.Temps;
 
 public class VuePrincipale implements ReportObserver {
 
@@ -32,9 +33,11 @@ public class VuePrincipale implements ReportObserver {
   private Map<Place, Integer> placesFourmi;
   private Map<Place, Integer> placesProie;
   private Map<Place, Pheromone> placesPheromone;
+  private Temps tempsCourant;
 
-  public VuePrincipale(Terrain terrain) {
+  public VuePrincipale(Terrain terrain, Temps tempscourant) {
     this.terrain = terrain;
+    this.tempsCourant = tempscourant;
     listenerNid = new ListenerNid(this.terrain);
     this.placesPheromone = new HashMap<Place, Pheromone>();
     this.placesFourmi = new HashMap<Place, Integer>();
@@ -58,7 +61,8 @@ public class VuePrincipale implements ReportObserver {
     jc.setPreferredSize(new Dimension((terrain.getLargeurTerrain() * COEFFICIENT),
         terrain.getLongueurTerrain() * COEFFICIENT));
     jc.addMouseListener(listenerNid);
-    GUIHelper.showOnFrame(jc, "Fourmilière");
+    GUIHelper.showOnFrame(jc, "Fourmilière", this.tempsCourant);
+
     this.initialisation();
   }
 

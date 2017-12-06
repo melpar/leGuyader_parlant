@@ -41,7 +41,7 @@ public class VueTest {
     // ReportTerrain reportTerrainTest = new ReportTerrain();
     // reportTerrainTest.traceTerrain(terrainTest);
 
-    VuePrincipale vue = new VuePrincipale(terrainTest);
+    VuePrincipale vue = new VuePrincipale(terrainTest, tempsCourant);
     vue.affichage();
 
     Thread th = new Thread(tempsCourant);

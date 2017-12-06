@@ -9,6 +9,7 @@ import population.Fourmi;
 import population.Proie;
 import population.etat.EtatAbstract;
 import temps.Temps;
+import vue.GUIHelper;
 
 public abstract class Report {
   public abstract void traceFourmi(Fourmi uneFourmi);

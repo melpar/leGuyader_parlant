@@ -7,12 +7,14 @@ import environnement.fourmiliere.Depot;
 import environnement.fourmiliere.Nid;
 import population.Fourmi;
 import population.Proie;
+import population.TempsObserver;
 import population.etat.EtatAbstract;
 import temps.Temps;
+import vue.GUIHelper;
 
 public class ReportTemps extends Report {
 
-  Temps unTemps;
+  private Temps unTemps;
 
   @Override
   public void traceTemps(Temps temps) {
