@@ -220,11 +220,11 @@ public class Duree {
    */
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append("Annee : ").append(this.annee);
-    stringBuilder.append("Mois : ").append(this.mois);
-    stringBuilder.append("Jour : ").append(this.jour);
-    stringBuilder.append("Heure : ").append(this.heure);
-    stringBuilder.append("Minute : ").append(this.minute);
+    stringBuilder.append("Annee : ").append(this.annee).append("  |   ");
+    stringBuilder.append("Mois : ").append(this.mois).append("  |   ");
+    stringBuilder.append("Jour : ").append(this.jour).append("  |   ");
+    stringBuilder.append("Heure : ").append(this.heure).append("  |   ");
+    stringBuilder.append("Minute : ").append(this.minute).append("  |   ");
     return stringBuilder.toString();
   }
 

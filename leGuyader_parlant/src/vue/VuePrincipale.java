@@ -61,7 +61,8 @@ public class VuePrincipale implements ReportObserver {
     jc.setPreferredSize(new Dimension((terrain.getLargeurTerrain() * COEFFICIENT),
         terrain.getLongueurTerrain() * COEFFICIENT));
     jc.addMouseListener(listenerNid);
-    GUIHelper.showOnFrame(jc, "Fourmilière", this.tempsCourant);
+    GUIHelper vue = new GUIHelper();
+    vue.showOnFrame(jc, "Fourmilière", this.tempsCourant);
 
     this.initialisation();
   }

@@ -15,36 +15,40 @@ import report.ReportTemps;
 import temps.Temps;
 
 public class GUIHelper implements TempsObserver {
-  private static Label temps;
-  private static JFrame frame;
-  private static ReportTemps reportTemps;
+  private Label temps;
+  private JFrame frame;
+  private ReportTemps reportTemps;
+  private Temps tempsCourantGUI;
 
-  public static void showOnFrame(JComponent component, String frameName, Temps tempsCourant) {
-    frame = new JFrame(frameName);
+  public void showOnFrame(JComponent component, String frameName, Temps tempsCourant) {
+    this.frame = new JFrame(frameName);
+    tempsCourant.addObserveur(this);
     WindowAdapter wa = new WindowAdapter() {
       public void windowClosing(WindowEvent e) {
         System.exit(0);
       }
     };
+    this.tempsCourantGUI = tempsCourant;
     JPanel info = new JPanel();
     info.setLayout(new BorderLayout());
-    reportTemps = new ReportTemps();
-    reportTemps.traceTemps(tempsCourant);
-    temps = new Label();
-    temps.setText(reportTemps.toString());
-    frame.addWindowListener(wa);
-    frame.getContentPane().add(temps, BorderLayout.NORTH);
-    frame.getContentPane().add(component, BorderLayout.CENTER);
-    frame.pack();
-    frame.setVisible(true);
-    frame.setResizable(false);
+    this.reportTemps = new ReportTemps();
+    this.reportTemps.traceTemps(tempsCourant);
+    this.temps = new Label();
+    this.temps.setText(this.reportTemps.toString());
+    this.frame.addWindowListener(wa);
+    this.frame.getContentPane().add(this.temps, BorderLayout.NORTH);
+    this.frame.getContentPane().add(component, BorderLayout.CENTER);
+    this.frame.pack();
+    this.frame.setVisible(true);
+    this.frame.setResizable(false);
   }
 
   @Override
   public void agitSur() {
     // TODO Auto-generated method stub
-    temps.setText(reportTemps.toString());
-    frame.revalidate();
+    this.reportTemps.traceTemps(this.tempsCourantGUI);
+    this.temps.setText(this.reportTemps.toString());
+    this.frame.revalidate();
   }
 
 }
