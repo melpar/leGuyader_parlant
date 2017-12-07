@@ -2,21 +2,16 @@ package mediateur;
 
 import environnement.Pheromone;
 import environnement.Place;
-import environnement.Terrain;
-import java.util.ArrayList;
-import java.util.List;
 
-import population.Fourmi;
 import population.TempsObserver;
 import report.ReportPheromone;
 import temps.Duree;
 import temps.Temps;
 
 /**
- * Permet de gérer les phéromones.
+ * Permet de gÃ©rer les phÃ©romones.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class MediateurPheromone implements TempsObserver {
   Pheromone pheromone;
@@ -24,6 +19,16 @@ public class MediateurPheromone implements TempsObserver {
   Duree dureeCourante;
   Place place;
 
+  /**
+   * Permet de crÃ©er un mÃ©diateur.
+   * 
+   * @param pheromone
+   *          phÃ©romone associÃ©
+   * @param tempsCourant
+   *          temps courant (pour le suivi)
+   * @param place
+   *          place attribuÃ©e au phÃ©romone
+   */
   public MediateurPheromone(Pheromone pheromone, Temps tempsCourant, Place place) {
     this.pheromone = pheromone;
     this.tempsCourant = tempsCourant;
@@ -33,7 +38,7 @@ public class MediateurPheromone implements TempsObserver {
   }
 
   /**
-   * Si le temps est écoulé, le phéromone est détruit.
+   * Si le temps est ï¿½coulï¿½, le phï¿½romone est dï¿½truit.
    */
   @Override
   public void agitSur() {

@@ -6,14 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import mediateur.MediateurPheromone;
-import temps.Duree;
 import temps.Temps;
 
 /**
  * Representation d'une positition sur le terrain.
  * 
- * @author LeGuyader
- * 
+ * @author LeGuyader Parlant
  */
 public class Place {
   private int positionX;
@@ -95,7 +93,7 @@ public class Place {
 
   public void removePheromone(Pheromone pheromone) {
     this.listePheromone.remove(pheromone);
-    
+
   }
 
 }

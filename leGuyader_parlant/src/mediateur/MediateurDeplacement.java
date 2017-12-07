@@ -3,10 +3,9 @@ package mediateur;
 import population.Fourmi;
 
 /**
- * Fonctions nécessaires au déplacement d'une fourmi.
+ * Fonctions nÃ©cessaires au dÃ©placement d'une fourmi.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public interface MediateurDeplacement {
 

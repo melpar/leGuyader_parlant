@@ -5,8 +5,7 @@ import population.Fourmi;
 /**
  * Fourmi adulte, soldat.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class Soldat extends RoleAbstract {
   public Soldat(Fourmi fourmi) {

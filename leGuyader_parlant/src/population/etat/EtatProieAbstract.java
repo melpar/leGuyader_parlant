@@ -1,10 +1,9 @@
 package population.etat;
 
 /**
- * Regroupe les fonctions nécessaires à la gestion des états des proies.
+ * Regroupe les fonctions nï¿½cessaires ï¿½ la gestion des ï¿½tats des proies.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public abstract class EtatProieAbstract {
 

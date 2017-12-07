@@ -3,15 +3,13 @@ package mediateur;
 import environnement.Place;
 import environnement.Terrain;
 import population.Fourmi;
-import population.Proie;
 import population.etat.Adulte;
 import report.ReportMouvementDepot;
 
 /**
- * Permet de gérer le déplacement de fourmis, pour revenir à la fourmilière.
+ * Permet de gÃ©rer le dÃ©placement de fourmis, pour revenir Ã  la fourmiliÃ¨re.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class MediateurDeplacementFourmiliere implements MediateurDeplacement {
   private Terrain terrain;
@@ -22,8 +20,8 @@ public class MediateurDeplacementFourmiliere implements MediateurDeplacement {
   }
 
   /**
-   * Permet de rÃ©aliser un dÃ©placement. Permet à une fourmi de retourner à la
-   * fourmilière.
+   * Permet de rÃ©aliser un dÃ©placement. Permet ï¿½ une fourmi de retourner ï¿½ la
+   * fourmiliï¿½re.
    */
   public void deplacement() {
     Place ancienne = this.uneFourmi.getPlace();

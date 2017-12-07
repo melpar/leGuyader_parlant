@@ -5,15 +5,13 @@ import java.util.List;
 
 import environnement.Place;
 import environnement.Terrain;
-import population.Fourmi;
 import population.Proie;
 import population.etat.EtatsProies;
 
 /**
- * Permet de gérer le déplacement aléatoire des proies.
+ * Permet de gÃ©rer le dï¿½placement alÃ©atoire des proies.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class MediateurDeplacementProie {
   private Terrain terrain;
@@ -24,7 +22,7 @@ public class MediateurDeplacementProie {
   }
 
   /**
-   * Permet de rÃ©aliser un dÃ©placement aléatoire de la proie.
+   * Permet de rÃ©aliser un dÃ©placement alï¿½atoire de la proie.
    */
   public void deplacement() {
     if (this.uneProie.isEnCombat() == null

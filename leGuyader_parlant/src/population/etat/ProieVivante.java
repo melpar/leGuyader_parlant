@@ -1,15 +1,11 @@
 package population.etat;
 
-import temps.Duree;
-
 /**
- * Lorsqu'une proie est vivante, elle est libre de bouger aléatoirement.
+ * Lorsqu'une proie est vivante, elle est libre de bouger alï¿½atoirement.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class ProieVivante extends EtatProieAbstract {
-  private Duree tempsAvantPartir;
 
   public ProieVivante() {
     this.etatLibelle = EtatsProies.VIVANTE;

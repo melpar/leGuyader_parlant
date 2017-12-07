@@ -19,6 +19,7 @@ public class ReportTerrain extends Report {
   private List<Proie> uneListeProie;
 
   /**
+   * Permet de retourner l'ensemble des attributs sous la forme d'un string.
    * 
    */
   public String toString() {

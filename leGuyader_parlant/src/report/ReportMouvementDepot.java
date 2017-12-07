@@ -26,6 +26,12 @@ public class ReportMouvementDepot extends Report implements ReportObservable {
     this.observers = new ArrayList<ReportObserver>();
   }
 
+  /**
+   * Permet de retourn l'instance de ReportMouvementDepot. Appelle le constructeur
+   * si null. Singleton.
+   * 
+   * @return instance
+   */
   public static ReportMouvementDepot getInstance() {
     if (instance == null) {
       instance = new ReportMouvementDepot();

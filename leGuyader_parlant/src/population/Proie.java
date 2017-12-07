@@ -18,8 +18,7 @@ import report.ReportPheromone;
 /**
  * Permet de gérer les proies.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class Proie implements TempsObserver {
   private EtatProieAbstract etat;
@@ -29,6 +28,14 @@ public class Proie implements TempsObserver {
   private MediateurCombatAbstract enCombat;
   private int attente;
 
+  /**
+   * Permet de créer une proie en fonction d'une place et d'un poids.
+   * 
+   * @param place
+   *          place associée
+   * @param poids
+   *          poids associé
+   */
   public Proie(Place place, double poids) {
     super();
     this.placeProie = place;
@@ -100,6 +107,11 @@ public class Proie implements TempsObserver {
     this.mediateurProie = mediateurProie;
   }
 
+  /**
+   * Permet de déterminer si la proie peut être attaquée.
+   * 
+   * @return vrai si elle peut être attatquée
+   */
   public boolean getTempsAttenteCombat() {
     if (this.attente == 1) {
       this.attente--;

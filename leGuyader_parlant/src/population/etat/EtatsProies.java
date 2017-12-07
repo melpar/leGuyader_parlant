@@ -1,10 +1,9 @@
 package population.etat;
 
 /**
- * Regroupe les libellés des états des proies.
+ * Regroupe les libellï¿½s des ï¿½tats des proies.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public enum EtatsProies {
   VIVANTE(), CAPTURE(), CADAVRE(), STOPEE();

@@ -14,6 +14,11 @@ import population.Proie;
 import population.etat.EtatAbstract;
 import temps.Temps;
 
+/**
+ * Permet de lister le nombre de chaque éléments dans le dépot.
+ * 
+ * @author LeGuyader Parlant
+ */
 public class CompteurDepot extends Report implements CompteurObservable {
   private int cptCadavreProie;
   private int cptCadavreFourmi;
@@ -25,6 +30,12 @@ public class CompteurDepot extends Report implements CompteurObservable {
     this.observers = new ArrayList<CompteurObserver>();
   }
 
+  /**
+   * Permet de retourner l'instance du compteur (singleton). Si l'instance est à
+   * null, elle est initialisée.
+   * 
+   * @return instance du compteur
+   */
   public static CompteurDepot getInstance() {
     if (instance == null) {
       instance = new CompteurDepot();

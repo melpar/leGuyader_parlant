@@ -10,14 +10,12 @@ import population.role.RoleAbstract;
 import population.role.Roles;
 import population.role.Sexue;
 import population.role.Soldat;
-import report.ReportMouvementChasse;
 import temps.Duree;
 
 /**
  * Etat d'une fourmie adulte. Contient son role
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class Adulte extends EtatAbstract {
   /**
@@ -88,6 +86,9 @@ public class Adulte extends EtatAbstract {
 
   }
 
+  /**
+   * Permet de changer le type de déplacement (vers le dépot ou retour).
+   */
   public void changerTrajet() {
     if (this.mediateur instanceof MediateurDeplacementFourmiliere) {
       this.mediateur = new MediateurDeplacementDepot(Terrain.getInstance());
@@ -96,6 +97,9 @@ public class Adulte extends EtatAbstract {
     }
   }
 
+  /**
+   * Permet de déplacer la fourmi.
+   */
   public void deplace() {
     if (mediateur.getFourmi() == null) {
       mediateur.setFourmi(maFourmi);

@@ -14,6 +14,12 @@ import population.ReportObserver;
 import population.etat.EtatAbstract;
 import temps.Temps;
 
+/**
+ * Permet de regrouper les informations liée à déplacement de type chasse.
+ * Permet d'avertir la vue.
+ * 
+ * @author LeGuyader Parlant
+ */
 public class ReportMouvementChasse extends Report implements ReportObservable {
   Place anciennePlace;
   Place nouvellePlace;
@@ -26,6 +32,12 @@ public class ReportMouvementChasse extends Report implements ReportObservable {
     this.observers = new ArrayList<ReportObserver>();
   }
 
+  /**
+   * Permet de retourner l'instance de reportMouvementChasse. Appelle le
+   * constructeur si null. Singleton.
+   * 
+   * @return instance de ReportMouvementChasse
+   */
   public static ReportMouvementChasse getInstance() {
     if (instance == null) {
       instance = new ReportMouvementChasse();

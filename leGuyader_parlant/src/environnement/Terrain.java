@@ -13,8 +13,7 @@ import temps.Temps;
 /**
  * Representation du terrain.
  * 
- * @author LeGuyader
- *
+ * @author LeGuyader Parlant
  */
 public class Terrain {
   private int largeurTerrain;
@@ -31,6 +30,18 @@ public class Terrain {
     return Terrain.instanceTerrain;
   }
 
+  /**
+   * Permet de retourner le terrain (singleton), en créé un si l'instance est à
+   * null.
+   * 
+   * @param largeurTerrain
+   *          largeur souhaitée
+   * @param longueurTerrain
+   *          longueur souhaitée
+   * @param tempsCourant
+   *          temps courant (pour les évènements)
+   * @return instance du terrain
+   */
   public static Terrain getInstance(int largeurTerrain, int longueurTerrain, Temps tempsCourant) {
     if (Terrain.instanceTerrain == null) {
       Terrain.instanceTerrain = new Terrain(largeurTerrain, longueurTerrain, tempsCourant);
@@ -95,6 +106,12 @@ public class Terrain {
     this.fourmiliere.ajouterFourmiNid(fourmiReine);
   }
 
+  /**
+   * Permet de générer des proies, à poids variable.
+   * 
+   * @param nombreProie
+   *          nombre de proies à créer.
+   */
   public void genProie(int nombreProie) {
     for (int indice = 0; indice < nombreProie; indice++) {
       double poids = Math.random() * (50 - 2);
@@ -103,6 +120,13 @@ public class Terrain {
     }
   }
 
+  /**
+   * Permet de générer un dépot à une distance donnée du nid.
+   * 
+   * @param distance
+   *          distance entre le nid et le dépot
+   * @return dépot créé
+   */
   public Depot genDepot(int distance) {
     Place placeFourmiliere = this.fourmiliere.getPlaceFourmiliere();
 
@@ -229,6 +253,11 @@ public class Terrain {
     return this.fourmiliere.getNidFourmiliere().getPlaceNid();
   }
 
+  /**
+   * Permet de retourner la liste des places où se trouvent des proies.
+   * 
+   * @return liste de places
+   */
   public List<Place> getPlaceProies() {
     List<Place> places = new ArrayList<Place>();
     for (Proie proie : this.listeProie) {
@@ -237,6 +266,11 @@ public class Terrain {
     return places;
   }
 
+  /**
+   * Permet de retourner la liste des places où se trouvent des fourmis adultes.
+   * 
+   * @return liste de places
+   */
   public List<Place> getPlacesAdultes() {
     List<Place> places = new ArrayList<Place>();
     List<Fourmi> fourmis = this.fourmiliere.getNidFourmiliere().getListeFourmi();

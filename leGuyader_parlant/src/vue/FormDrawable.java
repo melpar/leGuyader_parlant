@@ -11,6 +11,16 @@ public abstract class FormDrawable implements IMovableDrawable {
   protected Rectangle rect;
   protected Color color;
 
+  /**
+   * Permet de créer une fourme dessinable.
+   * 
+   * @param color
+   *          couleur de la fourme.
+   * @param pos
+   *          position.
+   * @param dim
+   *          dimension.
+   */
   public FormDrawable(Color color, Point pos, Dimension dim) {
     this.color = color;
     this.rect = new Rectangle(dim);
@@ -24,6 +34,9 @@ public abstract class FormDrawable implements IMovableDrawable {
     return (Rectangle) rect.clone();
   }
 
+  /**
+   * Permet de retourner la position de l'élément.
+   */
   public Point getPosition() {
     Point p = rect.getLocation();
     p.x = (p.x + rect.width / 2);

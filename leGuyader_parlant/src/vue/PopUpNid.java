@@ -21,6 +21,15 @@ public class PopUpNid extends JFrame implements CompteurObserver {
 
   JPanel panelInfos;
 
+  /**
+   * Permet de créer la popup, à partir de la liste de fourmis et la liste de
+   * proies.
+   * 
+   * @param fourmis
+   *          liste des fourmis à comptabiliser
+   * @param proies
+   *          liste des proies à comptabiliser
+   */
   public PopUpNid(List<Fourmi> fourmis, List<Proie> proies) {
     super();
     this.setSize(new Dimension(200, 200));

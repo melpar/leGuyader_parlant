@@ -12,6 +12,11 @@ import population.Proie;
 import population.etat.EtatAbstract;
 import temps.Temps;
 
+/**
+ * Permet d'obtenir l'ensemble des informations du dépot.
+ * 
+ * @author LeGuyader Parlant
+ */
 public class ReportDepot extends Report {
 
   private List<Fourmi> listeCadavreFourmi;

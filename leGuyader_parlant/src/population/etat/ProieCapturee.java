@@ -9,10 +9,9 @@ import temps.Duree;
 import temps.Temps;
 
 /**
- * Lorsqu'une proie est captur�e par une fourmi. La fourmi la ram�ne au nid.
+ * Lorsqu'une proie est captur�e par une fourmi. La fourmi la ram�ne au nid.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class ProieCapturee extends EtatProieAbstract {
 
@@ -21,6 +20,15 @@ public class ProieCapturee extends EtatProieAbstract {
   private Proie maProie;
   private Temps tempsCourant;
 
+  /**
+   * Permet de changer le type d'une proie en proie capturée (combat terminée,
+   * ramenée au dépot).
+   * 
+   * @param tempsCourant
+   *          temps permettant l'évolution à l'état mort
+   * @param maProie
+   *          proie associée
+   */
   public ProieCapturee(Temps tempsCourant, Proie maProie) {
     this.etatLibelle = EtatsProies.CAPTURE;
     this.dateMort = new Duree(tempsCourant.getTempsCourant());

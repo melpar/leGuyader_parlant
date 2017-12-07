@@ -1,10 +1,9 @@
 package population.etat;
 
 /**
- * Regroupe les libellés des états des fourmis.
+ * Regroupe les libellï¿½s des ï¿½tats des fourmis.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public enum Etats {
   OEUF(), LARVE(), NYMPHE(), ADULTE(), CADAVRE();

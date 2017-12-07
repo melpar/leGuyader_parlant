@@ -1,7 +1,6 @@
 package population.role;
 
 import environnement.Fourmiliere;
-import environnement.Terrain;
 import population.Fourmi;
 import population.TempsObserver;
 import temps.Duree;
@@ -9,8 +8,7 @@ import temps.Duree;
 /**
  * Fourmi adulte, reine.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class Reine extends RoleAbstract implements TempsObserver {
 
@@ -27,6 +25,12 @@ public class Reine extends RoleAbstract implements TempsObserver {
 
   private Duree dateFin;
 
+  /**
+   * Permet de créer un état Reine pour une fourmi associée.
+   * 
+   * @param fourmi
+   *          fourmi associée
+   */
   public Reine(Fourmi fourmi) {
     super(fourmi);
     this.monRole = Roles.REINE;

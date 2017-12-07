@@ -32,7 +32,7 @@ public class ReportPlace extends Report {
   }
 
   /**
-   * 
+   * Permet de retourner l'ensemble des attributs sous la forme d'un string.
    */
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();

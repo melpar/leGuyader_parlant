@@ -37,6 +37,14 @@ public class VuePrincipale implements ReportObserver {
   private Map<Place, Pheromone> placesPheromone;
   private Temps tempsCourant;
 
+  /**
+   * Permet de créer la vue (fenêtre) à partir d'un terrain et du temps courant.
+   * 
+   * @param terrain
+   *          terrain associé
+   * @param tempscourant
+   *          temps permettant la mise à jour
+   */
   public VuePrincipale(Terrain terrain, Temps tempscourant) {
     this.terrain = terrain;
     this.tempsCourant = tempscourant;
@@ -57,6 +65,9 @@ public class VuePrincipale implements ReportObserver {
     reportPheromone.addObserver(this);
   }
 
+  /**
+   * Permet d'initialiser l'affichage. Lance initialisation()
+   */
   public void affichage() {
     jc = new JCanvas();
     jc.setBackground(Color.WHITE);
@@ -69,9 +80,11 @@ public class VuePrincipale implements ReportObserver {
     this.initialisation();
   }
 
+  /**
+   * Permet d'initialiser l'affichage.
+   */
   public void initialisation() {
     List<Place> placesAdultes = terrain.getPlacesAdultes();
-    List<Place> placesProies = terrain.getPlaceProies();
 
     Place placeNid = terrain.getPlaceNid();
     this.listenerNid.setPlaceNid(placeNid);
@@ -89,6 +102,7 @@ public class VuePrincipale implements ReportObserver {
     jc.addDrawable(rectDepot);
     jc.setRectDepot(rectDepot);
 
+    List<Place> placesProies = terrain.getPlaceProies();
     for (Place place : placesProies) {
       Dimension dimP = new Dimension(TAILLE_CARRE_PROIE_FOURMI * COEFFICIENT,
           TAILLE_CARRE_PROIE_FOURMI * COEFFICIENT);

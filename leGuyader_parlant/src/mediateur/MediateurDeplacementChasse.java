@@ -10,10 +10,9 @@ import population.Fourmi;
 import population.Proie;
 
 /**
- * Permet de gérer le déplacement de fourmis, dans le cadre de la chasse.
+ * Permet de gÃ©rer le dÃ©placement de fourmis, dans le cadre de la chasse.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class MediateurDeplacementChasse {
   private Terrain terrain;
@@ -24,8 +23,8 @@ public class MediateurDeplacementChasse {
   }
 
   /**
-   * Permet de rÃ©aliser un dÃ©placement (aléatoire, augementation de probabilité
-   * si phéromone).
+   * Permet de rÃ©aliser un dÃ©placement (alï¿½atoire, augementation de probabilitï¿½ si
+   * phï¿½romone).
    */
   public void deplacement() {
     if (!fourmi.isEnCombat()) {

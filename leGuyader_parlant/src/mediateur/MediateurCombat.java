@@ -10,10 +10,9 @@ import temps.Duree;
 import temps.Temps;
 
 /**
- * Permet de gérer le combat d'une proie avec une ou des fourmi(s).
+ * Permet de gÃ©rer le combat d'une proie avec une ou des fourmi(s).
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class MediateurCombat extends MediateurCombatAbstract implements TempsObserver {
 
@@ -34,8 +33,8 @@ public class MediateurCombat extends MediateurCombatAbstract implements TempsObs
   }
 
   /**
-   * Si la/les fourmi(s) n'ont pas besoin d'aide supplémentaire, la proie est
-   * ramenée au dépot.
+   * Si la/les fourmi(s) n'ont pas besoin d'aide supplï¿½mentaire, la proie est
+   * ramenï¿½e au dï¿½pot.
    */
   @Override
   public void agitSur() {

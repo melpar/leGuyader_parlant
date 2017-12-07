@@ -10,11 +10,10 @@ import temps.Duree;
 import temps.Temps;
 
 /**
- * Lorsqu'une proie est stopp�e par une ou plusieurs fourmi(s). Dans cet �tat,
+ * Lorsqu'une proie est stopp�e par une ou plusieurs fourmi(s). Dans cet �tat,
  * le combat est en cours.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class ProieStopee extends EtatProieAbstract {
 
@@ -23,6 +22,15 @@ public class ProieStopee extends EtatProieAbstract {
   private Proie laProie;
   private Temps tempsCourant;
 
+  /**
+   * Permet de passer l'état de proie à stopper (combat commencé mais la fourmi
+   * n'a pas prit le dessus).
+   * 
+   * @param tempsCourant
+   *          temps permettant l'évolution
+   * @param uneProie
+   *          proie associée
+   */
   public ProieStopee(Temps tempsCourant, Proie uneProie) {
     this.dateFin = new Duree(tempsCourant.getTempsCourant());
     dateFin.addHeure(nombeHeures);
@@ -36,8 +44,6 @@ public class ProieStopee extends EtatProieAbstract {
     if (this.laProie.isEnCombat() instanceof MediateurCombat
         && this.tempsCourant.getTempsCourant().estSuperieur(dateFin)) {
       this.laProie.setEtat(new ProieVivante());
-      // this.laProie.setMediateurProie(new
-      // MediateurDeplacementProie(Terrain.getInstance()));
 
       MediateurCombatAbstract med = this.laProie.isEnCombat();
       med.setProie(null);
@@ -48,8 +54,6 @@ public class ProieStopee extends EtatProieAbstract {
       }
       this.tempsCourant.removeObserveur((MediateurCombat) this.laProie.isEnCombat());
       this.laProie.setEnCombat(null);
-      // this.laProie.setMediateurProie(new
-      // MediateurDeplacementProie(Terrain.getInstance()));
       this.laProie.setAttente(1);
     }
   }

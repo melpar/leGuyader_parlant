@@ -3,10 +3,9 @@ package environnement;
 import temps.Duree;
 
 /**
- * Enumerer representent un pheromones
+ * Enumerer representent un pheromones.
  * 
- * @author leGuyader
- *
+ * @author LeGuyader Parlant
  */
 public enum Pheromone {
   PHEROMONE_DEPOT("depot"), PHEROMONE_CHASSE("chasse");

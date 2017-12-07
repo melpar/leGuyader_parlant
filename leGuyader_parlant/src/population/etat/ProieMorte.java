@@ -1,10 +1,9 @@
 package population.etat;
 
 /**
- * Lorsqu'une proie est morte, elle va être transférée du nid au dépot.
+ * Lorsqu'une proie est morte, elle va ï¿½tre transfï¿½rï¿½e du nid au dï¿½pot.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class ProieMorte extends EtatProieAbstract {
 

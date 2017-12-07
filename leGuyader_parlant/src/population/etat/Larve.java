@@ -6,8 +6,7 @@ import temps.Duree;
 /**
  * Lorsque la fourmi est à l'état de larve.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class Larve extends EtatAbstract {
   private static final int JOUR_EVOLUTION = 10;

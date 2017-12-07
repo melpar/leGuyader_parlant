@@ -20,14 +20,23 @@ import temps.Duree;
 import temps.Temps;
 
 /**
- * Permet de gÈrer le dÈplacement de fourmis, dans le cadre du retour aprÈs un
+ * Permet de g√©rer le d√©placement de fourmis, dans le cadre du retour apr√©s un
  * combat.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class MediateurCombatRetour extends MediateurCombatAbstract implements TempsObserver {
 
+  /**
+   * Permet de cr√©er un m√©diateur.
+   * 
+   * @param uneProie
+   *          proie√† associer
+   * @param lesFourmis
+   *          liste de fourmis qui participent au combat
+   * @param tempsCourant
+   *          temps courant
+   */
   public MediateurCombatRetour(Proie uneProie, List<Fourmi> lesFourmis, Temps tempsCourant) {
     this.uneProie = uneProie;
     this.uneProie.setEtat(new ProieStopee(tempsCourant, uneProie));
@@ -42,7 +51,7 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
   }
 
   /**
-   * A chaque Èvolution du temps, les fourmis avec la proie se rapprochent du nid.
+   * A chaque ÔøΩvolution du temps, les fourmis avec la proie se rapprochent du nid.
    */
   @Override
   public void agitSur() {

@@ -6,8 +6,7 @@ import temps.Duree;
 /**
  * Lorsque la fourmi est à l'etat d'oeuf.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class Oeuf extends EtatAbstract {
   private static final int JOUR_EVOLUTION = 3;

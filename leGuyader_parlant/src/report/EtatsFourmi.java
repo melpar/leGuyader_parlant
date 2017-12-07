@@ -12,6 +12,11 @@ import population.etat.Etats;
 import temps.Duree;
 import temps.Temps;
 
+/**
+ * Permet d'obtenir les informations liées à l'état d'une fourmi.
+ * 
+ * @author LeGuyader Parlant
+ */
 public class EtatsFourmi extends Report {
   Etats etat;
   Duree dateFin;

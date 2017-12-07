@@ -10,8 +10,7 @@ import report.ReportPheromone;
 /**
  * Fourmi adulte, ouvrière.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class Ouvriere extends RoleAbstract {
 
@@ -33,12 +32,10 @@ public class Ouvriere extends RoleAbstract {
    * Permet de déplacer la fourmi associée.
    */
   public void deplace() {
-    Place ancienne = this.maFourmi.getPlace();
     mediateur.setFourmi(maFourmi);
+    Place ancienne = this.maFourmi.getPlace();
+
     mediateur.deplacement();
-    // System.out.println("Nouvelle place : " + this.maFourmi.getPlace().getX() +
-    // ","
-    // + this.maFourmi.getPlace().getY());
 
     ReportPheromone reportPhero = ReportPheromone.getInstance();
     reportPhero.tracePlace(this.maFourmi.getPlace());

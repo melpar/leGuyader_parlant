@@ -18,6 +18,11 @@ import population.etat.EtatAbstract;
 import population.etat.ProieMorte;
 import temps.Temps;
 
+/**
+ * Permet de lister le nombre de chaque éléments dans le nid.
+ * 
+ * @author LeGuyader Parlant
+ */
 public class CompteurNid extends Report implements CompteurObservable {
   private int cptOeuf;
   private int cptLarve;
@@ -38,6 +43,12 @@ public class CompteurNid extends Report implements CompteurObservable {
     this.observers = new ArrayList<CompteurObserver>();
   }
 
+  /**
+   * Permet de retourner l'instance du compteur (appelle constructeur si null).
+   * Singleton.
+   * 
+   * @return instance du compteur.
+   */
   public static CompteurNid getInstance() {
     if (instance == null) {
       instance = new CompteurNid();

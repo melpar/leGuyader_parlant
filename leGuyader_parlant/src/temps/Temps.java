@@ -23,6 +23,10 @@ public class Temps implements Runnable {
     this.observeurs.remove(observeur);
   }
 
+  public void removeObserveur(EtatAbstract etat) {
+    this.observeurs.remove(etat);
+  }
+
   @Override
   public void run() {
     while (true) {
@@ -50,10 +54,6 @@ public class Temps implements Runnable {
 
   public void setTempsCourant(Duree tempsCourant) {
     this.tempsCourant = tempsCourant;
-  }
-
-  public void removeObserveur(EtatAbstract etat) {
-    this.observeurs.remove(etat);
   }
 
 }

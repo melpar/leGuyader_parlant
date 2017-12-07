@@ -8,7 +8,7 @@ import population.Proie;
 /**
  * Representation de la fourmiliere. Cette classe possede un Nid et un Depot.
  * 
- * @author LeGuyader
+ * @author LeGuyader Parlant
  */
 public class Fourmiliere {
   private Nid nidFourmiliere;
@@ -30,10 +30,10 @@ public class Fourmiliere {
   }
 
   /**
-   * Permet de créer une fourmiliere sur une place donnée
+   * Permet de crï¿½er une fourmiliere sur une place donnÃ©e.
    * 
    * @param place
-   *          place donnée
+   *          place donnï¿½e
    */
   public Fourmiliere(Place place) {
     this.placeFourmiliere = place;

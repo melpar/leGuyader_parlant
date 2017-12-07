@@ -1,6 +1,8 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.TextField;
@@ -22,6 +24,12 @@ import report.CompteurNid;
 import report.ReportTemps;
 import temps.Temps;
 
+/**
+ * Permet l'affichage de la fenetre.
+ * 
+ * @author LeGuyader Parlant
+ *
+ */
 public class GUIHelper implements TempsObserver {
   private Label temps;
   private JFrame frame;
@@ -42,6 +50,16 @@ public class GUIHelper implements TempsObserver {
   private static final int NOMBRE_LABEL_NID = 11;
   private static final int NOMBRE_LABEL_DEPOT = 3;
 
+  /**
+   * Permet d'afficher la fenêtre.
+   * 
+   * @param component
+   *          composant à afficher.
+   * @param frameName
+   *          nom de la fenetre
+   * @param tempsCourant
+   *          temps permettant la mise à jour
+   */
   public void showOnFrame(JComponent component, String frameName, Temps tempsCourant) {
     this.frame = new JFrame(frameName);
     tempsCourant.addObserveur(this);
@@ -69,6 +87,7 @@ public class GUIHelper implements TempsObserver {
     this.infosNid = new JPanel();
     this.infosNid.setLayout(new GridLayout(NOMBRE_LABEL_NID, 1));
     this.actualiseCompteurNid();
+    this.labelinformationNid[0].setFont(new Font("", Font.PLAIN, 18));
     for (int indice = 0; indice < this.labelinformationNid.length; indice++) {
       this.infosNid.add(this.labelinformationNid[indice]);
     }
@@ -76,6 +95,8 @@ public class GUIHelper implements TempsObserver {
     this.infosDepot = new JPanel();
     this.infosDepot.setLayout(new GridLayout(NOMBRE_LABEL_DEPOT, 1));
     this.actualiseCompteurDepot();
+    this.labelinformationDepot[0].setForeground(Color.ORANGE);
+    this.labelinformationDepot[0].setFont(new Font("", Font.PLAIN, 18));
     for (int indice = 0; indice < this.labelinformationDepot.length; indice++) {
       this.infosDepot.add(this.labelinformationDepot[indice]);
     }
@@ -106,6 +127,9 @@ public class GUIHelper implements TempsObserver {
     this.frame.revalidate();
   }
 
+  /**
+   * Permer d'actualiser le compteur de nid. Met à jour la bande de gauche.
+   */
   public void actualiseCompteurNid() {
     this.cptNid = CompteurNid.getInstance();
     cptNid.remiseAZero();
@@ -117,7 +141,7 @@ public class GUIHelper implements TempsObserver {
     for (Proie uneProie : this.listeProieNid) {
       cptNid.traceProie(uneProie);
     }
-    this.labelinformationNid[0].setText("Info du nid        ");
+    this.labelinformationNid[0].setText("Info du Nid        ");
     this.labelinformationNid[1].setText("Oeufs : " + cptNid.getCptOeuf());
     this.labelinformationNid[2].setText("Larve : " + cptNid.getCptLarve());
     this.labelinformationNid[3].setText("Nymphe : " + cptNid.getCptNymphe());
@@ -155,6 +179,9 @@ public class GUIHelper implements TempsObserver {
 
   }
 
+  /**
+   * Permer d'actualiser le compteur de dépot. Met à jour la bande de droite.
+   */
   public void actualiseCompteurDepot() {
     this.cptDepot = CompteurDepot.getInstance();
     cptDepot.remiseAZero();

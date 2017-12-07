@@ -1,9 +1,7 @@
 package vue;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -48,22 +46,6 @@ public class JCanvas extends JPanel {
               }
             }
           }
-
-          // double xMin = this.rectNid.getRectangle().getLocation().getX()
-          // - (VuePrincipale.TAILLE_CARRE_NID_DEPOT / 2 * VuePrincipale.COEFFICIENT);
-          // double xMax = this.rectNid.getRectangle().getLocation().getX()
-          // + (VuePrincipale.TAILLE_CARRE_NID_DEPOT / 2 * VuePrincipale.COEFFICIENT);
-          // double yMin = this.rectNid.getRectangle().getLocation().getX()
-          // - (VuePrincipale.TAILLE_CARRE_NID_DEPOT / 2 * VuePrincipale.COEFFICIENT);
-          // double yMax = this.rectNid.getRectangle().getLocation().getX()
-          // + (VuePrincipale.TAILLE_CARRE_NID_DEPOT / 2 * VuePrincipale.COEFFICIENT);
-          // if
-          // (d.getRectangle().contains(this.rectNid.getRectangle().getLocation().getX(),
-          // this.rectNid.getRectangle().getLocation().getY(),
-          // VuePrincipale.TAILLE_CARRE_NID_DEPOT / 2 * VuePrincipale.COEFFICIENT,
-          // VuePrincipale.TAILLE_CARRE_NID_DEPOT / 2 * VuePrincipale.COEFFICIENT)) {
-          // afficher = false;
-          // }
         }
         if (afficher) {
           d.draw(g);

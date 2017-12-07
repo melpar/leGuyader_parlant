@@ -10,6 +10,11 @@ import population.Proie;
 import population.etat.EtatAbstract;
 import temps.Temps;
 
+/**
+ * Permet d'obtenir l'ensemble des informations d'une fourmilière.
+ * 
+ * @author LeGuyader Parlant
+ */
 public class ReportFourmiliere extends Report {
   private Nid unNid;
   private Depot unDepot;

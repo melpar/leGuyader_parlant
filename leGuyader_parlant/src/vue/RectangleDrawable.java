@@ -12,6 +12,9 @@ public class RectangleDrawable extends FormDrawable {
 
   }
 
+  /**
+   * Permet de dessiner le rectangle.
+   */
   public void draw(Graphics g) {
     Color c = g.getColor();
     g.setColor(color);

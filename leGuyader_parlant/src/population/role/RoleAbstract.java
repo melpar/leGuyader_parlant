@@ -1,14 +1,11 @@
 package population.role;
 
 import population.Fourmi;
-import population.etat.Etats;
-import temps.Duree;
 
 /**
- * Fonctions nécessaires à l'utilisation des roles. Constructeur général.
+ * Fonctions nÃ©cessaires Ã  l'utilisation des roles. Constructeur gÃ©nÃ©ral.
  * 
- * @author Mélissa
- *
+ * @author LeGuyader Parlant
  */
 public abstract class RoleAbstract {
   protected Fourmi maFourmi;

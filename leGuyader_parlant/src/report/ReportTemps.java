@@ -22,6 +22,10 @@ public class ReportTemps extends Report {
 
   }
 
+  /**
+   * Permet de retourner l'ensemble des attributs sous la forme d'un string.
+   * 
+   */
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(this.unTemps.getTempsCourant().toString());

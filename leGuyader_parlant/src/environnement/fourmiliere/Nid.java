@@ -15,7 +15,7 @@ import population.etat.ProieVivante;
  * Representation du Nid. Cette classe possede une liste de proies et une liste
  * de fourmis.
  * 
- * @author LeGuyader
+ * @author LeGuyader Parlant
  */
 public class Nid {
   private List<Fourmi> listeFourmi;

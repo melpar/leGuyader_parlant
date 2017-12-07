@@ -26,6 +26,12 @@ public class ReportMouvementProie extends Report implements ReportObservable {
     this.observers = new ArrayList<ReportObserver>();
   }
 
+  /**
+   * Permet de retourn l'instance de ReportMouvementProie. Appelle le constructeur
+   * si null. Singleton.
+   * 
+   * @return instance
+   */
   public static ReportMouvementProie getInstance() {
     if (instance == null) {
       instance = new ReportMouvementProie();

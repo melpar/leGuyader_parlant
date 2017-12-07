@@ -2,7 +2,6 @@ package population;
 
 import environnement.Fourmiliere;
 import environnement.Place;
-import environnement.Terrain;
 import environnement.fabrique.FabriqueFourmiliere;
 import population.etat.Adulte;
 import population.etat.Cadavre;
@@ -12,13 +11,17 @@ import population.etat.Larve;
 import population.etat.Nymphe;
 import population.etat.Oeuf;
 import population.role.Reine;
-import population.role.RoleAbstract;
 import population.role.Roles;
 import report.CompteurNid;
 import report.Report;
 import temps.Duree;
 import temps.Temps;
 
+/**
+ * Permet de simuler une fourmi.
+ * 
+ * @author LeGuyader Parlant
+ */
 public class Fourmi implements TempsObserver {
   private Duree naissance;
   private boolean isMale;
@@ -74,10 +77,6 @@ public class Fourmi implements TempsObserver {
 
   public double mange(double amanger) {
     return (this.amange += amanger);
-  }
-
-  public void nettoie() {
-    // La fourmie recupere un cadavre et l'amene au depot
   }
 
   /**

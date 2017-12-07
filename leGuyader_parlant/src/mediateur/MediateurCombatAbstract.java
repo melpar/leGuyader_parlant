@@ -10,11 +10,10 @@ import temps.Duree;
 import temps.Temps;
 
 /**
- * Permet de définir les éléments nécessaires au combat. Est implémenté par
+ * Permet de dÃ©finir les Ã©lÃ©ments nÃ©cessaires au combat. Est implÃ©mentÃ© par
  * MediateurCombat et MediateurCombatRetour.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public abstract class MediateurCombatAbstract {
   protected List<Fourmi> lesFourmis;
@@ -38,6 +37,12 @@ public abstract class MediateurCombatAbstract {
     return somme;
   }
 
+  /**
+   * Permet d'ajouter une fourmi Ã  la liste.
+   * 
+   * @param uneFourmi
+   *          fourmi Ã  ajouter
+   */
   public void ajouterFourmi(Fourmi uneFourmi) {
     this.lesFourmis.add(uneFourmi);
     if (uneProie.getEtat() instanceof ProieVivante) {

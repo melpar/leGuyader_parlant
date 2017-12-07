@@ -1,14 +1,12 @@
 package population.etat;
 
-import environnement.Terrain;
 import population.Fourmi;
 import temps.Duree;
 
 /**
  * Etat lorsqu'une fourmi meurt.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class Cadavre extends EtatAbstract {
 

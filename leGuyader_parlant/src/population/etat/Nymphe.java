@@ -6,8 +6,7 @@ import temps.Duree;
 /**
  * Lorsque la fourmi est à l'état de nymphe.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class Nymphe extends EtatAbstract {
   private static final int JOUR_EVOLUTION = 5;

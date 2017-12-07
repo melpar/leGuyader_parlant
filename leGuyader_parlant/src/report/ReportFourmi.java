@@ -10,6 +10,11 @@ import population.Proie;
 import population.etat.EtatAbstract;
 import temps.Temps;
 
+/**
+ * Permet d'obtenir l'ensemble des informations d'une fourmi.
+ * 
+ * @author LeGuyader Parlant
+ */
 public class ReportFourmi extends Report {
 
   private Place place;

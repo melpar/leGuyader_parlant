@@ -13,10 +13,9 @@ import report.ReportMouvementDepot;
 import report.ReportMouvementProie;
 
 /**
- * Permet de gérer le déplacement de fourmis, pour aller au dépot.
+ * Permet de gÃ©rer le dÃ©placement de fourmis, pour aller au dÃ©pot.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public class MediateurDeplacementDepot implements MediateurDeplacement {
   private Terrain terrain;
@@ -29,7 +28,7 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
   }
 
   /**
-   * Permet de rÃ©aliser un dÃ©placement, permet à une fourmi d'aller dépot.
+   * Permet de rÃ©aliser un dÃ©placement, permet ï¿½ une fourmi d'aller dï¿½pot.
    */
   public void deplacement() {
 
@@ -95,6 +94,9 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
     }
   }
 
+  /**
+   * Permet d'assoicer une fourmis et un cadavre (proi ou fourmi) au dÃ©placement.
+   */
   public void setFourmi(Fourmi uneFourmi) {
     this.uneFourmi = uneFourmi;
     Nid nid = this.terrain.getFourmiliere().getNidFourmiliere();

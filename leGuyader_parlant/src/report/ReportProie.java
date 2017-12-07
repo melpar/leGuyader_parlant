@@ -21,6 +21,10 @@ public class ReportProie extends Report {
     this.poids = uneProie.getPoids();
   }
 
+  /**
+   * Permet de retourner l'ensemble des attributs sous la forme d'un string.
+   * 
+   */
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append("Proie ( ").append(this.poids).append(" mg)");

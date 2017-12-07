@@ -1,15 +1,13 @@
 package population.etat;
 
 import population.Fourmi;
-import population.TempsObserver;
 import report.Report;
 import temps.Duree;
 
 /**
- * Regroupe les fonctions nécessaires à la gestion des états des fourmis.
+ * Regroupe les fonctions nï¿½cessaires ï¿½ la gestion des ï¿½tats des fourmis.
  * 
- * @author parlanme
- *
+ * @author LeGuyader Parlant
  */
 public abstract class EtatAbstract {
   protected Fourmi maFourmi;

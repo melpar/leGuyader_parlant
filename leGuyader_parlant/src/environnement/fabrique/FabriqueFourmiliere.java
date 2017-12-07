@@ -3,6 +3,12 @@ package environnement.fabrique;
 import environnement.Fourmiliere;
 import environnement.Place;
 
+/**
+ * Permet de fabriquer une fourmilière.
+ * 
+ * @author LeGuyader Parlant
+ *
+ */
 public class FabriqueFourmiliere {
 
   /**

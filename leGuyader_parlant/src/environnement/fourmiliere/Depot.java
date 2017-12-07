@@ -11,7 +11,7 @@ import population.Proie;
  * Representation du Depot. Cette classe possede une liste de cadavre de proies
  * et une liste de cadavre de fourmis.
  * 
- * @author LeGuyader
+ * @author LeGuyader Parlant
  */
 public class Depot {
   List<Fourmi> listeCadavreFourmi;
