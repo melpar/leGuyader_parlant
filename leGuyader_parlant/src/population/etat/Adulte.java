@@ -105,9 +105,6 @@ public class Adulte extends EtatAbstract {
       mediateur.setFourmi(maFourmi);
     }
     mediateur.deplacement();
-    // System.out.println(
-    // "fourmi :[" + maFourmi.getPlace().getX() + " : " + maFourmi.getPlace().getX()
-    // + "]");
 
   }
 }

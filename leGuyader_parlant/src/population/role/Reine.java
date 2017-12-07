@@ -14,7 +14,7 @@ public class Reine extends RoleAbstract implements TempsObserver {
 
   private Fourmiliere fourmiliere;
   private Duree finFecondation;
-  private final int NOMBRE_MOIS_FECONDATION = 3;
+  private final int NOMBRE_MOIS_FECONDATION = 1;
   private boolean enFecondation;
   /**
    * Créé un role reine.

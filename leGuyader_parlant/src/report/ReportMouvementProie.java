@@ -19,7 +19,7 @@ public class ReportMouvementProie extends Report implements ReportObservable {
   Place nouvellePlace;
   boolean isCapturee;
   List<ReportObserver> observers;
-
+  Proie proie;
   private static ReportMouvementProie instance;
 
   private ReportMouvementProie() {
@@ -37,6 +37,14 @@ public class ReportMouvementProie extends Report implements ReportObservable {
       instance = new ReportMouvementProie();
     }
     return instance;
+  }
+
+  public void setProie(Proie p) {
+    this.proie = p;
+  }
+
+  public Proie getProie() {
+    return this.proie;
   }
 
   public void addObserver(ReportObserver obs) {

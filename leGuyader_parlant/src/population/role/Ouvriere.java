@@ -40,6 +40,7 @@ public class Ouvriere extends RoleAbstract {
     ReportPheromone reportPhero = ReportPheromone.getInstance();
     reportPhero.tracePlace(this.maFourmi.getPlace());
     ReportMouvementChasse report = ReportMouvementChasse.getInstance();
+    report.setFourmi(maFourmi);
     report.traceMouvement(ancienne, this.maFourmi.getPlace());
   }
 }

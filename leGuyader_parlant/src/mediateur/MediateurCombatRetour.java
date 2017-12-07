@@ -42,7 +42,6 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
     this.uneProie.setEtat(new ProieStopee(tempsCourant, uneProie));
     this.lesFourmis = lesFourmis;
     this.tempsCourant = tempsCourant;
-    System.out.println(tempsCourant);
     this.dureeDebut = new Duree(tempsCourant.getTempsCourant());
   }
 
@@ -84,10 +83,12 @@ public class MediateurCombatRetour extends MediateurCombatAbstract implements Te
       for (Fourmi fourmi : this.lesFourmis) {
         fourmi.setPlace(terrain.getPlace(positionXFinal, positionYFinal));
         ReportMouvementChasse report = ReportMouvementChasse.getInstance();
+        report.setFourmi(fourmi);
         report.traceMouvement(ancienne, fourmi.getPlace());
       }
       uneProie.setPlaceProie(terrain.getPlace(positionXFinal, positionYFinal));
       ReportMouvementProie report = ReportMouvementProie.getInstance();
+      report.setProie(uneProie);
       report.traceMouvement(ancienne, uneProie.getPlaceProie());
     } else {
       Terrain unTerrain = Terrain.getInstance();

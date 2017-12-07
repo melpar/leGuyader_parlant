@@ -74,7 +74,6 @@ public class MediateurDeplacementChasse {
           fourmi.getTempsCourant().addObserveur(combat);
         } else if (uneProie.isEnCombat() instanceof MediateurCombat) {
           if (uneProie.isEnCombat().besoinAide()) {
-            System.out.println("besoin aide");
             uneProie.isEnCombat().ajouterFourmi(fourmi);
             fourmi.setEnCombat(true);
           }

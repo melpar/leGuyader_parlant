@@ -58,7 +58,6 @@ public class MediateurDeplacementDepot implements MediateurDeplacement {
         }
         this.uneFourmi.setPlace(this.terrain.getPlace(positionXFinal, positionYFinal));
         ReportMouvementDepot report = ReportMouvementDepot.getInstance();
-        ReportMouvementProie reportProie = ReportMouvementProie.getInstance();
         report.traceMouvement(ancienne, this.uneFourmi.getPlace());
 
       } else {

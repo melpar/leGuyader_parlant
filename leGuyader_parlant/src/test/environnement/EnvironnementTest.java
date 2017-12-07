@@ -217,7 +217,6 @@ public class EnvironnementTest {
 
     ReportTerrain reportTerrainTest = new ReportTerrain();
     reportTerrainTest.traceTerrain(this.terrainTest);
-    System.out.println(reportTerrainTest.toString());
   }
 
 }

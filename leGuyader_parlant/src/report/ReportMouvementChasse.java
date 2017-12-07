@@ -135,4 +135,12 @@ public class ReportMouvementChasse extends Report implements ReportObservable {
 
   }
 
+  public Fourmi getFourmi() {
+    return fourmi;
+  }
+
+  public void setFourmi(Fourmi fourmi) {
+    this.fourmi = fourmi;
+  }
+
 }

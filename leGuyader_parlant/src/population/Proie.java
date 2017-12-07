@@ -71,6 +71,7 @@ public class Proie implements TempsObserver {
     mediateurProie.setProie(this);
     mediateurProie.deplacement();
     ReportMouvementProie report = ReportMouvementProie.getInstance();
+    report.setProie(this);
     report.traceMouvement(ancienne, this.placeProie);
 
   }

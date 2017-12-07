@@ -27,7 +27,7 @@ public class Main {
     tempsCourant.addObserveur((Reine) ((Adulte) fourmiReine.getEtat()).getRole());
     Nid nid = terrainTest.getFourmiliere().getNidFourmiliere();
 
-    terrainTest.genProie(50);
+    terrainTest.genProie(100);
 
     for (Proie proie : terrainTest.getListeProie()) {
       tempsCourant.addObserveur(proie);

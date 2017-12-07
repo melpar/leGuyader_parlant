@@ -10,6 +10,7 @@ import java.util.Map;
 import environnement.Pheromone;
 import environnement.Place;
 import environnement.Terrain;
+import population.Proie;
 import population.ReportObserver;
 import population.TempsObserver;
 import report.ReportMouvementChasse;
@@ -170,7 +171,7 @@ public class VuePrincipale implements ReportObserver {
     Place nouvelle = report.getNouvellePlace();
 
     enleveProie(ancienne);
-    ajouteProie(nouvelle);
+    ajouteProie(nouvelle, report.getProie());
   }
 
   private void miseAJourChasse(ReportObservable rep) {
@@ -179,7 +180,7 @@ public class VuePrincipale implements ReportObserver {
     Place nouvelle = report.getNouvellePlace();
 
     enleveFourmi(ancienne, true);
-    ajouteFourmi(nouvelle, true);
+    ajouteFourmi(nouvelle, true, report.getFourmi().isEnCombat());
   }
 
   private void miseAJourDepot(ReportObservable rep) {
@@ -188,7 +189,7 @@ public class VuePrincipale implements ReportObserver {
     Place nouvelle = report.getNouvellePlace();
 
     enleveFourmi(ancienne, false);
-    ajouteFourmi(nouvelle, false);
+    ajouteFourmi(nouvelle, false, false);
   }
 
   private void miseAJourPheromone(ReportObservable rep) {
@@ -210,7 +211,7 @@ public class VuePrincipale implements ReportObserver {
     }
   }
 
-  private void ajouteFourmi(Place place, boolean isChasse) {
+  private void ajouteFourmi(Place place, boolean isChasse, boolean isEnCombat) {
     int value = 1;
     if (this.placesFourmi.containsKey(place)) {
       value = this.placesFourmi.get(place);
@@ -222,8 +223,14 @@ public class VuePrincipale implements ReportObserver {
       if (!isChasse) {
         color = Color.PINK;
       }
-      IDrawable rect = new RectangleDrawable(color,
-          new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
+      IDrawable rect;
+      if (isEnCombat) {
+        rect = new Oval(color, new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT),
+            dim);
+      } else {
+        rect = new RectangleDrawable(color,
+            new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
+      }
       jc.addDrawable(rect);
       casesFourmis.put(place, rect);
     }
@@ -243,17 +250,22 @@ public class VuePrincipale implements ReportObserver {
 
   }
 
-  private void ajouteProie(Place place) {
+  private void ajouteProie(Place place, Proie proie) {
     int value = 1;
     if (this.placesProie.containsKey(place)) {
       value = this.placesProie.get(place);
       value++;
     } else {
-
       Dimension dim = new Dimension(TAILLE_CARRE_PROIE_FOURMI * COEFFICIENT,
           TAILLE_CARRE_PROIE_FOURMI * COEFFICIENT);
-      IDrawable rect = new RectangleDrawable(Color.BLUE,
-          new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
+      IDrawable rect;
+      if (proie.isEnCombat() != null) {
+        rect = new Oval(Color.BLUE,
+            new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
+      } else {
+        rect = new RectangleDrawable(Color.BLUE,
+            new Point(place.getX() * COEFFICIENT, place.getY() * COEFFICIENT), dim);
+      }
       jc.addDrawable(rect);
       casesProies.put(place, rect);
     }
